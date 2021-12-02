@@ -1,4 +1,4 @@
-# ikon-app
+# ikon-backoffice
 
 ## Build Setup
 
