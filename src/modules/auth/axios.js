@@ -2,7 +2,7 @@ import axios from 'axios'
 import store from '@/modules/app/store'
 import { SHOW_SNACKBAR_ERROR, SHOW_SNACKBAR_SUCCESS } from '@/modules/app/store/mutation-types'
 
-axios.defaults.baseURL = process.env.VUE_APP_API_URL
+axios.defaults.baseURL = process.env.API_URL
 axios.defaults.headers.common.Accept = 'application/json'
 
 axios.interceptors.response.use(function (response) {
