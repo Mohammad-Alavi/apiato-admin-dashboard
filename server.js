@@ -9,7 +9,7 @@ const app = express()
 app.use(express.static('dist'))
 // catch-all route
 app.get('/*', (req, res) => {
-  res.sendFile('dist/index.hml')
+  res.sendFile(__dirname + '/dist/index.hml')
 })
 // start the server
 app.listen(port, () => console.log(`Listening on port ${port}`))
