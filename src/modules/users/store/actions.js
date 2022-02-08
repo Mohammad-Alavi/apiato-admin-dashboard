@@ -7,7 +7,6 @@ export default {
   // createUser (store, payload) {
   //   const params = actionHelper.urlSearchParamsFromProperties(payload,
   //     { role: payload.role?.name })
-  //   console.log(params)
   //   return Vue.axios.post('/users', params)
   // },
   getAllUsers (context, payload) {

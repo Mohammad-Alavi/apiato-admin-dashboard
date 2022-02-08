@@ -20,15 +20,18 @@
                       :page.sync="options.page"
                       :server-items-length="totalPages"
                       class="elevation-1"
+                      :class="{'row-pointer': rowPointer}"
                       hide-default-footer
-                      item-key="id">
+                      item-key="id"
+                      v-sortable-data-table="sortableDataTable"
+                      @sorted="saveOrder">
           <v-progress-linear v-if="loadingDataTable" slot="progress" absolute indeterminate/>
           <template v-slot:top>
             <ikon-data-table-toolbar :title="dataTableTitle">
               <template v-slot:search>
                 <ikon-search-box :loading="isSearching" :search-query.sync="searchQuery"/>
               </template>
-              <ikon-filter/>
+              <ikon-filter v-if="showFilter"/>
               <ikon-data-table-dialog-action-button
                 v-if="showToolbarButton"
                 :key="dialogKey + 111111"
@@ -45,25 +48,25 @@
             </ikon-data-table-toolbar>
           </template>
 
-          <template v-slot:item.enabled="{ item }">
-            <v-progress-circular v-if="updatingStatus && updatingStatus === item.id" color="info"
-                                 indeterminate/>
-            <a v-else @click="updateItem(item)">
-              {{
-                item.enabled ? $vuetify.lang.t('$vuetify.general.enable') : $vuetify.lang.t('$vuetify.general.disable')
-              }}
-            </a>
-          </template>
+<!--          <template v-slot:item.enabled="{ item }">-->
+<!--            <v-progress-circular v-if="updatingStatus && updatingStatus === item.id" color="info"-->
+<!--                                 indeterminate/>-->
+<!--            <a v-else @click="updateItem(item)">-->
+<!--              {{-->
+<!--                item.enabled ? $vuetify.lang.t('$vuetify.general.enable') : $vuetify.lang.t('$vuetify.general.disable')-->
+<!--              }}-->
+<!--            </a>-->
+<!--          </template>-->
 
-          <template v-slot:item.ids_of_groups_staff_is_admin_in="{ item }">
-            <v-progress-circular v-if="updatingAdminStatus && updatingAdminStatus === item.id" color="info"
-                                 indeterminate/>
-            <a v-else @click="updateAdministrativeStatus(item)">
-              {{
-                item.isAdminInGroup(getSinglePageGroupId) ? $vuetify.lang.t('$vuetify.general.yes') : $vuetify.lang.t('$vuetify.general.no')
-              }}
-            </a>
-          </template>
+<!--          <template v-slot:item.ids_of_groups_staff_is_admin_in="{ item }">-->
+<!--            <v-progress-circular v-if="updatingAdminStatus && updatingAdminStatus === item.id" color="info"-->
+<!--                                 indeterminate/>-->
+<!--            <a v-else @click="updateAdministrativeStatus(item)">-->
+<!--              {{-->
+<!--                item.isAdminInGroup(getSinglePageGroupId) ? $vuetify.lang.t('$vuetify.general.yes') : $vuetify.lang.t('$vuetify.general.no')-->
+<!--              }}-->
+<!--            </a>-->
+<!--          </template>-->
 
           <template v-slot:item.actions="{ item }">
 
@@ -118,6 +121,7 @@
 
 <script>
 import { ValidationObserver } from 'vee-validate'
+import Sortable from 'sortablejs'
 
 export default {
   name: 'IkonDataTablePageTemplate',
@@ -156,6 +160,14 @@ export default {
     showUpdateAction: {
       type: Boolean,
       default: true
+    },
+    rowPointer: {
+      type: Boolean,
+      default: false
+    },
+    sortableDataTable: {
+      type: Boolean,
+      default: false
     },
     toolbarButtonDialogTitle: {
       type: String
@@ -229,6 +241,12 @@ export default {
     },
     filterDialogFilters () {
       return this.$store.state.filter
+    },
+    isUsersPage () {
+      return this.$route.name === 'users'
+    },
+    showFilter () {
+      return this.isUsersPage
     }
   },
   watch: {
@@ -281,7 +299,7 @@ export default {
       this.closeDialogMethod = closeMethod
       this.doingCRUDOperations = true
 
-      if (this.isEditing) { this.updateItem() } else if (this.$store.state.groups.groupMemberManipulate) { this.addGroupMember() } else { this.createItem() }
+      if (this.isEditing) { this.updateItem() } else { this.createItem() }
     },
     createItem () {
       this.$store.dispatch(this.prepareActionName(this.actions.create), { ...this.selectedItem })
@@ -308,61 +326,11 @@ export default {
     deleteItem (closeMethod) {
       this.doingCRUDOperations = true
       this.closeDialogMethod = closeMethod
-
-      if (this.$route.name === 'group-members') { this.removeGroupMember() } else this.deleteSelectedItem()
+      this.deleteSelectedItem()
     },
     deleteSelectedItem () {
       this.$store.dispatch(this.prepareActionName(this.actions.delete), { ...this.selectedItem })
         .then(() => this.cleanupAfterSuccessfulCRUDOperation())
-        .finally(() => {
-          this.doingCRUDOperations = false
-        })
-    },
-
-    /// //////////////
-    // Customized Group only methods
-    /// /////////////
-    addGroupMember (payload) {
-      let staffId
-      // Is updating status
-      if (payload) {
-        if (payload.member_ids || payload.admin_ids) {
-          if (payload.member_ids) { staffId = payload.member_ids[0] } else { staffId = payload.admin_ids[0] }
-        }
-      } else staffId = -1
-      this.updatingAdminStatus = staffId
-      // TODO Add functionality to add multiple members add once
-      // For now can only add one member each time
-      if (!payload) {
-        const isAdmin = this.$store.state.groups.groupMemberManipulate.is_admin
-        const members = {
-          ...(!isAdmin && { member_ids: [this.$store.state.groups.groupMemberManipulate.id] }),
-          ...(isAdmin && { admin_ids: [this.$store.state.groups.groupMemberManipulate.id] })
-        }
-        this.$store.dispatch('addGroupMember', {
-          id: this.getSinglePageGroupId,
-          ...members
-        }).then(() => this.cleanupAfterSuccessfulCRUDOperation())
-          .finally(() => {
-            this.doingCRUDOperations = false
-            this.updatingAdminStatus = -1
-          })
-      } else {
-        this.$store.dispatch('addGroupMember', payload)
-          .then(() => this.cleanupAfterSuccessfulCRUDOperation())
-          .finally(() => {
-            this.doingCRUDOperations = false
-            this.updatingAdminStatus = -1
-          })
-      }
-    },
-    removeGroupMember () {
-      // TODO Add functionality to remove multiple members add once
-      // For now can only remove one member each time
-      this.$store.dispatch('removeGroupMember', {
-        group_id: this.getSinglePageGroupId,
-        staff_id: this.selectedItem.id
-      }).then(() => this.cleanupAfterSuccessfulCRUDOperation())
         .finally(() => {
           this.doingCRUDOperations = false
         })
@@ -404,9 +372,7 @@ export default {
     getAllData () {
       const { sortBy: orderBy, sortDesc, itemsPerPage: perPage, page: currentPage } = this.options
       this.loadingDataTable = true
-      console.log('1', orderBy)
       const fixedOrderBy = orderBy[0] === 'last_accepted_order' ? ['orders:id,user_id|accepted_at'] : orderBy
-      console.log('2', fixedOrderBy)
 
       this.$store.dispatch(this.prepareActionName(this.actions.getAll), {
         perPage,
@@ -422,8 +388,7 @@ export default {
         this.totalPages = res.pagination.total_pages
         this.loadingDataTable = false
         this.isSearching = false
-      }
-      )
+      })
     },
     combinedFiltersAndParams () {
       const filters = this.$store.state.filter
@@ -446,6 +411,46 @@ export default {
     },
     submit () {
       this.$refs.observer.validate()
+    },
+    saveOrder (event) {
+      // reference
+      // https://stackoverflow.com/questions/64272786/how-can-i-reorder-the-items-in-a-vuetify-data-table-by-dragging-the-rows
+      const movedItem = this.items.splice(event.oldIndex, 1)[0]
+      const itemToBeReplaced = this.items[event.newIndex] ?? this.items[event.newIndex - 1]
+
+      let order = null
+      if (itemToBeReplaced.order > movedItem.order && (event.newIndex < this.items.length)) {
+        order = itemToBeReplaced.order - 1
+      } else {
+        order = itemToBeReplaced.order
+      }
+
+      this.doingCRUDOperations = true
+      this.loadingDataTable = true
+      this.$store.dispatch(this.prepareActionName('reorder'), { id: movedItem.id, order: order })
+        .then(() => {
+          this.getAllData()
+        }).finally(() => {
+          this.loadingDataTable = false
+          this.doingCRUDOperations = false
+        })
+      // this.items.splice(event.newIndex, 0, movedItem)
+    }
+  },
+  directives: {
+    sortableDataTable: {
+      bind (el, binding, vnode) {
+        // eslint-disable-next-line no-prototype-builtins
+        if ((!binding.hasOwnProperty('value')) || binding.value) {
+          const options = {
+            animation: 150,
+            onUpdate: function (event) {
+              vnode.child.$emit('sorted', event)
+            }
+          }
+          Sortable.create(el.getElementsByTagName('tbody')[0], options)
+        }
+      }
     }
   },
   created () {
@@ -457,3 +462,9 @@ export default {
   }
 }
 </script>
+
+<style lang="css" scoped>
+.row-pointer >>> tbody tr :hover {
+  cursor: pointer;
+}
+</style>

@@ -58,12 +58,12 @@ export default {
         },
         { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.email'), value: 'email' },
         { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.role'), value: 'roles_names', sortable: false },
-        { text: this.$vuetify.lang.t('$vuetify.general.gender'), value: 'gender' },
-        { text: this.$vuetify.lang.t('$vuetify.general.birth'), value: 'birth' },
-        { text: this.$vuetify.lang.t('$vuetify.general.registeredAt'), value: 'created_at' },
-        { text: this.$vuetify.lang.t('$vuetify.general.emailVerifiedAt'), value: 'email_verified_at' },
-        { text: this.$vuetify.lang.t('$vuetify.general.suspendedAt'), value: 'suspended_at' },
-        { text: this.$vuetify.lang.t('$vuetify.general.lastBooking'), value: 'last_accepted_order' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.gender'), value: 'gender' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.birth'), value: 'birth' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.registeredAt'), value: 'created_at' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.emailVerifiedAt'), value: 'email_verified_at' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.suspendedAt'), value: 'suspended_at' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.lastBooking'), value: 'last_accepted_order' },
         { text: this.$vuetify.lang.t('$vuetify.general.actions'), value: 'actions', sortable: false }
       ]
     },

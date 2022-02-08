@@ -9,14 +9,8 @@ export default {
     disabled: 'Disabled',
     enable: 'Enable',
     disable: 'Disable',
-    suspendedAt: 'Suspended At',
-    lastBooking: 'Last Booking',
-    birth: 'Birthday',
-    gender: 'Gender',
     actions: 'Actions',
     createdAt: 'Created At',
-    emailVerifiedAt: 'Email Verified At',
-    registeredAt: 'Registered At',
     verified: 'Verified',
     site: 'Site',
     branch: 'Branch',
@@ -53,7 +47,8 @@ export default {
       },
       navigationDrawer: {
         dashboard: 'Dashboard',
-        accounts: 'Accounts'
+        accounts: 'Accounts',
+        faqs: 'FAQs'
       },
       filter: {
         filter: 'Filter',
@@ -84,7 +79,13 @@ export default {
       dataTableHeaders: {
         name: 'Name',
         email: 'Email',
-        role: 'Role'
+        role: 'Role',
+        birth: 'Birthday',
+        gender: 'Gender',
+        suspendedAt: 'Suspended At',
+        lastBooking: 'Last Booking',
+        emailVerifiedAt: 'Email Verified At',
+        registeredAt: 'Registered At'
       }
     },
     profile: {
@@ -108,25 +109,21 @@ export default {
       thisMonth: 'This Month',
       lastThreeMonths: 'Last 3 Months'
     },
-    categories: {
-      form: 'Form',
-      groups: 'Group(s)',
-      routineInspectionDuration: 'Routine Inspection Duration (Days)',
-      deadline: 'Deadline (Days)',
-      categoryList: 'Category List',
-      deleteDialogText: 'Are you sure you want to delete this item?',
-      editCategory: 'Edit Category',
-      newCategory: 'New Category',
-      grades: 'Grades',
-      addGrade: 'Add Grade',
-      gradeName: 'Name',
-      gradeValue: 'Minimum required value (%)',
+    faqs: {
+      addFaq: 'Add FAQ',
+      editFaq: 'Edit FAQ',
+      faqList: 'FAQ List',
+      deleteFaqText: 'Are you sure you want to delete this FAQ?',
+      questionEn: 'Question (EN)',
+      questionDe: 'Question (DE)',
+      answerEn: 'Answer (EN)',
+      answerDe: 'Answer (DE)',
       dataTableHeaders: {
-        category: 'Category',
-        assignedForms: 'Assigned Forms',
-        assignedGroups: 'Assigned Groups',
-        routineDuration: 'Routine Duration',
-        deadline: 'Deadline'
+        questionEn: 'Question (EN)',
+        questionDe: 'Question (DE)',
+        answerEn: 'Answer (EN)',
+        answerDe: 'Answer (DE)',
+        order: 'Order'
       }
     },
     auth: {
