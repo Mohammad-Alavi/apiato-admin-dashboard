@@ -419,8 +419,8 @@ export default {
       const itemToBeReplaced = this.items[event.newIndex] ?? this.items[event.newIndex - 1]
 
       let order = null
-      if (itemToBeReplaced.order > movedItem.order && (event.newIndex < this.items.length)) {
-        order = itemToBeReplaced.order - 1
+      if ((itemToBeReplaced.order > movedItem.order && (event.newIndex < this.items.length))) {
+        if (itemToBeReplaced.order === 0) { order = itemToBeReplaced.order } else { order = itemToBeReplaced.order - 1 }
       } else {
         order = itemToBeReplaced.order
       }
