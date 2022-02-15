@@ -43,7 +43,8 @@ export default {
     state.filter = {
       isAdmin: null,
       isProvider: null,
-      isEmailVerified: null
+      isEmailVerified: null,
+      allProviders: null
     }
   }
 }

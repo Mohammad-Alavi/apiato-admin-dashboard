@@ -51,7 +51,8 @@ export default {
       items: [
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.dashboard'), 'mdi-view-dashboard', { name: 'dashboard' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.accounts'), 'mdi-account-search', { name: 'users' }, []),
-        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.faqs'), 'mdi-frequently-asked-questions', { name: 'faqs' }, [])
+        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.faqs'), 'mdi-frequently-asked-questions', { name: 'faqs' }, []),
+        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.sliders'), 'mdi-view-carousel', { name: 'sliders' }, [])
       ]
     }
   },

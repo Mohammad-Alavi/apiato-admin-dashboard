@@ -48,20 +48,13 @@ export default {
       navigationDrawer: {
         dashboard: 'Dashboard',
         accounts: 'Accounts',
-        faqs: 'FAQs'
+        faqs: 'FAQs',
+        sliders: 'Sliders'
       },
       filter: {
         filter: 'Filter',
-        byRole: 'By Role',
-        adminRole: 'Admin',
-        providerRole: 'Provider',
         applyFilter: 'Apply Filter',
-        resetFiltersTooltip: 'Reset Filters',
-        misc: 'Misc',
-        include: 'Include',
-        exclude: 'Exclude',
-        clearFilter: 'Clear Filter',
-        emailVerified: 'Email Verified'
+        resetFiltersTooltip: 'Reset Filters'
       }
     }
   },
@@ -86,6 +79,16 @@ export default {
         lastBooking: 'Last Booking',
         emailVerifiedAt: 'Email Verified At',
         registeredAt: 'Registered At'
+      },
+      filter: {
+        include: 'Include',
+        exclude: 'Exclude',
+        clearFilter: 'Clear Filter',
+        misc: 'Misc',
+        byRole: 'By Role',
+        adminRole: 'Admin',
+        providerRole: 'Provider',
+        emailVerified: 'Email Verified'
       }
     },
     profile: {
@@ -124,6 +127,46 @@ export default {
         answerEn: 'Answer (EN)',
         answerDe: 'Answer (DE)',
         order: 'Order'
+      }
+    },
+    sliders: {
+      addSlider: 'Add Slider',
+      editSlider: 'Edit Slider',
+      sliderList: 'Slider List',
+      deleteSliderText: 'Are you sure you want to delete this Slider?',
+      name: 'Name',
+      viewProviders: 'View Providers',
+      dataTableHeaders: {
+        name: 'Name',
+        order: 'Order'
+      },
+      pages: {
+        providers: {
+          name: 'Name',
+          description: 'Description',
+          hourly_rate: 'Hourly Rate',
+          published_at: 'Published At',
+          addProvider: 'Add Provider',
+          editProvider: 'Edit Provider',
+          providerList: 'Provider List',
+          deleteProviderText: 'Are you sure you want to delete this Provider?',
+          addProviderToSlider: 'Add Provider',
+          removeProviderToSlider: 'Remove Provider',
+          dataTableHeaders: {
+            name: 'Name',
+            description: 'Description',
+            hourlyRate: 'Hourly Rate',
+            publishedAt: 'Published At',
+            providerCount: 'Provider Count'
+          },
+          filter: {
+            filterProvidersTitle: 'Display all Providers or only the ones in the Slider',
+            filterProvidersSubtitle: 'Providers Sorting & Ordering (by order field) is disabled while displaying all Providers',
+            onlyInSlider: 'Only in Slider',
+            all: 'All',
+            misc: 'Misc'
+          }
+        }
       }
     },
     auth: {

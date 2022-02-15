@@ -1,5 +1,6 @@
 import dayjs from 'dayjs'
 import Role from '@/modules/users/models/role'
+import Provider from '@/modules/users/models/provider'
 
 export default class User {
   constructor (
@@ -7,10 +8,11 @@ export default class User {
     name = '',
     email = '',
     object = '',
-    roles = [new Role()],
+    roles = [],
     rolesNames = '',
     suspendedAt = null,
     gender = null,
+    provider = null,
     birth = null,
     emailVerifiedAt = false,
     createdAt = ''
@@ -23,6 +25,7 @@ export default class User {
     this.roles_names = rolesNames
     this.suspended_at = suspendedAt
     this.gender = gender
+    this.provider = provider
     this.birth = birth
     this.email_verified_at = emailVerifiedAt
     this.created_at = createdAt
@@ -38,6 +41,7 @@ export default class User {
  User.getRoleNames(json),
  json.suspended_at ? dayjs(json.suspended_at).format('YYYY-MM-DD') : null,
  json.gender,
+ json.provider ? Provider.fromJson(json.provider) : null,
  json.birth ? dayjs(json.birth).format('YYYY-MM-DD') : null,
  json.email_verified_at ? dayjs(json.email_verified_at).format('YYYY-MM-DD') : null,
  dayjs(json.created_at).format('YYYY-MM-DD'))

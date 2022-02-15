@@ -23,6 +23,9 @@ const paramsFromProperties = (payload, customParams, exclude, only, type) => {
 const setParam = (object = {}, params, exclude = [], only = []) => {
   exclude = exclude.concat(defaultIgnoredProps)
   for (const key in object) {
+    // read more about this stupid
+    // Object.prototype.hasOwnProperty.call(object, key)
+    // https://dev.to/aman_singh/what-s-the-deal-with-object-prototype-hasownproperty-call-4mbj
     if (Object.prototype.hasOwnProperty.call(object, key) && !lodash.isNil(object[key])) {
       if (only.length && !only.includes(key)) {
         continue
@@ -50,7 +53,7 @@ export const prepareGetAllURL = (payload, defaultUrl, includes) => {
   const params = new URLSearchParams()
 
   if (payload.searchQuery) params.set('search', payload.searchQuery)
-  if (payload.orderBy) params.set('orderBy', payload.orderBy)
+  if (payload.orderBy) params.set('orderBy', payload.orderBy.join(';'))
   if (payload.sortedBy) params.set('sortedBy', payload.sortedBy)
   params.set('page', payload.currentPage ?? 1)
   params.set('limit', payload.perPage ?? 2000)

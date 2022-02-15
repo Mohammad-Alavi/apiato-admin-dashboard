@@ -1,19 +1,23 @@
 <template>
   <ikon-data-table-page-template :key="key"
-                                  :data-table-title="getDataTableTitle"
-                                  :default-item="defaultItem"
-                                  :delete-dialog-title="getDeleteDialogTitle"
-                                  :headers="headers"
-                                  :show-toolbar-button="true"
-                                  :show-delete-action="true"
-                                  :show-update-action="true"
-                                  :toolbar-button-dialog-title="$vuetify.lang.t('$vuetify.pages.users.addAccount')"
-                                  :toolbar-button-text="$vuetify.lang.t('$vuetify.pages.users.addAccount')"
-                                  :update-dialog-title="$vuetify.lang.t('$vuetify.pages.users.editAccount')"
-                                  actions-suffix="User"
-                                  show-select>
+                                 :data-table-title="getDataTableTitle"
+                                 :default-item="defaultItem"
+                                 :delete-dialog-title="getDeleteDialogTitle"
+                                 :headers="headers"
+                                 :order-by-override="{'last_accepted_order': 'orders:id,user_id|accepted_at'}"
+                                 :show-delete-action="true"
+                                 :show-toolbar-button="true"
+                                 :show-update-action="true"
+                                 :toolbar-button-dialog-title="$vuetify.lang.t('$vuetify.pages.users.addAccount')"
+                                 :toolbar-button-text="$vuetify.lang.t('$vuetify.pages.users.addAccount')"
+                                 :update-dialog-title="$vuetify.lang.t('$vuetify.pages.users.editAccount')"
+                                 actions-suffix="User"
+                                 show-select>
     <template v-slot:dialog="{item}">
       <ikon-user-dialog :item="item"/>
+    </template>
+    <template v-slot:filter>
+      <ikon-user-filter/>
     </template>
   </ikon-data-table-page-template>
 </template>
@@ -25,7 +29,8 @@ export default {
   name: 'IkonUserPage',
   components: {
     IkonDataTablePageTemplate: () => import('@/modules/app/templates/IkonDataTablePageTemplate'),
-    IkonUserDialog: () => import('@/modules/users/components/IkonUserDialog')
+    IkonUserDialog: () => import('@/modules/users/components/IkonUserDialog'),
+    IkonUserFilter: () => import('@/modules/users/components/IkonUserFilter')
   },
   data () {
     return {
@@ -57,11 +62,18 @@ export default {
           value: 'name'
         },
         { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.email'), value: 'email' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.role'), value: 'roles_names', sortable: false },
+        {
+          text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.role'),
+          value: 'roles_names',
+          sortable: false
+        },
         { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.gender'), value: 'gender' },
         { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.birth'), value: 'birth' },
         { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.registeredAt'), value: 'created_at' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.emailVerifiedAt'), value: 'email_verified_at' },
+        {
+          text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.emailVerifiedAt'),
+          value: 'email_verified_at'
+        },
         { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.suspendedAt'), value: 'suspended_at' },
         { text: this.$vuetify.lang.t('$vuetify.pages.users.dataTableHeaders.lastBooking'), value: 'last_accepted_order' },
         { text: this.$vuetify.lang.t('$vuetify.general.actions'), value: 'actions', sortable: false }

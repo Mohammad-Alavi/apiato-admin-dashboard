@@ -21,7 +21,8 @@ export default new Vuex.Store({
     filter: {
       isAdmin: null,
       isProvider: null,
-      isEmailVerified: null
+      isEmailVerified: null,
+      allProviders: null
     }
   },
   actions: actions,

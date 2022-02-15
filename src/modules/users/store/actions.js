@@ -2,6 +2,8 @@ import Vue from 'vue'
 import * as actionHelper from '@/modules/app/helpers/actions'
 import User from '@/modules/users/models/user'
 import Role from '@/modules/users/models/role'
+import Provider from '@/modules/users/models/provider'
+import router from '@/modules/app/router'
 
 export default {
   // createUser (store, payload) {
@@ -11,11 +13,36 @@ export default {
   // },
   getAllUsers (context, payload) {
     return new Promise((resolve, reject) => {
-      const url = actionHelper.prepareGetAllURL(payload, 'users', 'roles')
+      const url = actionHelper.prepareGetAllURL(payload, 'users', ['roles', 'provider'])
       return Vue.axios.get(url)
         .then(res => resolve(
           {
             items: User.fromJsonArray(res.data.data),
+            pagination: res.data.meta.pagination
+          }))
+        .catch(err => reject(err))
+    })
+  },
+  getAllProviders (context, payload) {
+    if (router.currentRoute.name === 'slider-providers') {
+      return new Promise((resolve, reject) => {
+        const url = actionHelper.prepareGetAllURL(payload, 'sliders/' + router.currentRoute.params.slider_id + '/providers', ['user', 'sliders'])
+        return Vue.axios.get(url)
+          .then(res => resolve(
+            {
+              items: Provider.fromJsonArray(res.data.data),
+              pagination: res.data.meta.pagination
+            }))
+          .catch(err => reject(err))
+      })
+    }
+
+    return new Promise((resolve, reject) => {
+      const url = actionHelper.prepareGetAllURL(payload, 'providers', 'sliders')
+      return Vue.axios.get(url)
+        .then(res => resolve(
+          {
+            items: Provider.fromJsonArray(res.data.data),
             pagination: res.data.meta.pagination
           }))
         .catch(err => reject(err))
