@@ -51,8 +51,9 @@ export default {
   updateUser (store, payload) {
     const params = actionHelper.urlSearchParamsFromProperties(payload,
       {
+        suspend: payload.suspended_at,
         role: payload.roles ? Array.from(payload.roles.map(role => role.name)) : null
-      }, ['email', 'roles', 'roles_names'])
+      }, ['email', 'roles', 'roles_names', 'suspended_at', 'provider'])
 
     return Vue.axios.patch('/admin/users/' + payload.id, params)
   },
