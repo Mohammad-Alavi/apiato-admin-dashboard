@@ -322,7 +322,9 @@ export default {
     createItem () {
       this.$store.dispatch(this.prepareActionName(this.actions.create), { ...this.selectedItem })
         .then(() => this.cleanupAfterSuccessfulCRUDOperation())
-        .finally(() => {
+        .catch(res => {
+          this.setServerErrorsOnFormFields(res)
+        }).finally(() => {
           this.doingCRUDOperations = false
         })
     },
@@ -338,10 +340,22 @@ export default {
 
       this.$store.dispatch(this.prepareActionName(this.actions.update), payload)
         .then(() => this.cleanupAfterSuccessfulCRUDOperation())
-        .finally(() => {
+        .catch(res => {
+          this.setServerErrorsOnFormFields(res)
+        }).finally(() => {
           this.doingCRUDOperations = false
           this.updatingStatus = -1
         })
+    },
+    setServerErrorsOnFormFields (res) {
+      if (res.response.data.errors) {
+        const errors = res.response.data.errors
+        const errorObject = {}
+        Object.entries(errors).forEach(([k, v]) => {
+          errorObject[k] = v
+        })
+        this.$refs.observer.setErrors(errorObject)
+      }
     },
     deleteItem (closeMethod) {
       this.doingCRUDOperations = true
