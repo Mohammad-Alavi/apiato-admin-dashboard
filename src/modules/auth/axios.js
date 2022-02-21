@@ -36,7 +36,7 @@ axios.interceptors.response.use(function (response) {
         callSnackbarError('Resource not found') // '$vuetify.general.components.snackbar.notFound'
         break
       case 422:
-        callSnackbarError(error.response.data.errors[Object.keys(error.response.data.errors)[0]][0])
+        // callSnackbarError(error.response.data.errors[Object.keys(error.response.data.errors)[0]][0])
         break
       default:
         callSnackbarError('Something went wrong!') // '$vuetify.general.components.snackbar.generalError'
