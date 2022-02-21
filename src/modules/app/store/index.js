@@ -22,7 +22,8 @@ export default new Vuex.Store({
       isAdmin: null,
       isProvider: null,
       isEmailVerified: null,
-      allProviders: null
+      allProviders: null,
+      orderStatus: null
     }
   },
   actions: actions,

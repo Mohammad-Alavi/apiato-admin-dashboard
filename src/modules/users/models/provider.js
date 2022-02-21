@@ -1,5 +1,6 @@
 import lodash from 'lodash'
 import Slider from '@/modules/slider/models/slider'
+import dayjs from 'dayjs'
 
 export default class Provider {
   constructor (
@@ -28,7 +29,7 @@ export default class Provider {
       json.name,
       json.description,
       json.hourly_rate,
-      json.published_at,
+      json.published_at ? dayjs(json.published_at).format('YYYY-MM-DD') : null,
       json.order,
       json.sliders?.data.length > 0 ? Slider.fromJsonArray(json.sliders.data) : [],
       json.object

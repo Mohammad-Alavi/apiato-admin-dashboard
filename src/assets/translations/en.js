@@ -69,6 +69,7 @@ export default {
       editAccount: 'Edit Account',
       accountList: 'Account List',
       deleteAccountText: 'Are you sure you want to delete this Account?',
+      viewOrders: 'View Orders',
       dataTableHeaders: {
         name: 'Name',
         email: 'Email',
@@ -89,6 +90,33 @@ export default {
         adminRole: 'Admin',
         providerRole: 'Provider',
         emailVerified: 'Email Verified'
+      },
+      pages: {
+        orders: {
+          addOrder: 'Add Order',
+          editOrder: 'Edit Order',
+          orderList: 'Order List',
+          deleteOrderText: 'Are you sure you want to delete this Order?',
+          viewOrders: 'View Orders',
+          dataTableHeaders: {
+            price: 'Price',
+            status: 'Status',
+            description: 'Description',
+            acceptedMessage: 'Accept Message',
+            rejectedMessage: 'Reject Message',
+            canceledMessage: 'Cancel Message',
+            paidAt: 'Paid At',
+            acceptedAt: 'Accepted At',
+            rejectedAt: 'Rejected At',
+            canceledAt: 'Canceled At',
+            createdAt: 'Created At',
+            updatedAt: 'Updated At'
+          },
+          filter: {
+            status: 'Status',
+            filterOrdersTitle: 'Filter Orders by status'
+          }
+        }
       }
     },
     profile: {

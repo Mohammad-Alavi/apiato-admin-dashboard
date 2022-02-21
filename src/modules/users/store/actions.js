@@ -3,6 +3,7 @@ import * as actionHelper from '@/modules/app/helpers/actions'
 import User from '@/modules/users/models/user'
 import Role from '@/modules/users/models/role'
 import Provider from '@/modules/users/models/provider'
+import Order from '@/modules/users/models/order'
 import router from '@/modules/app/router'
 
 export default {
@@ -43,6 +44,18 @@ export default {
         .then(res => resolve(
           {
             items: Provider.fromJsonArray(res.data.data),
+            pagination: res.data.meta.pagination
+          }))
+        .catch(err => reject(err))
+    })
+  },
+  getAllOrders (context, payload) {
+    return new Promise((resolve, reject) => {
+      const url = actionHelper.prepareGetAllURL(payload, 'orders')
+      return Vue.axios.get(url)
+        .then(res => resolve(
+          {
+            items: Order.fromJsonArray(res.data.data),
             pagination: res.data.meta.pagination
           }))
         .catch(err => reject(err))

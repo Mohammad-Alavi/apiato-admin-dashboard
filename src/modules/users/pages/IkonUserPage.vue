@@ -19,6 +19,9 @@
     <template v-slot:filter>
       <ikon-user-filter/>
     </template>
+    <template v-slot:custom-action-1="{item}">
+      <ikon-data-table-user-orders-action-button :item="item"/>
+    </template>
   </ikon-data-table-page-template>
 </template>
 
@@ -30,7 +33,8 @@ export default {
   components: {
     IkonDataTablePageTemplate: () => import('@/modules/app/templates/IkonDataTablePageTemplate'),
     IkonUserDialog: () => import('@/modules/users/components/IkonUserDialog'),
-    IkonUserFilter: () => import('@/modules/users/components/IkonUserFilter')
+    IkonUserFilter: () => import('@/modules/users/components/IkonUserFilter'),
+    IkonDataTableUserOrdersActionButton: () => import('@/modules/users/components/IkonDataTableUserOrdersActionButton')
   },
   data () {
     return {

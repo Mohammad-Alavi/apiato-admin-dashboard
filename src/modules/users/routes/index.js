@@ -6,5 +6,14 @@ export default [
     meta: {
       auth: true
     }
+  },
+  {
+    path: '/users/:user_id/orders',
+    name: 'user-orders',
+    component: () => import('../pages/IkonUserOrdersPage'),
+    props: true,
+    meta: {
+      auth: true
+    }
   }
 ]

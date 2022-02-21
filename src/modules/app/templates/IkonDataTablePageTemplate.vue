@@ -412,7 +412,7 @@ export default {
     getAllData () {
       const { sortBy: orderBy, sortDesc, itemsPerPage: perPage, page: currentPage } = this.options
       this.loadingDataTable = true
-      console.log(sortDesc)
+
       this.$store.dispatch(this.prepareActionName(this.actions.getAll), {
         perPage,
         currentPage,
@@ -463,6 +463,9 @@ export default {
         }
         if (!this.$lodash.isNil(filters.allProviders)) {
           rolesFilter.push('all=' + filters.allProviders)
+        }
+        if (!this.$lodash.isNil(filters.orderStatus)) {
+          rolesFilter.push('status=' + filters.orderStatus)
         }
       }
 
