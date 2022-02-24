@@ -15,7 +15,7 @@
         :multiple="false"
         :name="$vuetify.lang.t('$vuetify.pages.users.pages.orders.filter.status')"
         :selected-items.sync="localItem.orderStatus"
-      ></ikon-autocomplete>
+      />
     </v-col>
   </v-row>
 </template>

@@ -5,9 +5,8 @@ module.exports = {
   devServer: {
     port: 8080,
     proxy: {
-      '/': {
-        target: process.env.VUE_APP_API_URL,
-        ws: true,
+      '^/v1': {
+        target: process.env.VUE_APP_API_URL + '/v1',
         changeOrigin: true
       }
     }

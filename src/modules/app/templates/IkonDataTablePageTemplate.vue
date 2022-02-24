@@ -464,6 +464,9 @@ export default {
         if (!this.$lodash.isNil(filters.allProviders)) {
           rolesFilter.push('all=' + filters.allProviders)
         }
+        if (!this.$lodash.isNil(filters.allRequests)) {
+          rolesFilter.push('all=' + filters.allRequests)
+        }
         if (!this.$lodash.isNil(filters.orderStatus)) {
           rolesFilter.push('status=' + filters.orderStatus)
         }

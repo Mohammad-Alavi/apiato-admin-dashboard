@@ -45,7 +45,8 @@ export default {
       isProvider: null,
       isEmailVerified: null,
       allProviders: null,
-      orderStatus: null
+      orderStatus: null,
+      allRequests: null
     }
   }
 }

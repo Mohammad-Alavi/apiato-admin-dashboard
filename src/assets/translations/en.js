@@ -49,7 +49,8 @@ export default {
         dashboard: 'Dashboard',
         accounts: 'Accounts',
         faqs: 'FAQs',
-        sliders: 'Sliders'
+        sliders: 'Sliders',
+        verificationRequests: 'Provider Requests'
       },
       filter: {
         filter: 'Filter',
@@ -195,6 +196,35 @@ export default {
             misc: 'Misc'
           }
         }
+      }
+    },
+    requests: {
+      addRequest: 'Add Request',
+      editRequest: 'Edit Request',
+      requestList: 'Request List',
+      deleteRequestText: 'Are you sure you want to delete this Request?',
+      questionEn: 'Question (EN)',
+      questionDe: 'Question (DE)',
+      answerEn: 'Answer (EN)',
+      answerDe: 'Answer (DE)',
+      userDetail: 'User Detail',
+      verifyProvider: 'Verify Provider',
+      rejectProvider: 'Reject Provider',
+      dataTableHeaders: {
+        sports: 'Sports',
+        jobs: 'Jobs',
+        languages: 'Languages',
+        message: 'Message',
+        verified: 'Verified',
+        introductionMethod: 'Introduction Method',
+        phone: 'Phone',
+        address: 'Address',
+        url: 'URL'
+      },
+      filter: {
+        filterRequestsTitle: 'Display all Requests or only the Approved ones',
+        onlyApproved: 'Only Approved',
+        all: 'All'
       }
     },
     auth: {
