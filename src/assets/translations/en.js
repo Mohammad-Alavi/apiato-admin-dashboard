@@ -50,7 +50,8 @@ export default {
         accounts: 'Accounts',
         faqs: 'FAQs',
         sliders: 'Sliders',
-        verificationRequests: 'Provider Requests'
+        verificationRequests: 'Provider Requests',
+        sports: 'Sports'
       },
       filter: {
         filter: 'Filter',
@@ -225,6 +226,24 @@ export default {
         filterRequestsTitle: 'Display all Requests or only the Approved ones',
         onlyApproved: 'Only Approved',
         all: 'All'
+      }
+    },
+    taxonomies: {
+      pages: {
+        sports: {
+          addSport: 'Add Sport',
+          editSport: 'Edit Sport',
+          sportList: 'Sport List',
+          deleteSportText: 'Are you sure you want to delete this Sport?',
+          name: 'Name',
+          labelEn: 'Label (EN)',
+          labelDe: 'Label (DE)',
+          dataTableHeaders: {
+            name: 'Name',
+            labelEn: 'Label (EN)',
+            labelDe: 'Label (DE)'
+          }
+        }
       }
     },
     auth: {
