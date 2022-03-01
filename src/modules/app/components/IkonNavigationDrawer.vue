@@ -54,7 +54,8 @@ export default {
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.faqs'), 'mdi-frequently-asked-questions', { name: 'faqs' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.sliders'), 'mdi-view-carousel', { name: 'sliders' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.verificationRequests'), 'mdi-check-decagram', { name: 'requests' }, []),
-        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.sports'), 'mdi-run', { name: 'sports' }, [])
+        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.sports'), 'mdi-run', { name: 'sports' }, []),
+        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.jobs'), 'mdi-briefcase', { name: 'jobs' }, [])
       ]
     }
   },

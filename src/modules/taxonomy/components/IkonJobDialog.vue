@@ -3,17 +3,17 @@
     <v-row>
       <v-col cols="12" sm="6">
         <validation-provider v-slot="{ errors }" name="Name" rules="required|min:2|max:700" vid="name">
-          <v-text-field v-model="localItem.name" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.sports.name')"/>
+          <v-text-field v-model="localItem.name" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.jobs.name')"/>
         </validation-provider>
       </v-col>
       <v-col cols="12" sm="6">
         <validation-provider v-slot="{ errors }" name="Label (EN)" rules="required|min:2|max:700" vid="label_en">
-          <v-text-field v-model="localItem.label_en" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.sports.labelEn')"/>
+          <v-text-field v-model="localItem.label_en" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.jobs.labelEn')"/>
         </validation-provider>
       </v-col>
       <v-col cols="12" sm="6">
         <validation-provider v-slot="{ errors }" name="Label (DE)" rules="required|min:2|max:700" vid="label_de">
-          <v-text-field v-model="localItem.label_de" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.sports.labelDe')"/>
+          <v-text-field v-model="localItem.label_de" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.jobs.labelDe')"/>
         </validation-provider>
       </v-col>
     </v-row>
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'IkonSportDialog',
+  name: 'IkonJobDialog',
   props: {
     item: {
       required: true

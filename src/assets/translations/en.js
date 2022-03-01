@@ -51,7 +51,8 @@ export default {
         faqs: 'FAQs',
         sliders: 'Sliders',
         verificationRequests: 'Provider Requests',
-        sports: 'Sports'
+        sports: 'Sports',
+        jobs: 'Jobs'
       },
       filter: {
         filter: 'Filter',
@@ -235,6 +236,20 @@ export default {
           editSport: 'Edit Sport',
           sportList: 'Sport List',
           deleteSportText: 'Are you sure you want to delete this Sport?',
+          name: 'Name',
+          labelEn: 'Label (EN)',
+          labelDe: 'Label (DE)',
+          dataTableHeaders: {
+            name: 'Name',
+            labelEn: 'Label (EN)',
+            labelDe: 'Label (DE)'
+          }
+        },
+        jobs: {
+          addJob: 'Add Job',
+          editJob: 'Edit Job',
+          jobList: 'Job List',
+          deleteJobText: 'Are you sure you want to delete this Job?',
           name: 'Name',
           labelEn: 'Label (EN)',
           labelDe: 'Label (DE)',

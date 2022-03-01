@@ -6,5 +6,13 @@ export default [
     meta: {
       auth: true
     }
+  },
+  {
+    path: '/taxonomies/jobs',
+    name: 'jobs',
+    component: () => import('../pages/IkonJobPage'),
+    meta: {
+      auth: true
+    }
   }
 ]
