@@ -253,10 +253,12 @@ export default {
           name: 'Name',
           labelEn: 'Label (EN)',
           labelDe: 'Label (DE)',
+          category: 'Category',
           dataTableHeaders: {
             name: 'Name',
             labelEn: 'Label (EN)',
-            labelDe: 'Label (DE)'
+            labelDe: 'Label (DE)',
+            category: 'Category'
           }
         }
       }

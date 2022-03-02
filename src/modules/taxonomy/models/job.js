@@ -1,4 +1,5 @@
 import Taxonomy from '@/modules/taxonomy/models/taxonomy'
+import Category from '@/modules/taxonomy/models/category'
 
 export default class Job extends Taxonomy {
   constructor (
@@ -6,13 +7,18 @@ export default class Job extends Taxonomy {
     id = null,
     name = null,
     labelEn = null,
-    labelDe = null
+    labelDe = null,
+    taxonomyId = null,
+    category = null
   ) {
     super(object,
       id,
       name,
       labelEn,
-      labelDe)
+      labelDe,
+      taxonomyId
+    )
+    this.category = category
   }
 
   static fromJson (json) {
@@ -21,7 +27,9 @@ export default class Job extends Taxonomy {
       json.id,
       json.name,
       json.label_en,
-      json.label_de
+      json.label_de,
+      json.taxonomy_id,
+      Category.fromJson(json.category.data)
     )
   }
 

@@ -1,4 +1,6 @@
-export default class Taxonomy {
+import Taxonomy from '@/modules/taxonomy/models/taxonomy'
+
+export default class Category extends Taxonomy {
   constructor (
     object = null,
     id = null,
@@ -7,16 +9,17 @@ export default class Taxonomy {
     labelDe = null,
     taxonomyId = null
   ) {
-    this.object = object
-    this.id = id
-    this.name = name
-    this.label_en = labelEn
-    this.label_de = labelDe
-    this.taxonomy_id = taxonomyId
+    super(object,
+      id,
+      name,
+      labelEn,
+      labelDe,
+      taxonomyId
+    )
   }
 
   static fromJson (json) {
-    return new Taxonomy(
+    return new Category(
       json.object,
       json.id,
       json.name,
@@ -28,8 +31,8 @@ export default class Taxonomy {
 
   static fromJsonArray (json) {
     const result = []
-    json.forEach(taxonomy => {
-      result.push(this.fromJson(taxonomy))
+    json.forEach(category => {
+      result.push(this.fromJson(category))
     }
     )
     return result

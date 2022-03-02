@@ -2,6 +2,7 @@ import Vue from 'vue'
 import * as actionHelper from '@/modules/app/helpers/actions'
 import Sport from '@/modules/taxonomy/models/sport'
 import Job from '@/modules/taxonomy/models/job'
+import Category from '@/modules/taxonomy/models/category'
 
 export default {
   createSport (store, payload) {
@@ -29,7 +30,8 @@ export default {
     return Vue.axios.delete('/taxonomies/' + payload.id)
   },
   createJob (store, payload) {
-    const params = actionHelper.urlSearchParamsFromProperties(payload, { type: 'job' })
+    console.log(payload)
+    const params = actionHelper.urlSearchParamsFromProperties(payload, { type: 'job', taxonomy_id: payload.category?.id }, ['category'])
     return Vue.axios.post('/taxonomies', params)
   },
   getAllJobs (context, payload) {
@@ -45,11 +47,23 @@ export default {
     })
   },
   updateJob (store, payload) {
-    const params = actionHelper.urlSearchParamsFromProperties(payload, { type: 'job' })
+    const params = actionHelper.urlSearchParamsFromProperties(payload, { type: 'job', taxonomy_id: payload.category?.id }, ['category'])
 
     return Vue.axios.patch('/taxonomies/' + payload.id, params)
   },
   deleteJob (store, payload) {
     return Vue.axios.delete('/taxonomies/' + payload.id)
+  },
+  getAllCategories (context, payload) {
+    return new Promise((resolve, reject) => {
+      const url = actionHelper.prepareGetAllURL(payload, 'categories')
+      return Vue.axios.get(url)
+        .then(res => resolve(
+          {
+            items: Category.fromJsonArray(res.data.data),
+            pagination: res.data.meta.pagination
+          }))
+        .catch(err => reject(err))
+    })
   }
 }

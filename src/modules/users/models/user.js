@@ -41,7 +41,7 @@ export default class User {
  User.getRoleNames(json),
  json.suspended_at ? dayjs(json.suspended_at).format('YYYY-MM-DD') : null,
  json.gender,
- json.provider ? Provider.fromJson(json.provider) : null,
+ json.provider ? Provider.fromJson(json.provider.data) : null,
  json.birth ? dayjs(json.birth).format('YYYY-MM-DD') : null,
  json.email_verified_at ? dayjs(json.email_verified_at).format('YYYY-MM-DD') : null,
  dayjs(json.created_at).format('YYYY-MM-DD'))

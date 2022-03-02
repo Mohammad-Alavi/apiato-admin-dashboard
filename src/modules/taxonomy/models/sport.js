@@ -6,13 +6,16 @@ export default class Sport extends Taxonomy {
     id = null,
     name = null,
     labelEn = null,
-    labelDe = null
+    labelDe = null,
+    taxonomyId = null
   ) {
     super(object,
       id,
       name,
       labelEn,
-      labelDe)
+      labelDe,
+      taxonomyId
+    )
   }
 
   static fromJson (json) {
@@ -21,7 +24,8 @@ export default class Sport extends Taxonomy {
       json.id,
       json.name,
       json.label_en,
-      json.label_de
+      json.label_de,
+      json.taxonomy_id
     )
   }
 

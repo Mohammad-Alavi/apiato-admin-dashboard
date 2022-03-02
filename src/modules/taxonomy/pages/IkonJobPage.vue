@@ -54,6 +54,7 @@ export default {
         { text: this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.jobs.dataTableHeaders.name'), value: 'name', align: 'start' },
         { text: this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.jobs.dataTableHeaders.labelEn'), value: 'label_en' },
         { text: this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.jobs.dataTableHeaders.labelDe'), value: 'label_de' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.jobs.dataTableHeaders.category'), value: 'category.name' },
         { text: this.$vuetify.lang.t('$vuetify.general.actions'), value: 'actions', sortable: false }
       ]
     },
