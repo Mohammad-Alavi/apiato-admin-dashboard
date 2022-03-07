@@ -52,7 +52,8 @@ export default {
         sliders: 'Sliders',
         verificationRequests: 'Provider Requests',
         sports: 'Sports',
-        jobs: 'Jobs'
+        jobs: 'Jobs',
+        skills: 'Skills'
       },
       filter: {
         filter: 'Filter',
@@ -259,6 +260,25 @@ export default {
             labelEn: 'Label (EN)',
             labelDe: 'Label (DE)',
             category: 'Category'
+          }
+        },
+        skills: {
+          addSkill: 'Add Skill',
+          editSkill: 'Edit Skill',
+          skillList: 'Skill List',
+          deleteSkillText: 'Are you sure you want to delete this Skill?',
+          name: 'Name',
+          labelEn: 'Label (EN)',
+          labelDe: 'Label (DE)',
+          sport: 'Sport',
+          job: 'Job',
+          dataTableHeaders: {
+            name: 'Name',
+            labelEn: 'Label (EN)',
+            labelDe: 'Label (DE)',
+            sport: 'Sport',
+            category: 'Category',
+            job: 'Job'
           }
         }
       }

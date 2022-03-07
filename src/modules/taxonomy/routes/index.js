@@ -14,5 +14,13 @@ export default [
     meta: {
       auth: true
     }
+  },
+  {
+    path: '/taxonomies/skills',
+    name: 'skills',
+    component: () => import('../pages/IkonSkillPage'),
+    meta: {
+      auth: true
+    }
   }
 ]

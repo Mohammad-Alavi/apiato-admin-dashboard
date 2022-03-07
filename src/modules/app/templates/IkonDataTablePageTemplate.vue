@@ -470,6 +470,12 @@ export default {
         if (!this.$lodash.isNil(filters.orderStatus)) {
           rolesFilter.push('status=' + filters.orderStatus)
         }
+        if (!this.$lodash.isNil(filters.skillSports)) {
+          filters.skillSports.forEach(sport => rolesFilter.push('sports[]=' + sport.name))
+        }
+        if (!this.$lodash.isNil(filters.skillJobs)) {
+          filters.skillJobs.forEach(job => rolesFilter.push('jobs[]=' + job.name))
+        }
       }
 
       return params.concat(rolesFilter)

@@ -46,7 +46,9 @@ export default {
       isEmailVerified: null,
       allProviders: null,
       orderStatus: null,
-      allRequests: null
+      allRequests: null,
+      skillSports: null,
+      skillJobs: null
     }
   }
 }

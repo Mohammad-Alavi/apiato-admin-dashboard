@@ -24,7 +24,9 @@ export default new Vuex.Store({
       isEmailVerified: null,
       allProviders: null,
       orderStatus: null,
-      allRequests: null
+      allRequests: null,
+      skillSports: null,
+      skillJobs: null
     }
   },
   actions: actions,
