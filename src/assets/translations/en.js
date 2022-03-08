@@ -53,7 +53,8 @@ export default {
         verificationRequests: 'Provider Requests',
         sports: 'Sports',
         jobs: 'Jobs',
-        skills: 'Skills'
+        skills: 'Skills',
+        ratings: 'Ratings'
       },
       filter: {
         filter: 'Filter',
@@ -281,6 +282,20 @@ export default {
             job: 'Job'
           }
         }
+      }
+    },
+    ratings: {
+      addRating: 'Add Rating',
+      editRating: 'Edit Rating',
+      ratingList: 'Rating List',
+      deleteRatingText: 'Are you sure you want to delete this Rating?',
+      createdAt: 'Create At',
+      acceptRating: 'Accept Rating',
+      rejectRating: 'Reject Rating',
+      dataTableHeaders: {
+        createdAt: 'Create At',
+        text: 'Text',
+        score: 'Score'
       }
     },
     auth: {

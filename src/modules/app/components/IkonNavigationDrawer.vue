@@ -56,7 +56,7 @@ export default {
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.verificationRequests'), 'mdi-check-decagram', { name: 'requests' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.sports'), 'mdi-run', { name: 'sports' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.jobs'), 'mdi-briefcase', { name: 'jobs' }, []),
-        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.skills'), 'mdi-flash', { name: 'skills' }, [])
+        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.ratings'), 'mdi-scoreboard', { name: 'ratings' }, [])
       ]
     }
   },
