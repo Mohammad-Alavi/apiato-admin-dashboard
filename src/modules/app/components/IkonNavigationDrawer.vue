@@ -51,6 +51,7 @@ export default {
       items: [
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.dashboard'), 'mdi-view-dashboard', { name: 'dashboard' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.accounts'), 'mdi-account-search', { name: 'users' }, []),
+        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.providers'), 'mdi-account-star', { name: 'providers' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.faqs'), 'mdi-frequently-asked-questions', { name: 'faqs' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.sliders'), 'mdi-view-carousel', { name: 'sliders' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.verificationRequests'), 'mdi-check-decagram', { name: 'requests' }, []),

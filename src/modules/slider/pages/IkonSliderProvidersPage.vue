@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import Provider from '@/modules/users/models/provider'
+import Provider from '@/modules/provider/models/provider'
 import { SET_FILTER } from '@/modules/app/store/mutation-types'
 
 export default {

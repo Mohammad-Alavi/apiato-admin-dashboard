@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import Role from '@/modules/users/models/role'
-import Provider from '@/modules/users/models/provider'
+import Provider from '@/modules/provider/models/provider'
 
 export default class User {
   constructor (

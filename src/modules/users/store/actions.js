@@ -2,7 +2,7 @@ import Vue from 'vue'
 import * as actionHelper from '@/modules/app/helpers/actions'
 import User from '@/modules/users/models/user'
 import Role from '@/modules/users/models/role'
-import Provider from '@/modules/users/models/provider'
+import Provider from '@/modules/provider/models/provider'
 import Order from '@/modules/users/models/order'
 import router from '@/modules/app/router'
 

@@ -48,6 +48,7 @@ export default {
       navigationDrawer: {
         dashboard: 'Dashboard',
         accounts: 'Accounts',
+        providers: 'Providers',
         faqs: 'FAQs',
         sliders: 'Sliders',
         verificationRequests: 'Provider Requests',
@@ -144,6 +145,22 @@ export default {
       thisWeek: 'This Week',
       thisMonth: 'This Month',
       lastThreeMonths: 'Last 3 Months'
+    },
+    providers: {
+      addProvider: 'Add Provider',
+      editProvider: 'Edit Provider',
+      providerList: 'Provider List',
+      deleteProviderText: 'Are you sure you want to delete this Provider?',
+      name: 'Name',
+      description: 'Description',
+      hourlyRate: 'Hourly Rate',
+      publishedAt: 'Published At',
+      dataTableHeaders: {
+        name: 'Name',
+        description: 'Description',
+        hourlyRate: 'Hourly Rate',
+        publishedAt: 'Published At'
+      }
     },
     faqs: {
       addFaq: 'Add FAQ',
