@@ -12,7 +12,7 @@
         <v-row justify="end">
           <v-switch
             v-model="localItem.suspended_at"
-            :label="localItem.suspended_at ? 'Suspended': 'Unsuspended'"
+            :label="localItem.suspended_at ? $vuetify.lang.t('$vuetify.pages.users.suspended'): $vuetify.lang.t('$vuetify.pages.users.unsuspended')"
           ></v-switch>
         </v-row>
       </v-col>

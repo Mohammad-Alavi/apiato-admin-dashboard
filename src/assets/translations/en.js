@@ -76,6 +76,8 @@ export default {
       accountList: 'Account List',
       deleteAccountText: 'Are you sure you want to delete this Account?',
       viewOrders: 'View Orders',
+      suspended: 'Suspended',
+      unsuspended: 'Unsuspended',
       dataTableHeaders: {
         name: 'Name',
         email: 'Email',
@@ -155,6 +157,8 @@ export default {
       description: 'Description',
       hourlyRate: 'Hourly Rate',
       publishedAt: 'Published At',
+      published: 'Published',
+      unpublished: 'Unpublished',
       dataTableHeaders: {
         name: 'Name',
         description: 'Description',
