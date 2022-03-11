@@ -1,5 +1,6 @@
 import Slider from '@/modules/slider/models/slider'
 import dayjs from 'dayjs'
+import lodash from 'lodash'
 import User from '@/modules/users/models/user'
 
 export default class Provider {
@@ -46,5 +47,20 @@ export default class Provider {
     })
 
     return result
+  }
+
+  isInSlider (sliderId) {
+    return lodash.find(this.sliders, slider => slider.id === sliderId) !== undefined
+  }
+
+  orderInSlider (sliderId) {
+    if (this.isInSlider(sliderId)) {
+      const slider = lodash.find(this.sliders, slider => slider.id === sliderId)
+      const provider = lodash.find(slider.providers, provider => provider.id === this.id)
+
+      return provider.order
+    } else {
+      return null
+    }
   }
 }
