@@ -35,8 +35,8 @@ export default {
   },
   updateProvider (store, payload) {
     console.log(payload)
-    const params = actionHelper.urlSearchParamsFromProperties(payload)
-    return Vue.axios.patch('/users/' + payload.user.id + '/providers/' + payload.id, params)
+    const params = actionHelper.urlSearchParamsFromProperties(payload, { publish: payload.published_at })
+    return Vue.axios.patch('/admin/providers/' + payload.id, params)
   },
   deleteProvider (store, payload) {
     return Vue.axios.delete('/providers/' + payload.id)
