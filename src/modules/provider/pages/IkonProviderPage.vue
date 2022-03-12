@@ -15,6 +15,9 @@
     <template v-slot:dialog="{item}">
       <ikon-provider-dialog :item="item"/>
     </template>
+    <template v-slot:custom-action-1="{item}">
+      <ikon-provider-gallery-page-action-button :item="item"/>
+    </template>
   </ikon-data-table-page-template>
 </template>
 
@@ -25,7 +28,8 @@ export default {
   name: 'IkonProviderPage',
   components: {
     IkonDataTablePageTemplate: () => import('@/modules/app/templates/IkonDataTablePageTemplate'),
-    IkonProviderDialog: () => import('@/modules/provider/components/IkonProviderDialog')
+    IkonProviderDialog: () => import('@/modules/provider/components/IkonProviderDialog'),
+    IkonProviderGalleryPageActionButton: () => import('@/modules/provider/components/IkonProviderGalleryPageActionButton')
   },
   data () {
     return {

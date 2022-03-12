@@ -2,6 +2,7 @@ import Slider from '@/modules/slider/models/slider'
 import dayjs from 'dayjs'
 import lodash from 'lodash'
 import User from '@/modules/users/models/user'
+import Gallery from '@/modules/provider/models/gallery'
 
 export default class Provider {
   constructor (
@@ -13,6 +14,7 @@ export default class Provider {
     order = null,
     sliders = [],
     user = null,
+    gallery = null,
     object = ''
   ) {
     this.id = id
@@ -23,6 +25,7 @@ export default class Provider {
     this.order = order
     this.sliders = sliders
     this.user = user
+    this.gallery = gallery
     this.object = object
   }
 
@@ -36,6 +39,7 @@ export default class Provider {
       json.order,
       json.sliders?.data.length > 0 ? Slider.fromJsonArray(json.sliders.data) : [],
       json.user ? User.fromJson(json.user.data) : null,
+      json.gallery ? Gallery.fromJson(json.gallery.data) : null,
       json.object
     )
   }

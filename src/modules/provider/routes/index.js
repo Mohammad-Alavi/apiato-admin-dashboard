@@ -6,5 +6,14 @@ export default [
     meta: {
       auth: true
     }
+  },
+  {
+    path: '/providers/:provider_id/gallery',
+    name: 'provider-gallery',
+    component: () => import('../pages/IkonProviderGalleryPage'),
+    props: true,
+    meta: {
+      auth: true
+    }
   }
 ]
