@@ -1,5 +1,13 @@
 <template>
   <v-container fluid>
+    <v-row class="align-content-space-between mb-5">
+      <!--      <v-col>-->
+      <!--        <ikon-data-export :data="selectedItems" :headers="prepareHeadersForExport()"/>-->
+      <!--      </v-col>-->
+      <v-col class="text-end">
+        <ikon-user-options/>
+      </v-col>
+    </v-row>
     <v-card flat min-width="100%">
       <v-card-text>
         <GalleryGridWrapper v-model="images" :useDragHandle="true" axis="xy" @input="reorderGalleryImage"
@@ -62,7 +70,8 @@ export default {
   directives: { handle: HandleDirective },
   components: {
     GalleryGridWrapper: () => import('@/modules/provider/components/GalleryGridWrapper'),
-    GalleryGridItem: () => import('@/modules/provider/components/GalleryGridItem')
+    GalleryGridItem: () => import('@/modules/provider/components/GalleryGridItem'),
+    IkonUserOptions: () => import('@/modules/app/components/IkonUserOptions')
   },
   methods: {
     getImageSource (image) {
