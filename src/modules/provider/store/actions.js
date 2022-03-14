@@ -3,6 +3,7 @@ import * as actionHelper from '@/modules/app/helpers/actions'
 import Provider from '@/modules/provider/models/provider'
 import router from '@/modules/app/router'
 import Image from '@/modules/provider/models/image'
+import Language from '@/modules/provider/models/language'
 
 export default {
   createProvider (store, payload) {
@@ -12,7 +13,14 @@ export default {
   getAllProviders (context, payload) {
     if (router.currentRoute.name === 'slider-providers') {
       return new Promise((resolve, reject) => {
-        const url = actionHelper.prepareGetAllURL(payload, 'sliders/' + router.currentRoute.params.slider_id + '/providers', ['user', 'sliders'])
+        const url = actionHelper.prepareGetAllURL(payload, 'sliders/' + router.currentRoute.params.slider_id + '/providers', [
+          'user',
+          'sliders',
+          'languages',
+          'sports',
+          'jobs',
+          'skills'
+        ])
         return Vue.axios.get(url)
           .then(res => resolve(
             {
@@ -35,7 +43,24 @@ export default {
     })
   },
   updateProvider (store, payload) {
-    const params = actionHelper.urlSearchParamsFromProperties(payload, { publish: payload.published_at })
+    const params = actionHelper.urlSearchParamsFromProperties(payload, {
+      publish: payload.published_at,
+      language: payload.languages?.length ? Array.from(payload.languages.map(language => language.name)) : [],
+      sport: payload.sports?.length ? Array.from(payload.sports.map(sport => sport.id)) : [],
+      job: payload.jobs?.length ? Array.from(payload.jobs.map(job => job.id)) : [],
+      skill: payload.skills?.length ? Array.from(payload.skills.map(skill => skill.id)) : []
+    }, [
+      'user',
+      'gallery',
+      'languages',
+      'sports',
+      'jobs',
+      'skills',
+      'sliders',
+      'sportNames',
+      'jobNames',
+      'skillNames'
+    ])
     return Vue.axios.patch('/admin/providers/' + payload.id, params)
   },
   deleteProvider (store, payload) {
@@ -63,5 +88,17 @@ export default {
   reorderGalleryImage (store, payload) {
     const params = actionHelper.urlSearchParamsFromProperties(payload, {}, ['provider'])
     return Vue.axios.post('users/' + payload.provider.user.id + '/providers/' + payload.provider.id + '/galleries/' + payload.provider.gallery.id + '/images/' + payload.imageId, params)
+  },
+  getAllLanguages (context, payload) {
+    return new Promise((resolve, reject) => {
+      const url = actionHelper.prepareGetAllURL(payload, 'languages')
+      return Vue.axios.get(url)
+        .then(res => resolve(
+          {
+            items: Language.fromJsonArray(res.data.data),
+            pagination: res.data.meta.pagination
+          }))
+        .catch(err => reject(err))
+    })
   }
 }

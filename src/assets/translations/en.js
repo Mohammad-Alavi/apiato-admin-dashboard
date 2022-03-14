@@ -159,10 +159,19 @@ export default {
       publishedAt: 'Published At',
       published: 'Published',
       unpublished: 'Unpublished',
+      viewProviderGallery: 'View Provider Gallery',
+      languages: 'Languages',
+      sports: 'Sports',
+      jobs: 'Jobs',
+      skills: 'Skills',
       dataTableHeaders: {
         name: 'Name',
         description: 'Description',
         hourlyRate: 'Hourly Rate',
+        languages: 'Languages',
+        sports: 'Sports',
+        jobs: 'Jobs',
+        skills: 'Skills',
         publishedAt: 'Published At'
       }
     },

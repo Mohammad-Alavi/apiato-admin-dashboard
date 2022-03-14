@@ -56,8 +56,12 @@ export default {
         { text: this.$vuetify.lang.t('$vuetify.pages.providers.dataTableHeaders.name'), value: 'name', align: 'start' },
         { text: this.$vuetify.lang.t('$vuetify.pages.providers.dataTableHeaders.description'), value: 'description' },
         { text: this.$vuetify.lang.t('$vuetify.pages.providers.dataTableHeaders.hourlyRate'), value: 'hourly_rate' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.providers.dataTableHeaders.languages'), value: 'languageNames' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.providers.dataTableHeaders.sports'), value: 'sportNames' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.providers.dataTableHeaders.jobs'), value: 'jobNames' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.providers.dataTableHeaders.skills'), value: 'skillNames' },
         { text: this.$vuetify.lang.t('$vuetify.pages.providers.dataTableHeaders.publishedAt'), value: 'published_at' },
-        { text: this.$vuetify.lang.t('$vuetify.general.actions'), value: 'actions', sortable: false }
+        { text: this.$vuetify.lang.t('$vuetify.general.actions'), value: 'actions', sortable: false, width: 150 }
       ]
     },
     initialize () {

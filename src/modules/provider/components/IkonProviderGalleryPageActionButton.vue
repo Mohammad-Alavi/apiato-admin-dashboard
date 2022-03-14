@@ -4,10 +4,10 @@
       <v-btn icon v-bind="attrs"
              @click="$router.push({name: 'provider-gallery', params: {provider_id: item.id, provider: item}})"
              v-on="on">
-        <v-icon small>mdi-receipt</v-icon>
+        <v-icon small>mdi-image-multiple</v-icon>
       </v-btn>
     </template>
-    <span>{{ $vuetify.lang.t('$vuetify.pages.users.viewOrders') }}</span>
+    <span>{{ $vuetify.lang.t('$vuetify.pages.providers.viewProviderGallery') }}</span>
   </v-tooltip>
 </template>
 

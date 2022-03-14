@@ -48,7 +48,7 @@
           :multiple="true"
           :name="$vuetify.lang.t('$vuetify.pages.users.role')"
           :selected-items.sync="localItem.roles"
-        ></ikon-autocomplete>
+        />
       </v-col>
     </v-row>
   </v-container>

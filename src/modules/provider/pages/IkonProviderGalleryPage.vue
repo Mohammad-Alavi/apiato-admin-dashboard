@@ -20,11 +20,11 @@
                   <v-progress-circular color="grey lighten-5" indeterminate/>
                 </v-row>
               </template>
-              <v-btn icon right absolute @click="removeGalleryImage(image.id, index)">
+              <v-btn :loading="manipulatingImage" icon right absolute @click="removeGalleryImage(image.id, index)">
                 <v-icon>mdi-close</v-icon>
               </v-btn>
 
-              <v-btn left icon absolute v-handle>
+              <v-btn :loading="manipulatingImage" left icon absolute v-handle>
                 <v-icon>mdi-cursor-move</v-icon>
               </v-btn>
             </v-img>
@@ -34,8 +34,7 @@
 
       <v-card-actions>
         <v-spacer/>
-        <v-btn :loading="manipulatingImage" color="primary" large @click="addFile">
-          <v-icon left>mdi-plus</v-icon>
+        <v-btn :loading="manipulatingImage" color="primary" @click="addFile">
           ADD
         </v-btn>
       </v-card-actions>
