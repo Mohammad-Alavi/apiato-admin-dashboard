@@ -8,7 +8,7 @@
       </v-col>
       <v-col cols="12" sm="6">
         <v-row justify="end">
-          <validation-provider v-slot="{ errors }" name="Published At" vid="gallery">
+          <validation-provider v-slot="{ errors }" name="Published At" :vid="getPublishedAtError">
             <v-switch :error-messages="errors"
               v-model="localItem.published_at"
               :label="localItem.published_at ? $vuetify.lang.t('$vuetify.pages.providers.published'): $vuetify.lang.t('$vuetify.pages.providers.unpublished')"
@@ -118,6 +118,19 @@ export default {
         return false
       }
       return !this.$lodash.isEqual(this.initialItem?.sports, this.localItem.sports) || !this.$lodash.isEqual(this.initialItem?.jobs, this.localItem.jobs)
+    },
+    getPublishedAtError () {
+      if (this.item.gallery.images.length === 0) {
+        return 'gallery'
+      } else if (this.item.languages.length === 0) {
+        return 'language'
+      } else if (this.item.sports.length === 0) {
+        return 'sport'
+      } else if (this.item.jobs.length === 0) {
+        return 'job'
+      } else {
+        return ''
+      }
     }
   },
   methods: {

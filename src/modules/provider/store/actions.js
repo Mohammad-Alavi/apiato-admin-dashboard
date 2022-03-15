@@ -32,7 +32,7 @@ export default {
     }
 
     return new Promise((resolve, reject) => {
-      const url = actionHelper.prepareGetAllURL(payload, 'admin/providers', ['user'])
+      const url = actionHelper.prepareGetAllURL(payload, 'admin/providers', ['user', 'gallery.images'])
       return Vue.axios.get(url)
         .then(res => resolve(
           {
@@ -59,7 +59,9 @@ export default {
       'sliders',
       'sportNames',
       'jobNames',
-      'skillNames'
+      'skillNames',
+      'languageNames',
+      'published_at'
     ])
     return Vue.axios.patch('/admin/providers/' + payload.id, params)
   },
