@@ -3,13 +3,14 @@
     <v-row>
       <v-col cols="12" sm="6">
         <validation-provider v-slot="{ errors }" name="Hourly Rate" rules="numeric" vid="hourly_rate">
-          <v-text-field type="number" v-model="localItem.hourly_rate" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.providers.hourlyRate')"/>
+          <v-text-field :disabled="isLoadingData" type="number" v-model="localItem.hourly_rate" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.providers.hourlyRate')"/>
         </validation-provider>
       </v-col>
       <v-col cols="12" sm="6">
-        <v-row justify="end">
+        <v-row justify="start">
           <validation-provider v-slot="{ errors }" name="Published At" :vid="getPublishedAtError">
             <v-switch :error-messages="errors"
+                      :disabled="isLoadingData"
               v-model="localItem.published_at"
               :label="localItem.published_at ? $vuetify.lang.t('$vuetify.pages.providers.published'): $vuetify.lang.t('$vuetify.pages.providers.unpublished')"
             />
@@ -18,7 +19,7 @@
       </v-col>
       <v-col cols="12" sm="12">
         <validation-provider v-slot="{ errors }" name="Description" rules="min:50|max:500" vid="description">
-          <v-textarea rows="3" v-model="localItem.description" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.providers.description')"/>
+          <v-textarea :disabled="isLoadingData" rows="3" v-model="localItem.description" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.providers.description')"/>
         </validation-provider>
       </v-col>
       <v-col cols="12">
@@ -131,6 +132,9 @@ export default {
       } else {
         return ''
       }
+    },
+    isLoadingData () {
+      return this.fetchingSports || this.fetchingJobs || this.fetchingSkills || this.fetchingLanguages
     }
   },
   methods: {
