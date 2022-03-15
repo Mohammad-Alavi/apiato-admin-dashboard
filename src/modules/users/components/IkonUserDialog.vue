@@ -29,6 +29,7 @@
           :items="genders"
           :loading="fetchingRoles"
           :multiple="false"
+          rules=""
           :name="$vuetify.lang.t('$vuetify.pages.users.gender')"
           :selected-items.sync="localItem.gender"
         ></ikon-autocomplete>
@@ -37,6 +38,7 @@
         <ikon-date-picker :date.sync="localItem.birth" :grow="$vuetify.breakpoint.lgAndUp"
                           :label="$vuetify.lang.t('$vuetify.pages.users.birth')"
                           :outlined="false"
+                          rules=""
                           dense name="Birthday"/>
       </v-col>
       <v-col cols="12">
