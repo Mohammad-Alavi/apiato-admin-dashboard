@@ -10,9 +10,9 @@
     </v-row>
     <v-card flat min-width="100%">
       <v-card-text>
-        <GalleryGridWrapper v-model="images" :useDragHandle="true" axis="xy" @input="reorderGalleryImage"
+        <ikon-gallery-grid-wrapper v-model="images" :useDragHandle="true" axis="xy" @input="reorderGalleryImage"
                             @sort-end="getDraggedImageIndex">
-          <GalleryGridItem v-for="(image, index) in images" :key="index" :index="index">
+          <ikon-gallery-grid-item v-for="(image, index) in images" :key="index" :index="index">
             <v-img :lazy-src="getPreloadImageSource(image)" :src="getImageSource(image)" aspect-ratio="1" max-width="300" max-height="300"
                    class="grey lighten-2">
               <template v-slot:placeholder>
@@ -28,8 +28,8 @@
                 <v-icon>mdi-cursor-move</v-icon>
               </v-btn>
             </v-img>
-          </GalleryGridItem>
-        </GalleryGridWrapper>
+          </ikon-gallery-grid-item>
+        </ikon-gallery-grid-wrapper>
       </v-card-text>
 
       <v-card-actions>
@@ -68,8 +68,8 @@ export default {
   },
   directives: { handle: HandleDirective },
   components: {
-    GalleryGridWrapper: () => import('@/modules/provider/components/GalleryGridWrapper'),
-    GalleryGridItem: () => import('@/modules/provider/components/GalleryGridItem'),
+    IkonGalleryGridWrapper: () => import('@/modules/provider/components/IkonGalleryGridWrapper'),
+    IkonGalleryGridItem: () => import('@/modules/provider/components/IkonGalleryGridItem'),
     IkonUserOptions: () => import('@/modules/app/components/IkonUserOptions')
   },
   methods: {
