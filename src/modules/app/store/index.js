@@ -26,7 +26,9 @@ export default new Vuex.Store({
       orderStatus: null,
       allRequests: null,
       skillSports: null,
-      skillJobs: null
+      skillJobs: null,
+      isRatingReviewed: null,
+      isRatingAccepted: null
     }
   },
   actions: actions,

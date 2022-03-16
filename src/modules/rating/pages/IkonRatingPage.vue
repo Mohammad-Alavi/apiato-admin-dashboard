@@ -17,6 +17,9 @@
     <template v-slot:custom-action-2="{item}">
       <ikon-data-table-rating-reject-action-button :rating="item"/>
     </template>
+    <template v-slot:filter>
+      <ikon-rating-filter/>
+    </template>
   </ikon-data-table-page-template>
 </template>
 
@@ -28,7 +31,8 @@ export default {
   components: {
     IkonDataTablePageTemplate: () => import('@/modules/app/templates/IkonDataTablePageTemplate'),
     IkonDataTableRatingAcceptActionButton: () => import('../components/IkonDataTableRatingAcceptActionButton'),
-    IkonDataTableRatingRejectActionButton: () => import('../components/IkonDataTableRatingRejectActionButton')
+    IkonDataTableRatingRejectActionButton: () => import('../components/IkonDataTableRatingRejectActionButton'),
+    IkonRatingFilter: () => import('../components/IkonRatingFilter')
   },
   data () {
     return {
