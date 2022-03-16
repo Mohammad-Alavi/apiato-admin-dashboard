@@ -326,6 +326,13 @@ export default {
         createdAt: 'Create At',
         text: 'Text',
         score: 'Score'
+      },
+      filter: {
+        isReviewed: 'Is Reviewed',
+        isAccepted: 'Is Accepted',
+        include: 'Include',
+        exclude: 'Exclude',
+        clearFilter: 'Clear Filter'
       }
     },
     auth: {

@@ -476,6 +476,12 @@ export default {
         if (!this.$lodash.isNil(filters.skillJobs)) {
           filters.skillJobs.forEach(job => rolesFilter.push('jobs[]=' + job.name))
         }
+        if (!this.$lodash.isNil(filters.isRatingReviewed)) {
+          rolesFilter.push('is_reviewed=' + filters.isRatingReviewed)
+        }
+        if (!this.$lodash.isNil(filters.isRatingAccepted)) {
+          rolesFilter.push('is_accepted=' + filters.isRatingAccepted)
+        }
       }
 
       return params.concat(rolesFilter)
