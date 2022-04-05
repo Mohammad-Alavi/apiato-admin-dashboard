@@ -63,15 +63,16 @@ export default {
   methods: {
     resetHeaders () {
       this.headers = [
-        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.sports'), value: 'sport', align: 'start' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.jobs'), value: 'job' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.languages'), value: 'language' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.message'), value: 'message' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.verified'), value: 'verified' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.introductionMethod'), value: 'introduction_method' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.phone'), value: 'phone' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.address'), value: 'address' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.url'), value: 'url' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.createdAt'), value: 'created_at', align: 'start' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.sports'), value: 'sport', sortable: false },
+        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.jobs'), value: 'job', sortable: false },
+        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.languages'), value: 'language', sortable: false },
+        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.message'), value: 'message', sortable: false },
+        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.verified'), value: 'verified', sortable: false },
+        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.introductionMethod'), value: 'introduction_method', sortable: false },
+        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.phone'), value: 'phone', sortable: false },
+        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.address'), value: 'address', sortable: false },
+        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.url'), value: 'url', sortable: false },
         { text: this.$vuetify.lang.t('$vuetify.general.actions'), value: 'actions', sortable: false, width: 150 }
       ]
     },

@@ -247,6 +247,7 @@ export default {
       verifyProvider: 'Verify Provider',
       rejectProvider: 'Reject Provider',
       dataTableHeaders: {
+        createdAt: 'Created At',
         sports: 'Sports',
         jobs: 'Jobs',
         languages: 'Languages',
