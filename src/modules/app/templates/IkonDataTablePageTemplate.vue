@@ -86,13 +86,17 @@
 
             <ikon-data-table-dialog-action-button
               v-if="showDeleteAction"
+              :key="dialogKey + 888888"
               :dialogTitle="deleteDialogTitle"
               :item="item"
               :loading="doingCRUDOperations"
               mode="delete"
+              :disabled="invalid"
               @cancel="resetSelectedItem"
               @confirm="deleteItem($event)"
-              @dialog-open="setSelectedItem(item)"/>
+              @dialog-open="setSelectedItem(item)">
+              <slot :item="selectedItem" name="delete-dialog"/>
+            </ikon-data-table-dialog-action-button>
 
             <event-listener @data-changed="getAllData">
               <span>
@@ -365,7 +369,9 @@ export default {
     deleteSelectedItem () {
       this.$store.dispatch(this.prepareActionName(this.actions.delete), { ...this.selectedItem })
         .then(() => this.cleanupAfterSuccessfulCRUDOperation())
-        .finally(() => {
+        .catch(res => {
+          this.setServerErrorsOnFormFields(res)
+        }).finally(() => {
           this.doingCRUDOperations = false
         })
     },

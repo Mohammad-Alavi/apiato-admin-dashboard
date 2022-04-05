@@ -16,6 +16,9 @@
     <template v-slot:dialog="{item}">
       <ikon-user-dialog :item="item"/>
     </template>
+    <template v-slot:delete-dialog="{item}">
+      <ikon-delete-account-dialog-body :item="item"/>
+    </template>
     <template v-slot:filter>
       <ikon-user-filter/>
     </template>
@@ -34,7 +37,8 @@ export default {
     IkonDataTablePageTemplate: () => import('@/modules/app/templates/IkonDataTablePageTemplate'),
     IkonUserDialog: () => import('@/modules/users/components/IkonUserDialog'),
     IkonUserFilter: () => import('@/modules/users/components/IkonUserFilter'),
-    IkonDataTableUserOrdersActionButton: () => import('@/modules/users/components/IkonDataTableUserOrdersActionButton')
+    IkonDataTableUserOrdersActionButton: () => import('@/modules/users/components/IkonDataTableUserOrdersActionButton'),
+    IkonDeleteAccountDialogBody: () => import('@/modules/users/components/IkonDeleteAccountDialogBody')
   },
   data () {
     return {

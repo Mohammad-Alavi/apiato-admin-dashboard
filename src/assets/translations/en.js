@@ -78,6 +78,8 @@ export default {
       viewOrders: 'View Orders',
       suspended: 'Suspended',
       unsuspended: 'Unsuspended',
+      deleteAccountSubtitle1: 'This action cannot be undone. This will permanently delete the {_email_} account',
+      deleteAccountSubtitle2: 'Please type {_email_} to confirm.',
       dataTableHeaders: {
         name: 'Name',
         email: 'Email',

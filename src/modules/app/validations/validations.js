@@ -1,5 +1,5 @@
 // eslint-disable-next-line camelcase
-import { confirmed, email, max, min, numeric, required, required_if } from 'vee-validate/dist/rules'
+import { confirmed, email, max, min, numeric, required, required_if, is } from 'vee-validate/dist/rules'
 import { extend, setInteractionMode } from 'vee-validate'
 
 setInteractionMode('aggressive')
@@ -38,6 +38,11 @@ extend('required_if', {
   // eslint-disable-next-line camelcase
   ...required_if,
   message: '{_field_} is required'
+})
+
+extend('is', {
+  ...is,
+  message: '{_field_} should be the same as the current account email'
 })
 
 extend('phone', {

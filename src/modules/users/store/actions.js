@@ -43,6 +43,9 @@ export default {
 
     return Vue.axios.patch('/admin/users/' + payload.id, params)
   },
+  deleteUser (store, payload) {
+    return Vue.axios.delete('/users/' + payload.id)
+  },
   getAllRoles (context, payload) {
     return new Promise((resolve, reject) => {
       const url = actionHelper.prepareGetAllURL(payload, 'roles')
