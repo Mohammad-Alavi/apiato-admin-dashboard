@@ -6,9 +6,7 @@ import Order from '@/modules/users/models/order'
 
 export default {
   createUser (store, payload) {
-    const params = actionHelper.urlSearchParamsFromProperties(payload, {
-      verification_url: 'http://apiato.test/email/verify'
-    }, ['roles', 'roles_names', 'email_verified_at'])
+    const params = actionHelper.urlSearchParamsFromProperties(payload, {}, ['roles', 'roles_names', 'email_verified_at'])
     return Vue.axios.post('/admin/users', params)
   },
   getAllUsers (context, payload) {
