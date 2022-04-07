@@ -12,7 +12,10 @@
                                   :update-dialog-title="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.sports.editSport')"
                                   actions-suffix="Sport"
                                   show-select>
-    <template v-slot:dialog="{item}">
+    <template v-slot:add-dialog="{item}">
+      <ikon-sport-dialog :item="item"/>
+    </template>
+    <template v-slot:edit-dialog="{item}">
       <ikon-sport-dialog :item="item"/>
     </template>
   </ikon-data-table-page-template>

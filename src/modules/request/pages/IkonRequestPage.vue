@@ -12,9 +12,6 @@
                                   :update-dialog-title="$vuetify.lang.t('$vuetify.pages.requests.editRequest')"
                                   actions-suffix="Request"
                                   show-select>
-    <template v-slot:dialog="{item}">
-      <ikon-request-dialog :item="item"/>
-    </template>
     <template v-slot:custom-action-1="{item}">
       <ikon-data-table-request-display-user-action-button :request="item"/>
     </template>
@@ -34,7 +31,6 @@ export default {
   name: 'IkonRequestPage',
   components: {
     IkonDataTablePageTemplate: () => import('@/modules/app/templates/IkonDataTablePageTemplate'),
-    IkonRequestDialog: () => import('@/modules/request/components/IkonRequestDialog'),
     IkonDataTableRequestDisplayUserActionButton: () => import('../components/IkonDataTableRequestDisplayUserActionButton'),
     IkonRequestFilter: () => import('../components/IkonRequestFilter'),
     IkonDataTableRequestVerifyActionButton: () => import('../components/IkonDataTableRequestVerifyActionButton')

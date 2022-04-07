@@ -58,7 +58,7 @@
 
 <script>
 export default {
-  name: 'IkonUserDialog',
+  name: 'IkonUserEditDialog',
   props: {
     item: {
       required: true

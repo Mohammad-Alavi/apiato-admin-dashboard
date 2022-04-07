@@ -4,7 +4,7 @@
                                  :delete-dialog-title="getDeleteDialogTitle"
                                  :headers="headers"
                                  :order-by-override="{name: 'users|name'}"
-                                 :show-delete-action="true"
+                                 :show-delete-action="false"
                                  :show-toolbar-button="false"
                                  :show-update-action="true"
                                  :toolbar-button-dialog-title="$vuetify.lang.t('$vuetify.pages.providers.addProvider')"
@@ -12,7 +12,7 @@
                                  :update-dialog-title="$vuetify.lang.t('$vuetify.pages.providers.editProvider')"
                                  actions-suffix="Provider"
                                  show-select>
-    <template v-slot:dialog="{item}">
+    <template v-slot:edit-dialog="{item}">
       <ikon-provider-dialog :item="item"/>
     </template>
     <template v-slot:custom-action-1="{item}">

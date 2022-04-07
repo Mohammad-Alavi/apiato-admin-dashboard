@@ -14,7 +14,10 @@
                                  :update-dialog-title="$vuetify.lang.t('$vuetify.pages.sliders.editSlider')"
                                  actions-suffix="Slider"
                                  show-select>
-    <template v-slot:dialog="{item}">
+    <template v-slot:add-dialog="{item}">
+      <ikon-slider-dialog :item="item"/>
+    </template>
+    <template v-slot:edit-dialog="{item}">
       <ikon-slider-dialog :item="item"/>
     </template>
     <template v-slot:custom-action-1="{item}">

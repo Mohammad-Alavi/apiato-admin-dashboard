@@ -43,7 +43,7 @@
                 @cancel="resetSelectedItem"
                 @confirm="save($event)"
                 @dialog-open="resetSelectedItem(false)">
-                <slot :item="selectedItem" name="dialog"/>
+                <slot :item="selectedItem" name="add-dialog"/>
               </ikon-data-table-dialog-action-button>
             </ikon-data-table-toolbar>
           </template>
@@ -81,7 +81,7 @@
               @cancel="resetSelectedItem"
               @confirm="save($event)"
               @dialog-open="setSelectedItem(item)">
-              <slot :item="selectedItem" name="dialog"/>
+              <slot :item="selectedItem" name="edit-dialog"/>
             </ikon-data-table-dialog-action-button>
 
             <ikon-data-table-dialog-action-button

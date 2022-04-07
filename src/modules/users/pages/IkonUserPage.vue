@@ -13,8 +13,11 @@
                                  :update-dialog-title="$vuetify.lang.t('$vuetify.pages.users.editAccount')"
                                  actions-suffix="User"
                                  show-select>
-    <template v-slot:dialog="{item}">
-      <ikon-user-dialog :item="item"/>
+    <template v-slot:add-dialog="{item}">
+      <ikon-user-add-dialog :item="item"/>
+    </template>
+    <template v-slot:edit-dialog="{item}">
+      <ikon-user-edit-dialog :item="item"/>
     </template>
     <template v-slot:delete-dialog="{item}">
       <ikon-delete-account-dialog-body :item="item"/>
@@ -35,7 +38,8 @@ export default {
   name: 'IkonUserPage',
   components: {
     IkonDataTablePageTemplate: () => import('@/modules/app/templates/IkonDataTablePageTemplate'),
-    IkonUserDialog: () => import('@/modules/users/components/IkonUserDialog'),
+    IkonUserEditDialog: () => import('@/modules/users/components/IkonUserEditDialog'),
+    IkonUserAddDialog: () => import('@/modules/users/components/IkonUserAddDialog'),
     IkonUserFilter: () => import('@/modules/users/components/IkonUserFilter'),
     IkonDataTableUserOrdersActionButton: () => import('@/modules/users/components/IkonDataTableUserOrdersActionButton'),
     IkonDeleteAccountDialogBody: () => import('@/modules/users/components/IkonDeleteAccountDialogBody')

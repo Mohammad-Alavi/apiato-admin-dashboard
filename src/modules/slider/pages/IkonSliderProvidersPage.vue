@@ -16,9 +16,6 @@
                                  :update-dialog-title="$vuetify.lang.t('$vuetify.pages.sliders.pages.providers.editProvider')"
                                  actions-suffix="Provider"
                                  show-select>
-    <template v-slot:dialog="{item}">
-      <ikon-user-dialog :item="item"/>
-    </template>
     <template v-slot:filter>
       <ikon-slider-providers-filter/>
     </template>
@@ -39,7 +36,6 @@ export default {
   name: 'IkonSliderProvidersPage',
   components: {
     IkonDataTablePageTemplate: () => import('@/modules/app/templates/IkonDataTablePageTemplate'),
-    IkonUserDialog: () => import('@/modules/users/components/IkonUserDialog'),
     IkonSliderProvidersFilter: () => import('../components/IkonSliderProvidersFilter'),
     IkonDataTableSliderProvidersAddActionButton: () => import('../components/IkonDataTableSliderProvidersAddActionButton'),
     IkonDataTableSliderProvidersRemoveActionButton: () => import('../components/IkonDataTableSliderProvidersRemoveActionButton')

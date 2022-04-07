@@ -15,7 +15,10 @@
     <template v-slot:filter>
       <ikon-skill-filter/>
     </template>
-    <template v-slot:dialog="{item}">
+    <template v-slot:add-dialog="{item}">
+      <ikon-skill-dialog :item="item"/>
+    </template>
+    <template v-slot:edit-dialog="{item}">
       <ikon-skill-dialog :item="item"/>
     </template>
   </ikon-data-table-page-template>

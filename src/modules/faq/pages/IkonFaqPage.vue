@@ -14,7 +14,10 @@
                                   :row-pointer="true"
                                   :sortable-data-table="true"
                                   show-select>
-    <template v-slot:dialog="{item}">
+    <template v-slot:add-dialog="{item}">
+      <ikon-faq-dialog :item="item"/>
+    </template>
+    <template v-slot:edit-dialog="{item}">
       <ikon-faq-dialog :item="item"/>
     </template>
   </ikon-data-table-page-template>

@@ -29,7 +29,7 @@ export default {
   name: 'IkonUserOrdersPage',
   components: {
     IkonDataTablePageTemplate: () => import('@/modules/app/templates/IkonDataTablePageTemplate'),
-    IkonUserDialog: () => import('@/modules/users/components/IkonUserDialog'),
+    IkonUserDialog: () => import('@/modules/users/components/IkonUserEditDialog'),
     IkonUserOrdersFilter: () => import('@/modules/users/components/IkonUserOrdersFilter')
   },
   data () {
