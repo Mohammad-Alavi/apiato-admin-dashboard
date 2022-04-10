@@ -187,12 +187,14 @@ export default {
       questionDe: 'Question (DE)',
       answerEn: 'Answer (EN)',
       answerDe: 'Answer (DE)',
+      faqGroup: 'FAQ Group',
       dataTableHeaders: {
         questionEn: 'Question (EN)',
         questionDe: 'Question (DE)',
         answerEn: 'Answer (EN)',
         answerDe: 'Answer (DE)',
-        order: 'Order'
+        order: 'Order',
+        faqGroup: 'Group'
       }
     },
     faqGroups: {
@@ -200,13 +202,14 @@ export default {
       editFaqGroup: 'Edit FAQ Group',
       faqGroupList: 'FAQ Group List',
       deleteFaqGroupText: 'Are you sure you want to delete this FAQ Group?',
-      name: 'Question (EN)',
+      name: 'Name',
       labelEn: 'Label (EN)',
       labelDe: 'Label (DE)',
       dataTableHeaders: {
         name: 'Name',
         labelEn: 'Label (EN)',
         labelDe: 'Label (DE)',
+        faqCount: 'FAQ Count',
         order: 'Order'
       }
     },

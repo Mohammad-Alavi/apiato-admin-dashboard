@@ -1,3 +1,5 @@
+import Role from '@/modules/users/models/role'
+
 export default class FaqGroup {
   constructor (
     object = null,
@@ -5,7 +7,9 @@ export default class FaqGroup {
     name = '',
     labelEn = '',
     labelDe = '',
-    order = null
+    order = null,
+    faqs = [],
+    faqCount = null
   ) {
     this.object = object
     this.id = id
@@ -13,6 +17,8 @@ export default class FaqGroup {
     this.label_en = labelEn
     this.label_de = labelDe
     this.order = order
+    this.faqs = faqs
+    this.faq_count = faqCount
   }
 
   static fromJson (json) {
@@ -22,7 +28,9 @@ export default class FaqGroup {
       json.name,
       json.label_en,
       json.label_de,
-      json.order
+      json.order,
+      json.faqs?.data.length > 0 ? Role.fromJsonArray(json.faqs.data) : [],
+      FaqGroup.getFaqCount(json)
     )
   }
 
@@ -33,5 +41,9 @@ export default class FaqGroup {
     }
     )
     return result
+  }
+
+  static getFaqCount (json) {
+    return json.faqs?.data.length ?? 0
   }
 }

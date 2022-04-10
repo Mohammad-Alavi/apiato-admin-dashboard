@@ -4,12 +4,14 @@ import Faq from '@/modules/faq/models/faq'
 
 export default {
   createFaq (store, payload) {
-    const params = actionHelper.urlSearchParamsFromProperties(payload)
+    const params = actionHelper.urlSearchParamsFromProperties(payload, {
+      faq_group_id: payload.faq_group?.id
+    }, ['faq_group'])
     return Vue.axios.post('/faqs', params)
   },
   getAllFaqs (context, payload) {
     return new Promise((resolve, reject) => {
-      const url = actionHelper.prepareGetAllURL(payload, 'faqs')
+      const url = actionHelper.prepareGetAllURL(payload, 'faqs', 'faq_group')
       return Vue.axios.get(url)
         .then(res => resolve(
           {
@@ -20,7 +22,9 @@ export default {
     })
   },
   updateFaq (store, payload) {
-    const params = actionHelper.urlSearchParamsFromProperties(payload)
+    const params = actionHelper.urlSearchParamsFromProperties(payload, {
+      faq_group_id: payload.faq_group?.id
+    }, ['faq_group'])
 
     return Vue.axios.patch('/faqs/' + payload.id, params)
   },

@@ -57,6 +57,7 @@ export default {
     resetHeaders () {
       this.headers = [
         { text: this.$vuetify.lang.t('$vuetify.pages.faqs.dataTableHeaders.order'), value: 'order', align: 'start' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.faqs.dataTableHeaders.faqGroup'), value: 'faq_group.name' },
         { text: this.$vuetify.lang.t('$vuetify.pages.faqs.dataTableHeaders.questionEn'), value: 'question_en' },
         { text: this.$vuetify.lang.t('$vuetify.pages.faqs.dataTableHeaders.questionDe'), value: 'question_de' },
         { text: this.$vuetify.lang.t('$vuetify.pages.faqs.dataTableHeaders.answerEn'), value: 'answer_en' },
