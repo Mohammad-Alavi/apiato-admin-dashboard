@@ -411,14 +411,16 @@ export default {
       return headers
     },
     prepareActionName (action) {
+      let actionName
       if (action === this.actions.getAll) {
-        return action + this.$pluralize(this.$lodash.startCase(this.actionsSuffix), 2)
-      } else return action + this.$lodash.startCase(this.actionsSuffix)
+        actionName = action + this.$pluralize(this.$lodash.startCase(this.actionsSuffix), 2)
+      } else actionName = action + this.$lodash.startCase(this.actionsSuffix)
+
+      return this.$lodash.replace(actionName, ' ', '')
     },
     getAllData () {
       const { sortBy: orderBy, sortDesc, itemsPerPage: perPage, page: currentPage } = this.options
       this.loadingDataTable = true
-
       this.$store.dispatch(this.prepareActionName(this.actions.getAll), {
         perPage,
         currentPage,

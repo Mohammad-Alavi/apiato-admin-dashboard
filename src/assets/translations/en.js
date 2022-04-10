@@ -50,6 +50,7 @@ export default {
         accounts: 'Accounts',
         providers: 'Providers',
         faqs: 'FAQs',
+        faqGroups: 'FAQ Groups',
         sliders: 'Sliders',
         verificationRequests: 'Provider Requests',
         sports: 'Sports',
@@ -191,6 +192,21 @@ export default {
         questionDe: 'Question (DE)',
         answerEn: 'Answer (EN)',
         answerDe: 'Answer (DE)',
+        order: 'Order'
+      }
+    },
+    faqGroups: {
+      addFaqGroup: 'Add FAQ Group',
+      editFaqGroup: 'Edit FAQ Group',
+      faqGroupList: 'FAQ Group List',
+      deleteFaqGroupText: 'Are you sure you want to delete this FAQ Group?',
+      name: 'Question (EN)',
+      labelEn: 'Label (EN)',
+      labelDe: 'Label (DE)',
+      dataTableHeaders: {
+        name: 'Name',
+        labelEn: 'Label (EN)',
+        labelDe: 'Label (DE)',
         order: 'Order'
       }
     },
