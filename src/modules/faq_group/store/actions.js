@@ -9,7 +9,7 @@ export default {
   },
   getAllFaqGroups (context, payload) {
     return new Promise((resolve, reject) => {
-      const url = actionHelper.prepareGetAllURL(payload, 'faq-groups', ['faqs'])
+      const url = actionHelper.prepareGetAllURL(payload, 'public/faqs')
       return Vue.axios.get(url)
         .then(res => resolve(
           {
