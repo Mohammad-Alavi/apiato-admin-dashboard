@@ -30,10 +30,5 @@ export default {
   },
   deleteFaq (store, payload) {
     return Vue.axios.delete('/faqs/' + payload.id)
-  },
-  reorderFaq (store, payload) {
-    const params = actionHelper.urlSearchParamsFromProperties(payload)
-
-    return Vue.axios.patch('/faqs/' + payload.id + '/reorder', params)
   }
 }

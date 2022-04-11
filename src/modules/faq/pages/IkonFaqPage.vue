@@ -11,8 +11,6 @@
                                   :toolbar-button-text="$vuetify.lang.t('$vuetify.pages.faqs.addFaq')"
                                   :update-dialog-title="$vuetify.lang.t('$vuetify.pages.faqs.editFaq')"
                                   actions-suffix="Faq"
-                                  :row-pointer="true"
-                                  :sortable-data-table="true"
                                   show-select>
     <template v-slot:add-dialog="{item}">
       <ikon-faq-dialog :item="item"/>
