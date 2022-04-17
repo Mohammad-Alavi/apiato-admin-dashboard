@@ -23,6 +23,9 @@
     <template v-slot:delete-dialog="{item}">
       <ikon-faq-group-delete-dialog :item="item"/>
     </template>
+    <template v-slot:custom-action-1="{item}">
+      <ikon-data-table-faq-group-faqs-action-button :item="item"/>
+    </template>
   </ikon-data-table-page-template>
 </template>
 
@@ -34,7 +37,8 @@ export default {
   components: {
     IkonDataTablePageTemplate: () => import('@/modules/app/templates/IkonDataTablePageTemplate'),
     IkonFaqGroupDialog: () => import('@/modules/faq_group/components/IkonFaqGroupDialog'),
-    IkonFaqGroupDeleteDialog: () => import('@/modules/faq_group/components/IkonFaqGroupDeleteDialog')
+    IkonFaqGroupDeleteDialog: () => import('@/modules/faq_group/components/IkonFaqGroupDeleteDialog'),
+    IkonDataTableFaqGroupFaqsActionButton: () => import('@/modules/faq_group/components/IkonDataTableFaqGroupFaqsActionButton')
   },
   data () {
     return {

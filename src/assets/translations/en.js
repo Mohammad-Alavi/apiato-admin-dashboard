@@ -205,12 +205,29 @@ export default {
       name: 'Name',
       labelEn: 'Label (EN)',
       labelDe: 'Label (DE)',
+      viewFaqs: 'View Faqs',
       dataTableHeaders: {
         name: 'Name',
         labelEn: 'Label (EN)',
         labelDe: 'Label (DE)',
         faqCount: 'FAQ Count',
         order: 'Order'
+      },
+      pages: {
+        faqs: {
+          addFaq: 'Add FAQ',
+          editFaq: 'Edit FAQ',
+          faqList: 'FAQ List',
+          deleteFaqText: 'Are you sure you want to delete this FAQ?',
+          dataTableHeaders: {
+            questionEn: 'Question (EN)',
+            questionDe: 'Question (DE)',
+            answerEn: 'Answer (EN)',
+            answerDe: 'Answer (DE)',
+            order: 'Order',
+            faqGroup: 'Group'
+          }
+        }
       }
     },
     sliders: {

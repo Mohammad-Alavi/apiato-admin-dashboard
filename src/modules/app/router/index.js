@@ -1,5 +1,7 @@
 import Vue from 'vue'
+import store from '@/modules/app/store'
 import VueRouter from 'vue-router'
+import { RESET_FILTER } from '@/modules/app/store/mutation-types'
 
 Vue.use(VueRouter)
 
@@ -49,6 +51,10 @@ router.onError((error) => {
   if (isChunkLoadFailed) {
     router.replace(targetPath)
   }
+})
+
+router.afterEach((to, from) => {
+  store.commit(RESET_FILTER)
 })
 
 export default router

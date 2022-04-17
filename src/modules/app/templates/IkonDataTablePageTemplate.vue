@@ -19,7 +19,7 @@
                       :loading="loadingDataTable"
                       :options.sync="options"
                       :page.sync="options.page"
-                      :server-items-length="totalPages"
+                      :server-items-length="totalItems"
                       class="elevation-1"
                       hide-default-footer
                       item-key="id"
@@ -221,6 +221,7 @@ export default {
       items: [],
       selectedItems: [],
       totalPages: 0,
+      totalItems: 0,
       actions: {
         create: 'create',
         update: 'update',
@@ -435,6 +436,7 @@ export default {
           this.currentPage = 1
         }
         this.totalPages = res.pagination.total_pages
+        this.totalItems = res.pagination.total
         this.loadingDataTable = false
         this.isSearching = false
       })

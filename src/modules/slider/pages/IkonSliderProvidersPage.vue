@@ -36,9 +36,9 @@ export default {
   name: 'IkonSliderProvidersPage',
   components: {
     IkonDataTablePageTemplate: () => import('@/modules/app/templates/IkonDataTablePageTemplate'),
-    IkonSliderProvidersFilter: () => import('../components/IkonSliderProvidersFilter'),
-    IkonDataTableSliderProvidersAddActionButton: () => import('../components/IkonDataTableSliderProvidersAddActionButton'),
-    IkonDataTableSliderProvidersRemoveActionButton: () => import('../components/IkonDataTableSliderProvidersRemoveActionButton')
+    IkonSliderProvidersFilter: () => import('@/modules/slider/components/IkonSliderProvidersFilter'),
+    IkonDataTableSliderProvidersAddActionButton: () => import('@/modules/slider/components/IkonDataTableSliderProvidersAddActionButton'),
+    IkonDataTableSliderProvidersRemoveActionButton: () => import('@/modules/slider/components/IkonDataTableSliderProvidersRemoveActionButton')
   },
   data () {
     return {

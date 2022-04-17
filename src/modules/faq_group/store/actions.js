@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import * as actionHelper from '@/modules/app/helpers/actions'
 import FaqGroup from '@/modules/faq_group/models/faq_group'
+import router from '@/modules/app/router'
 
 export default {
   createFaqGroup (store, payload) {
@@ -31,5 +32,10 @@ export default {
     const params = actionHelper.urlSearchParamsFromProperties(payload)
 
     return Vue.axios.patch('/faq-groups/' + payload.id + '/reorder', params)
+  },
+  reorderFaqs (store, payload) {
+    const params = actionHelper.urlSearchParamsFromProperties(payload)
+    console.log(payload.order)
+    return Vue.axios.patch('/faq-groups/' + router.currentRoute.params.faq_group_id + '/faqs/' + payload.id + '/reorder', params)
   }
 }
