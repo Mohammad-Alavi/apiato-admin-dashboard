@@ -72,6 +72,16 @@ export default {
           sortable: true,
           value: 'score'
         },
+        {
+          text: this.$vuetify.lang.t('$vuetify.pages.ratings.dataTableHeaders.isAccepted'),
+          sortable: true,
+          value: 'is_accepted'
+        },
+        {
+          text: this.$vuetify.lang.t('$vuetify.pages.ratings.dataTableHeaders.reviewedAt'),
+          sortable: true,
+          value: 'reviewed_at'
+        },
         { text: this.$vuetify.lang.t('$vuetify.general.actions'), value: 'actions', sortable: false }
       ]
     },

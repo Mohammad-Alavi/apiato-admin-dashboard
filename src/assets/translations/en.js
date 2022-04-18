@@ -364,6 +364,8 @@ export default {
       dataTableHeaders: {
         createdAt: 'Create At',
         text: 'Text',
+        isAccepted: 'Accepted',
+        reviewedAt: 'Reviewed At',
         score: 'Score'
       },
       filter: {
