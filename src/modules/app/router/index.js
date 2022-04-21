@@ -1,5 +1,7 @@
 import Vue from 'vue'
+import store from '@/modules/app/store'
 import VueRouter from 'vue-router'
+import { RESET_FILTER } from '@/modules/app/store/mutation-types'
 
 Vue.use(VueRouter)
 
@@ -40,6 +42,19 @@ const router = new VueRouter({
     return { x: 0, y: 0 }
   },
   routes: baseRoutes
+})
+
+router.onError((error) => {
+  const pattern = /Loading chunk (\d)+ failed/g
+  const isChunkLoadFailed = error.message.match(pattern)
+  const targetPath = router.history.pending.fullPath
+  if (isChunkLoadFailed) {
+    router.replace(targetPath)
+  }
+})
+
+router.afterEach((to, from) => {
+  store.commit(RESET_FILTER)
 })
 
 export default router

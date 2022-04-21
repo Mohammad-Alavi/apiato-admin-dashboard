@@ -17,10 +17,10 @@ export default {
   },
   acceptRating (store, payload) {
     const params = actionHelper.urlSearchParamsFromProperties(payload)
-    return Vue.axios.post('/ratings/' + payload.rating_id + '/accept', params)
+    return Vue.axios.patch('/ratings/' + payload.rating_id + '/accept', params)
   },
   rejectRating (store, payload) {
     const params = actionHelper.urlSearchParamsFromProperties(payload)
-    return Vue.axios.post('/ratings/' + payload.rating_id + '/reject', params)
+    return Vue.axios.patch('/ratings/' + payload.rating_id + '/reject', params)
   }
 }

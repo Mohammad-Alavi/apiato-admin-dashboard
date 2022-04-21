@@ -12,7 +12,10 @@
                                   :update-dialog-title="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.jobs.editJob')"
                                   actions-suffix="Job"
                                   show-select>
-    <template v-slot:dialog="{item}">
+    <template v-slot:add-dialog="{item}">
+      <ikon-job-dialog :item="item"/>
+    </template>
+    <template v-slot:edit-dialog="{item}">
       <ikon-job-dialog :item="item"/>
     </template>
   </ikon-data-table-page-template>

@@ -48,6 +48,8 @@
 
 <script>
 import { ValidationObserver } from 'vee-validate'
+import store from '@/modules/app/store'
+import { SHOW_SNACKBAR_ERROR } from '@/modules/app/store/mutation-types'
 
 export default {
   name: 'IkonLoginPage',
@@ -70,6 +72,11 @@ export default {
         email: this.username,
         password: this.password,
         staySignedIn: this.staySignedIn
+      }).then(() => {
+        if (!this.$auth.user().isAdmin()) {
+          this.$store.dispatch('logout')
+          store.commit(SHOW_SNACKBAR_ERROR, 'You need to be an Admin to use this dashboard. Logging you out...')
+        }
       }).finally(() => {
         this.loggingIn = false
       }

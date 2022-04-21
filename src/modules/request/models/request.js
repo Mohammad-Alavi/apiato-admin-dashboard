@@ -16,7 +16,8 @@ export default class Request {
     job = null,
     language = null,
     userId = null,
-    user = null
+    user = null,
+    createdAt = null
   ) {
     this.object = object
     this.id = id
@@ -32,6 +33,7 @@ export default class Request {
     this.language = language
     this.user_id = userId
     this.user = user
+    this.created_at = createdAt
   }
 
   static fromJson (json) {
@@ -49,7 +51,8 @@ export default class Request {
       json.job,
       json.language,
       json.user_id,
-      json.user ? User.fromJson(json.user.data) : null
+      json.user ? User.fromJson(json.user.data) : null,
+      json.created_at ? dayjs(json.created_at).format('YYYY-MM-DD') : null
     )
   }
 

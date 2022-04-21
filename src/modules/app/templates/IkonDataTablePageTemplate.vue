@@ -19,7 +19,7 @@
                       :loading="loadingDataTable"
                       :options.sync="options"
                       :page.sync="options.page"
-                      :server-items-length="totalPages"
+                      :server-items-length="totalItems"
                       class="elevation-1"
                       hide-default-footer
                       item-key="id"
@@ -43,7 +43,7 @@
                 @cancel="resetSelectedItem"
                 @confirm="save($event)"
                 @dialog-open="resetSelectedItem(false)">
-                <slot :item="selectedItem" name="dialog"/>
+                <slot :item="selectedItem" name="add-dialog"/>
               </ikon-data-table-dialog-action-button>
             </ikon-data-table-toolbar>
           </template>
@@ -81,18 +81,22 @@
               @cancel="resetSelectedItem"
               @confirm="save($event)"
               @dialog-open="setSelectedItem(item)">
-              <slot :item="selectedItem" name="dialog"/>
+              <slot :item="selectedItem" name="edit-dialog"/>
             </ikon-data-table-dialog-action-button>
 
             <ikon-data-table-dialog-action-button
               v-if="showDeleteAction"
+              :key="dialogKey + 888888"
               :dialogTitle="deleteDialogTitle"
               :item="item"
               :loading="doingCRUDOperations"
               mode="delete"
+              :disabled="invalid"
               @cancel="resetSelectedItem"
               @confirm="deleteItem($event)"
-              @dialog-open="setSelectedItem(item)"/>
+              @dialog-open="setSelectedItem(item)">
+              <slot :item="selectedItem" name="delete-dialog"/>
+            </ikon-data-table-dialog-action-button>
 
             <event-listener @data-changed="getAllData">
               <span>
@@ -217,6 +221,7 @@ export default {
       items: [],
       selectedItems: [],
       totalPages: 0,
+      totalItems: 0,
       actions: {
         create: 'create',
         update: 'update',
@@ -365,7 +370,9 @@ export default {
     deleteSelectedItem () {
       this.$store.dispatch(this.prepareActionName(this.actions.delete), { ...this.selectedItem })
         .then(() => this.cleanupAfterSuccessfulCRUDOperation())
-        .finally(() => {
+        .catch(res => {
+          this.setServerErrorsOnFormFields(res)
+        }).finally(() => {
           this.doingCRUDOperations = false
         })
     },
@@ -405,14 +412,16 @@ export default {
       return headers
     },
     prepareActionName (action) {
+      let actionName
       if (action === this.actions.getAll) {
-        return action + this.$pluralize(this.$lodash.startCase(this.actionsSuffix), 2)
-      } else return action + this.$lodash.startCase(this.actionsSuffix)
+        actionName = action + this.$pluralize(this.$lodash.startCase(this.actionsSuffix), 2)
+      } else actionName = action + this.$lodash.startCase(this.actionsSuffix)
+
+      return this.$lodash.replace(actionName, ' ', '')
     },
     getAllData () {
       const { sortBy: orderBy, sortDesc, itemsPerPage: perPage, page: currentPage } = this.options
       this.loadingDataTable = true
-
       this.$store.dispatch(this.prepareActionName(this.actions.getAll), {
         perPage,
         currentPage,
@@ -427,6 +436,7 @@ export default {
           this.currentPage = 1
         }
         this.totalPages = res.pagination.total_pages
+        this.totalItems = res.pagination.total
         this.loadingDataTable = false
         this.isSearching = false
       })
@@ -475,6 +485,12 @@ export default {
         }
         if (!this.$lodash.isNil(filters.skillJobs)) {
           filters.skillJobs.forEach(job => rolesFilter.push('jobs[]=' + job.name))
+        }
+        if (!this.$lodash.isNil(filters.isRatingReviewed)) {
+          rolesFilter.push('is_reviewed=' + filters.isRatingReviewed)
+        }
+        if (!this.$lodash.isNil(filters.isRatingAccepted)) {
+          rolesFilter.push('is_accepted=' + filters.isRatingAccepted)
         }
       }
 

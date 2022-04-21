@@ -16,9 +16,6 @@
                                  :update-dialog-title="$vuetify.lang.t('$vuetify.pages.sliders.pages.providers.editProvider')"
                                  actions-suffix="Provider"
                                  show-select>
-    <template v-slot:dialog="{item}">
-      <ikon-user-dialog :item="item"/>
-    </template>
     <template v-slot:filter>
       <ikon-slider-providers-filter/>
     </template>
@@ -32,17 +29,16 @@
 </template>
 
 <script>
-import Provider from '@/modules/users/models/provider'
+import Provider from '@/modules/provider/models/provider'
 import { SET_FILTER } from '@/modules/app/store/mutation-types'
 
 export default {
   name: 'IkonSliderProvidersPage',
   components: {
     IkonDataTablePageTemplate: () => import('@/modules/app/templates/IkonDataTablePageTemplate'),
-    IkonUserDialog: () => import('@/modules/users/components/IkonUserDialog'),
-    IkonSliderProvidersFilter: () => import('../components/IkonSliderProvidersFilter'),
-    IkonDataTableSliderProvidersAddActionButton: () => import('../components/IkonDataTableSliderProvidersAddActionButton'),
-    IkonDataTableSliderProvidersRemoveActionButton: () => import('../components/IkonDataTableSliderProvidersRemoveActionButton')
+    IkonSliderProvidersFilter: () => import('@/modules/slider/components/IkonSliderProvidersFilter'),
+    IkonDataTableSliderProvidersAddActionButton: () => import('@/modules/slider/components/IkonDataTableSliderProvidersAddActionButton'),
+    IkonDataTableSliderProvidersRemoveActionButton: () => import('@/modules/slider/components/IkonDataTableSliderProvidersRemoveActionButton')
   },
   data () {
     return {

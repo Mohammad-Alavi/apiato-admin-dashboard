@@ -48,7 +48,9 @@ export default {
       navigationDrawer: {
         dashboard: 'Dashboard',
         accounts: 'Accounts',
+        providers: 'Providers',
         faqs: 'FAQs',
+        faqGroups: 'FAQ Groups',
         sliders: 'Sliders',
         verificationRequests: 'Provider Requests',
         sports: 'Sports',
@@ -75,6 +77,10 @@ export default {
       accountList: 'Account List',
       deleteAccountText: 'Are you sure you want to delete this Account?',
       viewOrders: 'View Orders',
+      suspended: 'Suspended',
+      unsuspended: 'Unsuspended',
+      deleteAccountSubtitle1: 'This action cannot be undone. This will permanently delete the {_email_} account',
+      deleteAccountSubtitle2: 'Please type {_email_} to confirm.',
       dataTableHeaders: {
         name: 'Name',
         email: 'Email',
@@ -145,6 +151,33 @@ export default {
       thisMonth: 'This Month',
       lastThreeMonths: 'Last 3 Months'
     },
+    providers: {
+      addProvider: 'Add Provider',
+      editProvider: 'Edit Provider',
+      providerList: 'Provider List',
+      deleteProviderText: 'Are you sure you want to delete this Provider?',
+      name: 'Name',
+      description: 'Description',
+      hourlyRate: 'Hourly Rate',
+      publishedAt: 'Published At',
+      published: 'Published',
+      unpublished: 'Unpublished',
+      viewProviderGallery: 'View Provider Gallery',
+      languages: 'Languages',
+      sports: 'Sports',
+      jobs: 'Jobs',
+      skills: 'Skills',
+      dataTableHeaders: {
+        name: 'Name',
+        description: 'Description',
+        hourlyRate: 'Hourly Rate',
+        languages: 'Languages',
+        sports: 'Sports',
+        jobs: 'Jobs',
+        skills: 'Skills',
+        publishedAt: 'Published At'
+      }
+    },
     faqs: {
       addFaq: 'Add FAQ',
       editFaq: 'Edit FAQ',
@@ -154,12 +187,47 @@ export default {
       questionDe: 'Question (DE)',
       answerEn: 'Answer (EN)',
       answerDe: 'Answer (DE)',
+      faqGroup: 'FAQ Group',
       dataTableHeaders: {
         questionEn: 'Question (EN)',
         questionDe: 'Question (DE)',
         answerEn: 'Answer (EN)',
         answerDe: 'Answer (DE)',
+        order: 'Order',
+        faqGroup: 'Group'
+      }
+    },
+    faqGroups: {
+      addFaqGroup: 'Add FAQ Group',
+      editFaqGroup: 'Edit FAQ Group',
+      faqGroupList: 'FAQ Group List',
+      deleteFaqGroupText: 'Are you sure you want to delete this FAQ Group?',
+      name: 'Name',
+      labelEn: 'Label (EN)',
+      labelDe: 'Label (DE)',
+      viewFaqs: 'View Faqs',
+      dataTableHeaders: {
+        name: 'Name',
+        labelEn: 'Label (EN)',
+        labelDe: 'Label (DE)',
+        faqCount: 'FAQ Count',
         order: 'Order'
+      },
+      pages: {
+        faqs: {
+          addFaq: 'Add FAQ',
+          editFaq: 'Edit FAQ',
+          faqList: 'FAQ List',
+          deleteFaqText: 'Are you sure you want to delete this FAQ?',
+          dataTableHeaders: {
+            questionEn: 'Question (EN)',
+            questionDe: 'Question (DE)',
+            answerEn: 'Answer (EN)',
+            answerDe: 'Answer (DE)',
+            order: 'Order',
+            faqGroup: 'Group'
+          }
+        }
       }
     },
     sliders: {
@@ -215,6 +283,7 @@ export default {
       verifyProvider: 'Verify Provider',
       rejectProvider: 'Reject Provider',
       dataTableHeaders: {
+        createdAt: 'Created At',
         sports: 'Sports',
         jobs: 'Jobs',
         languages: 'Languages',
@@ -295,7 +364,16 @@ export default {
       dataTableHeaders: {
         createdAt: 'Create At',
         text: 'Text',
+        isAccepted: 'Accepted',
+        reviewedAt: 'Reviewed At',
         score: 'Score'
+      },
+      filter: {
+        isReviewed: 'Is Reviewed',
+        isAccepted: 'Is Accepted',
+        include: 'Include',
+        exclude: 'Exclude',
+        clearFilter: 'Clear Filter'
       }
     },
     auth: {

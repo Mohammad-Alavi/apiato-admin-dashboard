@@ -82,7 +82,7 @@ export default {
     taxonomyDisplayMethod (data) {
       return data.item.name
     },
-    getAllSport () {
+    getAllSports () {
       this.fetchingSports = true
       this.$store.dispatch('getAllSports', { withIncludes: false }).then(res => {
         this.sports = res.items
@@ -100,7 +100,7 @@ export default {
     }
   },
   created () {
-    this.getAllSport()
+    this.getAllSports()
     this.getAllJobs()
   }
 }

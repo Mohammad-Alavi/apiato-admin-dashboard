@@ -34,9 +34,13 @@ const setParam = (object = {}, params, exclude = [], only = []) => {
         continue
       }
       if (Array.isArray(object[key])) {
-        object[key].forEach(property => {
-          params.append(key + '[]', property)
-        })
+        if (!lodash.isEmpty(object[key])) {
+          object[key].forEach(property => {
+            params.append(key + '[]', property)
+          })
+        } else {
+          params.append(key + '[]', '')
+        }
         // params.set(key, JSON.stringify(object[key]))
         continue
       }

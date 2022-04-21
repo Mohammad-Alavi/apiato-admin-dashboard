@@ -84,7 +84,7 @@ export default {
   },
   getAllSkills (context, payload) {
     return new Promise((resolve, reject) => {
-      const url = actionHelper.prepareGetAllURL(payload, 'skills', ['sport', 'job'])
+      const url = actionHelper.prepareGetAllURL(payload, 'skills')
       return Vue.axios.get(url)
         .then(res => resolve(
           {

@@ -43,7 +43,6 @@ export default {
   },
   reorderProvider (store, payload) {
     const params = actionHelper.urlSearchParamsFromProperties(payload)
-    console.log(payload.order)
     return Vue.axios.patch('/sliders/' + router.currentRoute.params.slider_id + '/providers/' + payload.id + '/reorder', params)
   }
 }

@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import Role from '@/modules/users/models/role'
-import Provider from '@/modules/users/models/provider'
+import Provider from '@/modules/provider/models/provider'
 
 export default class User {
   constructor (
@@ -64,5 +64,21 @@ export default class User {
       })
     }
     return roleNames.join()
+  }
+
+  isAdmin () {
+    let isAdmin = false
+    if (this.roles?.length > 0) {
+      this.roles.forEach(role => {
+        if (role.name !== 'admin') {
+          return true
+        }
+        if (role.name === 'admin') {
+          isAdmin = true
+          return false
+        }
+      })
+    }
+    return isAdmin
   }
 }

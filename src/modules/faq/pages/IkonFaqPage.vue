@@ -3,6 +3,7 @@
                                   :data-table-title="getDataTableTitle"
                                   :default-item="defaultItem"
                                   :delete-dialog-title="getDeleteDialogTitle"
+                                  :order-by-override="{'faq_group.name': 'faq_groups|name'}"
                                   :headers="headers"
                                   :show-toolbar-button="true"
                                   :show-delete-action="true"
@@ -11,10 +12,11 @@
                                   :toolbar-button-text="$vuetify.lang.t('$vuetify.pages.faqs.addFaq')"
                                   :update-dialog-title="$vuetify.lang.t('$vuetify.pages.faqs.editFaq')"
                                   actions-suffix="Faq"
-                                  :row-pointer="true"
-                                  :sortable-data-table="true"
                                   show-select>
-    <template v-slot:dialog="{item}">
+    <template v-slot:add-dialog="{item}">
+      <ikon-faq-dialog :item="item"/>
+    </template>
+    <template v-slot:edit-dialog="{item}">
       <ikon-faq-dialog :item="item"/>
     </template>
   </ikon-data-table-page-template>
@@ -53,11 +55,11 @@ export default {
   methods: {
     resetHeaders () {
       this.headers = [
-        { text: this.$vuetify.lang.t('$vuetify.pages.faqs.dataTableHeaders.order'), value: 'order', align: 'start' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.faqs.dataTableHeaders.questionEn'), value: 'question_en' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.faqs.dataTableHeaders.questionDe'), value: 'question_de' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.faqs.dataTableHeaders.answerEn'), value: 'answer_en' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.faqs.dataTableHeaders.answerDe'), value: 'answer_de' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.faqs.dataTableHeaders.faqGroup'), value: 'faq_group.name', sortable: false },
+        { text: this.$vuetify.lang.t('$vuetify.pages.faqs.dataTableHeaders.questionEn'), value: 'question_en', sortable: false },
+        { text: this.$vuetify.lang.t('$vuetify.pages.faqs.dataTableHeaders.questionDe'), value: 'question_de', sortable: false },
+        { text: this.$vuetify.lang.t('$vuetify.pages.faqs.dataTableHeaders.answerEn'), value: 'answer_en', sortable: false },
+        { text: this.$vuetify.lang.t('$vuetify.pages.faqs.dataTableHeaders.answerDe'), value: 'answer_de', sortable: false },
         { text: this.$vuetify.lang.t('$vuetify.general.actions'), value: 'actions', sortable: false }
       ]
     },

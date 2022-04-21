@@ -1,3 +1,5 @@
+import Provider from '@/modules/provider/models/provider'
+
 export default class Faq {
   constructor (
     id = null,
@@ -5,7 +7,8 @@ export default class Faq {
     questionEe = '',
     answerEn = '',
     answerEe = '',
-    order = null
+    order = null,
+    faqGroup = null
   ) {
     this.id = id
     this.question_en = questionEn
@@ -13,6 +16,7 @@ export default class Faq {
     this.answer_en = answerEn
     this.answer_de = answerEe
     this.order = order
+    this.faq_group = faqGroup
   }
 
   static fromJson (json) {
@@ -22,7 +26,8 @@ export default class Faq {
       json.question_de,
       json.answer_en,
       json.answer_de,
-      json.order
+      json.order,
+      json.faq_group ? Provider.fromJson(json.faq_group.data) : null
     )
   }
 

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import * as actionHelper from '@/modules/app/helpers/actions'
 
 export default {
   login ({ getters }, payload) {
@@ -45,6 +46,14 @@ export default {
         console.log(err)
         reject(err)
       })
+    })
+  },
+  getAllVerifyEmailUrls (context, payload) {
+    return new Promise((resolve, reject) => {
+      const url = actionHelper.prepareGetAllURL(payload, 'email/verification-urls')
+      return Vue.axios.get(url)
+        .then(res => resolve(res.data))
+        .catch(err => reject(err))
     })
   }
 }

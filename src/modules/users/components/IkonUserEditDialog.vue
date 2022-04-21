@@ -12,7 +12,7 @@
         <v-row justify="end">
           <v-switch
             v-model="localItem.suspended_at"
-            :label="localItem.suspended_at ? 'Suspended': 'Unsuspended'"
+            :label="localItem.suspended_at ? $vuetify.lang.t('$vuetify.pages.users.suspended'): $vuetify.lang.t('$vuetify.pages.users.unsuspended')"
           ></v-switch>
         </v-row>
       </v-col>
@@ -29,6 +29,7 @@
           :items="genders"
           :loading="fetchingRoles"
           :multiple="false"
+          rules=""
           :name="$vuetify.lang.t('$vuetify.pages.users.gender')"
           :selected-items.sync="localItem.gender"
         ></ikon-autocomplete>
@@ -37,6 +38,7 @@
         <ikon-date-picker :date.sync="localItem.birth" :grow="$vuetify.breakpoint.lgAndUp"
                           :label="$vuetify.lang.t('$vuetify.pages.users.birth')"
                           :outlined="false"
+                          rules=""
                           dense name="Birthday"/>
       </v-col>
       <v-col cols="12">
@@ -48,7 +50,7 @@
           :multiple="true"
           :name="$vuetify.lang.t('$vuetify.pages.users.role')"
           :selected-items.sync="localItem.roles"
-        ></ikon-autocomplete>
+        />
       </v-col>
     </v-row>
   </v-container>
@@ -56,7 +58,7 @@
 
 <script>
 export default {
-  name: 'IkonUserDialog',
+  name: 'IkonUserEditDialog',
   props: {
     item: {
       required: true
