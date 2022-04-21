@@ -6,7 +6,7 @@ const express = require('express')
 // create server instance
 const app = express()
 // bind the request to an absolute path or relative to the CWD
-app.use(express.static('dist'))
+app.use(express.static('dist', { index: false}))
 // catch-all route
 app.get('/*', (req, res) => {
   res.sendFile(__dirname + '/dist/index.html')
