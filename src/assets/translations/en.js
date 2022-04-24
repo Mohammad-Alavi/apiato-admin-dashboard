@@ -56,7 +56,8 @@ export default {
         sports: 'Sports',
         jobs: 'Jobs',
         skills: 'Skills',
-        ratings: 'Ratings'
+        ratings: 'Ratings',
+        contacts: 'Contacts'
       },
       filter: {
         filter: 'Filter',
@@ -373,6 +374,29 @@ export default {
         isAccepted: 'Is Accepted',
         include: 'Include',
         exclude: 'Exclude',
+        clearFilter: 'Clear Filter'
+      }
+    },
+    contacts: {
+      addContact: 'Add Contact',
+      editContact: 'Edit Contact',
+      contactList: 'Contact List',
+      deleteContactText: 'Are you sure you want to delete this Contact?',
+      resolve: 'Resolve',
+      unresolve: 'Unresolve',
+      dataTableHeaders: {
+        topic: 'Topic',
+        name: 'Name',
+        email: 'Email',
+        message: 'Message',
+        resolvedAt: 'Resolve At'
+      },
+      filter: {
+        filterContactsTitle: 'Filter Contacts by Topic',
+        topic: 'Topic',
+        show: 'Show',
+        all: 'All',
+        onlyResolved: 'Only Resolved',
         clearFilter: 'Clear Filter'
       }
     },

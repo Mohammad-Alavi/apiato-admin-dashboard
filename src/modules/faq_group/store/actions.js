@@ -35,7 +35,6 @@ export default {
   },
   reorderFaqs (store, payload) {
     const params = actionHelper.urlSearchParamsFromProperties(payload)
-    console.log(payload.order)
     return Vue.axios.patch('/faq-groups/' + router.currentRoute.params.faq_group_id + '/faqs/' + payload.id + '/reorder', params)
   }
 }

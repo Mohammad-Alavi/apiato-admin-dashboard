@@ -37,19 +37,12 @@ export default {
       required: true
     }
   },
-  watch: {
-    filter: {
-      handler: v => console.log(v),
-      deep: true
-    }
-  },
   computed: {
     localItem: {
       get () {
         return this.filter
       },
       set (v) {
-        console.log(v)
         this.$emit('update:filter', v)
       }
     }

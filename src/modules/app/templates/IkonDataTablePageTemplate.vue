@@ -492,6 +492,12 @@ export default {
         if (!this.$lodash.isNil(filters.isRatingAccepted)) {
           rolesFilter.push('is_accepted=' + filters.isRatingAccepted)
         }
+        if (!this.$lodash.isNil(filters.contactTopic)) {
+          rolesFilter.push('topic=' + filters.contactTopic)
+        }
+        if (!this.$lodash.isNil(filters.isResolved)) {
+          rolesFilter.push('is_resolved=' + filters.isResolved)
+        }
       }
 
       return params.concat(rolesFilter)
