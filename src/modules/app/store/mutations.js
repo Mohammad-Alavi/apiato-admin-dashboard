@@ -50,7 +50,9 @@ export default {
       skillSports: null,
       skillJobs: null,
       isRatingReviewed: null,
-      isRatingAccepted: null
+      isRatingAccepted: null,
+      contactTopic: null,
+      isResolved: 0
     }
   }
 }

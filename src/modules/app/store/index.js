@@ -28,7 +28,9 @@ export default new Vuex.Store({
       skillSports: null,
       skillJobs: null,
       isRatingReviewed: null,
-      isRatingAccepted: null
+      isRatingAccepted: null,
+      contactTopic: null,
+      isResolved: null
     }
   },
   actions: actions,

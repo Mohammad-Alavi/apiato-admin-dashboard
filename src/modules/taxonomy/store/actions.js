@@ -31,7 +31,6 @@ export default {
     return Vue.axios.delete('/taxonomies/' + payload.id)
   },
   createJob (store, payload) {
-    console.log(payload)
     const params = actionHelper.urlSearchParamsFromProperties(payload, {
       type: 'job',
       taxonomy_id: payload.category?.id
@@ -74,7 +73,6 @@ export default {
     })
   },
   createSkill (store, payload) {
-    console.log(payload)
     const params = actionHelper.urlSearchParamsFromProperties(payload, {
       type: 'skill',
       sport_id: payload.sport ? payload.sport.id : '',

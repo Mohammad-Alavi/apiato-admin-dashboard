@@ -12,7 +12,7 @@
         :items="sports"
         rules=""
         :display-function="taxonomyDisplayMethod"
-        :name="$vuetify.lang.t('$vuetify.pages.users.pages.orders.filter.status')"
+        :name="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.skills.sport')"
         :selected-items.sync="localItem.skillSports"
       />
     </v-col>
@@ -21,7 +21,7 @@
         :items="jobs"
         rules=""
         :display-function="taxonomyDisplayMethod"
-        :name="$vuetify.lang.t('$vuetify.pages.users.pages.orders.filter.status')"
+        :name="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.skills.job')"
         :selected-items.sync="localItem.skillJobs"
       />
     </v-col>
@@ -48,19 +48,12 @@ export default {
       required: true
     }
   },
-  watch: {
-    filter: {
-      handler: v => console.log(v),
-      deep: true
-    }
-  },
   computed: {
     localItem: {
       get () {
         return this.filter
       },
       set (v) {
-        console.log(v)
         this.$emit('update:filter', v)
       }
     }

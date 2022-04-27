@@ -7,15 +7,21 @@
                                  :get-all-action-additional-params="[`faq_group=${faq_group_id}`]"
                                  :order-by-override="{'faq_group.name': 'faq_groups|name'}"
                                  :row-pointer="true"
-                                 :show-delete-action="false"
-                                 :show-toolbar-button="false"
-                                 :show-update-action="false"
+                                 :show-delete-action="true"
+                                 :show-toolbar-button="true"
+                                 :show-update-action="true"
                                  :sortable-data-table="true"
                                  :toolbar-button-dialog-title="$vuetify.lang.t('$vuetify.pages.faqGroups.pages.faqs.addFaq')"
                                  :toolbar-button-text="$vuetify.lang.t('$vuetify.pages.faqGroups.pages.faqs.addFaq')"
                                  :update-dialog-title="$vuetify.lang.t('$vuetify.pages.faqGroups.pages.faqs.editFaq')"
-                                 actions-suffix="Faqs"
+                                 actions-suffix="Faq"
                                  show-select>
+    <template v-slot:add-dialog="{item}">
+      <ikon-faq-dialog :item="item"/>
+    </template>
+    <template v-slot:edit-dialog="{item}">
+      <ikon-faq-dialog :item="item"/>
+    </template>
   </ikon-data-table-page-template>
 </template>
 
@@ -30,7 +36,8 @@ export default {
     }
   },
   components: {
-    IkonDataTablePageTemplate: () => import('@/modules/app/templates/IkonDataTablePageTemplate')
+    IkonDataTablePageTemplate: () => import('@/modules/app/templates/IkonDataTablePageTemplate'),
+    IkonFaqDialog: () => import('@/modules/faq/components/IkonFaqDialog')
   },
   data () {
     return {

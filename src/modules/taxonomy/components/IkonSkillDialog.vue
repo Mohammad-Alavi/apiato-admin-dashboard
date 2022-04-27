@@ -70,7 +70,6 @@ export default {
   computed: {
     localItem: {
       get () {
-        console.log(this.item)
         return this.item
       },
       set (v) {

@@ -59,7 +59,8 @@ export default {
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.sports'), 'mdi-run', { name: 'sports' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.jobs'), 'mdi-briefcase', { name: 'jobs' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.skills'), 'mdi-flash', { name: 'skills' }, []),
-        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.ratings'), 'mdi-scoreboard', { name: 'ratings' }, [])
+        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.ratings'), 'mdi-scoreboard', { name: 'ratings' }, []),
+        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.contacts'), 'mdi-contacts', { name: 'contacts' }, [])
       ]
     }
   },
