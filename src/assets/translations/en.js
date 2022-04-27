@@ -370,6 +370,7 @@ export default {
         score: 'Score'
       },
       filter: {
+        showAllRatings: 'Show All Ratings',
         isReviewed: 'Is Reviewed',
         isAccepted: 'Is Accepted',
         include: 'Include',
