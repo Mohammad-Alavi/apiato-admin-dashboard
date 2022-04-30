@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ikon-locale-selector/>
+<!--        <ikon-locale-selector/>-->
         <v-menu offset-y>
             <template v-slot:activator="{ on, attrs }">
                 <v-btn v-bind="attrs" v-on="on" min-width="160" text tile>
@@ -32,7 +32,7 @@
 export default {
   name: 'IkonUserOptions',
   components: {
-    IkonLocaleSelector: () => import('@/modules/app/components/IkonLocaleSelector')
+    // IkonLocaleSelector: () => import('@/modules/app/components/IkonLocaleSelector')
   },
   data () {
     return {

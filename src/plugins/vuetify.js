@@ -3,7 +3,7 @@ import Vuetify from 'vuetify/lib/framework'
 import { VCheckbox, VCol, VExpansionPanels, VRow, VTextField, VTooltip } from 'vuetify/lib'
 import { Intersect, Resize, Ripple, Touch } from 'vuetify/lib/directives'
 import light from '@/modules/app/themes/ikon-light'
-import { ar, en } from '@/assets/translations'
+import { de, en } from '@/assets/translations'
 
 Vue.use(Vuetify, {
   components: { VCheckbox, VCol, VExpansionPanels, VRow, VTextField, VTooltip },
@@ -17,7 +17,7 @@ export default new Vuetify({
   },
   lang: {
     locales: {
-      ar,
+      de,
       en
     },
     current: localStorage.getItem('locale') ?? 'en',
