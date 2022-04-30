@@ -13,7 +13,7 @@
         <ikon-gallery-grid-wrapper v-model="images" :useDragHandle="true" axis="xy" @input="reorderGalleryImage"
                             @sort-end="getDraggedImageIndex">
           <ikon-gallery-grid-item v-for="(image, index) in images" :key="index" :index="index">
-            <v-img :lazy-src="`${this.imgDomainUrl}/${this.imagePresets.preload}/${image.file}`" :src="`${this.imgDomainUrl}/${this.imagePresets.large2048}/${image.file}`" aspect-ratio="1" max-width="300" max-height="300"
+            <v-img :lazy-src="`${imgDomainUrl}/${imagePresets.preload}/${image.file}`" :src="`${imgDomainUrl}/${imagePresets.large2048}/${image.file}`" aspect-ratio="1" max-width="300" max-height="300"
                    class="grey lighten-2">
               <template v-slot:placeholder>
                 <v-row align="center" class="fill-height ma-0" justify="center">
