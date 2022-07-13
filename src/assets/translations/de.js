@@ -1,7 +1,7 @@
-import { en } from 'vuetify/es5/locale'
+import { de } from 'vuetify/es5/locale'
 
 export default {
-  ...en,
+  ...de,
 
   general: {
     name: 'Name',

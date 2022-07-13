@@ -10,9 +10,9 @@
         <v-list-item value="en" @click="changeLocale('en')">
           {{ $vuetify.lang.t('$vuetify.languageSelectorOptions.english') }}
         </v-list-item>
-<!--        <v-list-item value="ar" @click="changeLocale('ar')">-->
-<!--          {{ $vuetify.lang.t('$vuetify.languageSelectorOptions.arabic') }}-->
-<!--        </v-list-item>-->
+        <v-list-item value="de" @click="changeLocale('de')">
+          {{ $vuetify.lang.t('$vuetify.languageSelectorOptions.german') }}
+        </v-list-item>
       </v-list-item-group>
     </v-list>
   </v-menu>
@@ -23,7 +23,7 @@ export default {
   name: 'IkonLocaleSelector',
   data () {
     return {
-      currentLocale: 'ar'
+      currentLocale: 'en'
     }
   },
   computed: {
@@ -53,6 +53,9 @@ export default {
           this.$vuetify.rtl = true
           break
         case 'en':
+          this.$vuetify.rtl = false
+          break
+        case 'de':
           this.$vuetify.rtl = false
           break
       }

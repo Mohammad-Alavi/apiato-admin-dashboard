@@ -1,4 +1,4 @@
-import ar from '@/assets/translations/ar'
+import de from '@/assets/translations/de'
 import en from '@/assets/translations/en'
 
-export { ar, en }
+export { de, en }

@@ -7,7 +7,7 @@
             <v-icon>mdi-filter-variant</v-icon>
           </v-btn>
         </template>
-        <span>{{ $vuetify.lang.t('$vuetify.pages.ratings.filter.showAllRatings') }}</span>
+        <span>{{ $vuetify.lang.t('$vuetify.general.components.filter.filter') }}</span>
       </v-tooltip>
     </template>
 
@@ -17,7 +17,7 @@
           <v-icon>mdi-close</v-icon>
         </v-btn>
         <v-spacer/>
-        <v-toolbar-title>{{ $vuetify.lang.t('$vuetify.pages.ratings.filter.showAllRatings') }}</v-toolbar-title>
+        <v-toolbar-title>{{ $vuetify.lang.t('$vuetify.general.components.filter.filter') }}</v-toolbar-title>
         <v-spacer/>
         <v-tooltip left>
           <template v-slot:activator="{on, attrs}">
@@ -44,7 +44,7 @@
 import IkonFilter from '@/modules/app/components/IkonFilter'
 
 export default {
-  name: 'IkonRatingFilter',
+  name: 'IkonFilterTemplate',
   extends: IkonFilter,
   components: {
     IkonRatingFilterFilters: () => import('@/modules/rating/components/IkonRatingFilterFilters')

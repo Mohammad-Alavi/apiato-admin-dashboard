@@ -49,7 +49,7 @@ export default {
       allRequests: null,
       skillSports: null,
       skillJobs: null,
-      isRatingReviewed: null,
+      isRatingReviewed: 0,
       isRatingAccepted: null,
       contactTopic: null,
       isResolved: 0
