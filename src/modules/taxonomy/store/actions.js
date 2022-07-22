@@ -12,7 +12,7 @@ export default {
   },
   getAllSports (context, payload) {
     return new Promise((resolve, reject) => {
-      const url = actionHelper.prepareGetAllURL(payload, 'sports')
+      const url = actionHelper.prepareGetAllURL(payload, 'public/sports')
       return Vue.axios.get(url)
         .then(res => resolve(
           {
@@ -39,7 +39,7 @@ export default {
   },
   getAllJobs (context, payload) {
     return new Promise((resolve, reject) => {
-      const url = actionHelper.prepareGetAllURL(payload, 'jobs')
+      const url = actionHelper.prepareGetAllURL(payload, 'public/jobs')
       return Vue.axios.get(url)
         .then(res => resolve(
           {
@@ -62,7 +62,7 @@ export default {
   },
   getAllCategories (context, payload) {
     return new Promise((resolve, reject) => {
-      const url = actionHelper.prepareGetAllURL(payload, 'categories')
+      const url = actionHelper.prepareGetAllURL(payload, 'public/categories')
       return Vue.axios.get(url)
         .then(res => resolve(
           {
@@ -82,7 +82,7 @@ export default {
   },
   getAllSkills (context, payload) {
     return new Promise((resolve, reject) => {
-      const url = actionHelper.prepareGetAllURL(payload, 'skills')
+      const url = actionHelper.prepareGetAllURL(payload, 'public/skills')
       return Vue.axios.get(url)
         .then(res => resolve(
           {
