@@ -289,10 +289,6 @@ export default {
       },
       immediate: true
     },
-    options: {
-      handler: 'getAllData',
-      deep: true
-    },
     searchQuery: function () {
       if (this.debounceTimeout) {
         clearTimeout(this.debounceTimeout)
@@ -588,6 +584,12 @@ export default {
   },
   mounted () {
     this.resetSelectedItem()
+    // this prevents double requests on initial page load
+    // we add the `watch` behaviour after initial page load
+    this.$watch('options', {
+      handler: 'getAllData',
+      deep: true
+    })
   }
 }
 </script>
