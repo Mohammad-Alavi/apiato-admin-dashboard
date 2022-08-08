@@ -5,7 +5,7 @@
                                  :delete-dialog-title="getDeleteDialogTitle"
                                  :headers="headers"
                                  :initial-sort-by-column="isDisplayingAllProviders ? 'name' : 'order'"
-                                 :order-by-override="{name: 'users|name'}"
+                                 :order-by-override="{name: 'name'}"
                                  :row-pointer="!isDisplayingAllProviders"
                                  :show-delete-action="false"
                                  :show-toolbar-button="false"

@@ -3,7 +3,7 @@
                                  :default-item="defaultItem"
                                  :delete-dialog-title="getDeleteDialogTitle"
                                  :headers="headers"
-                                 :order-by-override="{name: 'users|name'}"
+                                 :order-by-override="{name: 'name'}"
                                  :show-delete-action="false"
                                  :show-toolbar-button="false"
                                  :show-update-action="true"
