@@ -58,12 +58,6 @@ export default {
       required: true
     }
   },
-  watch: {
-    filter: {
-      handler: v => console.log(v),
-      deep: true
-    }
-  },
   computed: {
     localItem: {
       get () {
