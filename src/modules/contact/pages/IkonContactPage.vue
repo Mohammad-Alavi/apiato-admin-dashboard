@@ -1,17 +1,19 @@
 <template>
   <ikon-data-table-page-template :key="key"
-                                  :data-table-title="getDataTableTitle"
-                                  :default-item="defaultItem"
-                                  :delete-dialog-title="getDeleteDialogTitle"
-                                  :headers="headers"
-                                  :show-toolbar-button="false"
-                                  :show-delete-action="false"
-                                  :show-update-action="false"
-                                  :toolbar-button-dialog-title="$vuetify.lang.t('$vuetify.pages.contacts.addContact')"
-                                  :toolbar-button-text="$vuetify.lang.t('$vuetify.pages.contacts.addContact')"
-                                  :update-dialog-title="$vuetify.lang.t('$vuetify.pages.contacts.editContact')"
-                                  actions-suffix="Contact"
-                                  show-select>
+                                 :data-table-title="getDataTableTitle"
+                                 :default-item="defaultItem"
+                                 :delete-dialog-title="getDeleteDialogTitle"
+                                 :headers="headers"
+                                 :show-delete-action="false"
+                                 :show-toolbar-button="false"
+                                 :show-update-action="false"
+                                 :toolbar-button-dialog-title="$vuetify.lang.t('$vuetify.pages.contacts.addContact')"
+                                 :toolbar-button-text="$vuetify.lang.t('$vuetify.pages.contacts.addContact')"
+                                 :update-dialog-title="$vuetify.lang.t('$vuetify.pages.contacts.editContact')"
+                                 actions-suffix="Contact"
+                                 initial-sort-by-column="created_at"
+                                 initial-sort-desc
+                                 show-select>
     <template v-slot:filter>
       <ikon-contact-filter/>
     </template>
@@ -65,6 +67,7 @@ export default {
         { text: this.$vuetify.lang.t('$vuetify.pages.contacts.dataTableHeaders.email'), value: 'email' },
         { text: this.$vuetify.lang.t('$vuetify.pages.contacts.dataTableHeaders.message'), value: 'message' },
         { text: this.$vuetify.lang.t('$vuetify.pages.contacts.dataTableHeaders.resolvedAt'), value: 'resolved_at' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.contacts.dataTableHeaders.createdAt'), value: 'created_at' },
         { text: this.$vuetify.lang.t('$vuetify.general.actions'), value: 'actions', sortable: false }
       ]
     },

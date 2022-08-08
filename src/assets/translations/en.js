@@ -390,7 +390,8 @@ export default {
         name: 'Name',
         email: 'Email',
         message: 'Message',
-        resolvedAt: 'Resolve At'
+        resolvedAt: 'Resolve At',
+        createdAt: 'Created At'
       },
       filter: {
         filterContactsTitle: 'Filter Contacts by Topic',

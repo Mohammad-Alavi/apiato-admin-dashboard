@@ -8,7 +8,8 @@ export default class Contact {
     name = null,
     email = null,
     message = null,
-    resolvedAt = null
+    resolvedAt = null,
+    createdAt = null
   ) {
     this.object = object
     this.id = id
@@ -17,6 +18,7 @@ export default class Contact {
     this.email = email
     this.message = message
     this.resolved_at = resolvedAt
+    this.created_at = createdAt
   }
 
   static fromJson (json) {
@@ -27,7 +29,8 @@ export default class Contact {
       json.name,
       json.email,
       json.message,
-      json.resolved_at ? dayjs(json.resolved_at).format('YYYY-MM-DD') : null
+      json.resolved_at ? dayjs(json.resolved_at).format('YYYY-MM-DD') : null,
+      json.created_at ? dayjs(json.created_at).format('YYYY-MM-DD') : null
     )
   }
 

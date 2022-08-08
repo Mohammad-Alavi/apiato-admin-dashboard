@@ -208,6 +208,10 @@ export default {
       type: String,
       required: false
     },
+    initialSortDesc: {
+      type: Boolean,
+      required: false
+    },
     disableSort: {
       type: Boolean,
       default: false
@@ -234,7 +238,7 @@ export default {
       closeDialogMethod: undefined,
       options: {
         sortBy: [],
-        sortDesc: [false],
+        sortDesc: [this.initialSortDesc],
         mustSort: true,
         page: 1,
         itemsPerPage: 10
