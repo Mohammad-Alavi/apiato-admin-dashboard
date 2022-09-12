@@ -43,7 +43,7 @@
                 @cancel="resetSelectedItem"
                 @confirm="save($event)"
                 @dialog-open="resetSelectedItem(false)">
-                <slot :item="selectedItem" name="add-dialog"/>
+                <slot :item="selectedItem" name="add-dialog" :crud-mode="CRUD_MODE.add"/>
               </ikon-data-table-dialog-action-button>
             </ikon-data-table-toolbar>
           </template>
@@ -81,7 +81,7 @@
               @cancel="resetSelectedItem"
               @confirm="save($event)"
               @dialog-open="setSelectedItem(item)">
-              <slot :item="selectedItem" name="edit-dialog"/>
+              <slot :item="selectedItem" name="edit-dialog" :crud-mode="CRUD_MODE.edit"/>
             </ikon-data-table-dialog-action-button>
 
             <ikon-data-table-dialog-action-button
@@ -95,7 +95,7 @@
               @cancel="resetSelectedItem"
               @confirm="deleteItem($event)"
               @dialog-open="setSelectedItem(item)">
-              <slot :item="selectedItem" name="delete-dialog"/>
+              <slot :item="selectedItem" name="delete-dialog" :crud-mode="CRUD_MODE.delete"/>
             </ikon-data-table-dialog-action-button>
 
             <event-listener @data-changed="getAllData">
@@ -132,6 +132,7 @@
 <script>
 import { ValidationObserver } from 'vee-validate'
 import Sortable from 'sortablejs'
+import { CRUD_MODE } from '@/modules/app/constants/crud-modes'
 
 export default {
   name: 'IkonDataTablePageTemplate',
@@ -219,6 +220,7 @@ export default {
   },
   data () {
     return {
+      CRUD_MODE,
       selectedItemIndex: -1,
       selectedItem: null,
       loadingDataTable: true,
@@ -460,47 +462,44 @@ export default {
       const filters = this.$store.state.filter
       const params = this.getAllActionAdditionalParams ?? []
 
-      const rolesFilter = []
+      const filter = []
       if (!this.$lodash.isNil(filters)) {
         if (!this.$lodash.isNil(filters.isAdmin)) {
-          rolesFilter.push('roles[]=admin:' + filters.isAdmin)
+          filter.push('roles[]=admin:' + filters.isAdmin)
         }
         if (!this.$lodash.isNil(filters.isProvider)) {
-          rolesFilter.push('roles[]=provider:' + filters.isProvider)
+          filter.push('roles[]=provider:' + filters.isProvider)
         }
         if (!this.$lodash.isNil(filters.isEmailVerified)) {
-          rolesFilter.push('email=' + filters.isEmailVerified)
+          filter.push('email=' + filters.isEmailVerified)
         }
         if (!this.$lodash.isNil(filters.allProviders)) {
-          rolesFilter.push('all=' + filters.allProviders)
+          filter.push('all=' + filters.allProviders)
         }
         if (!this.$lodash.isNil(filters.allRequests)) {
-          rolesFilter.push('all=' + filters.allRequests)
+          filter.push('all=' + filters.allRequests)
         }
         if (!this.$lodash.isNil(filters.orderStatus)) {
-          rolesFilter.push('status=' + filters.orderStatus)
+          filter.push('status=' + filters.orderStatus)
         }
-        if (!this.$lodash.isNil(filters.skillSports)) {
-          filters.skillSports.forEach(sport => rolesFilter.push('sports[]=' + sport.name))
-        }
-        if (!this.$lodash.isNil(filters.skillJobs)) {
-          filters.skillJobs.forEach(job => rolesFilter.push('jobs[]=' + job.name))
+        if (!this.$lodash.isNil(filters.categories)) {
+          filters.categories.forEach(category => filter.push('category_ids[]=' + category.id))
         }
         if (!this.$lodash.isNil(filters.isRatingReviewed)) {
-          rolesFilter.push('is_reviewed=' + filters.isRatingReviewed)
+          filter.push('is_reviewed=' + filters.isRatingReviewed)
         }
         if (!this.$lodash.isNil(filters.isRatingAccepted)) {
-          rolesFilter.push('is_accepted=' + filters.isRatingAccepted)
+          filter.push('is_accepted=' + filters.isRatingAccepted)
         }
         if (!this.$lodash.isNil(filters.contactTopic)) {
-          rolesFilter.push('topic=' + filters.contactTopic)
+          filter.push('topic=' + filters.contactTopic)
         }
         if (!this.$lodash.isNil(filters.isResolved)) {
-          rolesFilter.push('is_resolved=' + filters.isResolved)
+          filter.push('is_resolved=' + filters.isResolved)
         }
       }
 
-      return params.concat(rolesFilter)
+      return params.concat(filter)
     },
     submit () {
       this.$refs.observer.validate()

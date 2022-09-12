@@ -1,64 +1,20 @@
 import Vue from 'vue'
 import * as actionHelper from '@/modules/app/helpers/actions'
-import Sport from '@/modules/taxonomy/models/sport'
-import Job from '@/modules/taxonomy/models/job'
 import Category from '@/modules/taxonomy/models/category'
-import Skill from '@/modules/taxonomy/models/skill'
+import Specialization from '@/modules/taxonomy/models/specialization'
 
 export default {
-  createSport (store, payload) {
-    const params = actionHelper.urlSearchParamsFromProperties(payload, { type: 'sport' })
-    return Vue.axios.post('/taxonomies', params)
+  createCategory (store, payload) {
+    const params = actionHelper.urlSearchParamsFromProperties(payload)
+    return Vue.axios.post('/categories', params)
   },
-  getAllSports (context, payload) {
-    return new Promise((resolve, reject) => {
-      const url = actionHelper.prepareGetAllURL(payload, 'public/sports')
-      return Vue.axios.get(url)
-        .then(res => resolve(
-          {
-            items: Sport.fromJsonArray(res.data.data),
-            pagination: res.data.meta.pagination
-          }))
-        .catch(err => reject(err))
-    })
-  },
-  updateSport (store, payload) {
-    const params = actionHelper.urlSearchParamsFromProperties(payload, { type: 'sport' })
+  updateCategory (store, payload) {
+    const params = actionHelper.urlSearchParamsFromProperties(payload)
 
-    return Vue.axios.patch('/taxonomies/' + payload.id, params)
+    return Vue.axios.patch('/categories/' + payload.id, params)
   },
-  deleteSport (store, payload) {
-    return Vue.axios.delete('/taxonomies/' + payload.id)
-  },
-  createJob (store, payload) {
-    const params = actionHelper.urlSearchParamsFromProperties(payload, {
-      type: 'job',
-      taxonomy_id: payload.category?.id
-    }, ['category'])
-    return Vue.axios.post('/taxonomies', params)
-  },
-  getAllJobs (context, payload) {
-    return new Promise((resolve, reject) => {
-      const url = actionHelper.prepareGetAllURL(payload, 'public/jobs')
-      return Vue.axios.get(url)
-        .then(res => resolve(
-          {
-            items: Job.fromJsonArray(res.data.data),
-            pagination: res.data.meta.pagination
-          }))
-        .catch(err => reject(err))
-    })
-  },
-  updateJob (store, payload) {
-    const params = actionHelper.urlSearchParamsFromProperties(payload, {
-      type: 'job',
-      taxonomy_id: payload.category?.id
-    }, ['category'])
-
-    return Vue.axios.patch('/taxonomies/' + payload.id, params)
-  },
-  deleteJob (store, payload) {
-    return Vue.axios.delete('/taxonomies/' + payload.id)
+  deleteCategory (store, payload) {
+    return Vue.axios.delete('/categories/' + payload.id)
   },
   getAllCategories (context, payload) {
     return new Promise((resolve, reject) => {
@@ -72,36 +28,32 @@ export default {
         .catch(err => reject(err))
     })
   },
-  createSkill (store, payload) {
+  createSpecialization (store, payload) {
     const params = actionHelper.urlSearchParamsFromProperties(payload, {
-      type: 'skill',
-      sport_id: payload.sport ? payload.sport.id : '',
-      taxonomy_id: payload.job ? payload.job.id : ''
-    }, ['job', 'sport'])
-    return Vue.axios.post('/taxonomies', params)
+      category_ids: payload.categories?.length ? Array.from(payload.categories.map(category => category.id)) : []
+    }, ['categories'])
+    return Vue.axios.post('/specializations', params)
   },
-  getAllSkills (context, payload) {
+  getAllSpecializations (context, payload) {
     return new Promise((resolve, reject) => {
-      const url = actionHelper.prepareGetAllURL(payload, 'public/skills')
+      const url = actionHelper.prepareGetAllURL(payload, 'admin/specializations', 'categories')
       return Vue.axios.get(url)
         .then(res => resolve(
           {
-            items: Skill.fromJsonArray(res.data.data),
+            items: Specialization.fromJsonArray(res.data.data),
             pagination: res.data.meta.pagination
           }))
         .catch(err => reject(err))
     })
   },
-  updateSkill (store, payload) {
+  updateSpecialization (store, payload) {
     const params = actionHelper.urlSearchParamsFromProperties(payload, {
-      type: 'skill',
-      sport_id: payload.sport ? payload.sport.id : '',
-      taxonomy_id: payload.job ? payload.job.id : ''
-    }, ['job', 'sport'])
+      category_ids: payload.categories?.length ? Array.from(payload.categories.map(category => category.id)) : []
+    }, ['categories'])
 
-    return Vue.axios.patch('/taxonomies/' + payload.id, params)
+    return Vue.axios.patch('/specializations/' + payload.id, params)
   },
-  deleteSkill (store, payload) {
-    return Vue.axios.delete('/taxonomies/' + payload.id)
+  deleteSpecialization (store, payload) {
+    return Vue.axios.delete('/specializations/' + payload.id)
   }
 }

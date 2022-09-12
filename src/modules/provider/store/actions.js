@@ -17,9 +17,8 @@ export default {
           'user',
           'sliders',
           'languages',
-          'sports',
-          'jobs',
-          'skills'
+          'categories',
+          'specializations'
         ])
         return Vue.axios.get(url)
           .then(res => resolve(
@@ -32,7 +31,7 @@ export default {
     }
 
     return new Promise((resolve, reject) => {
-      const url = actionHelper.prepareGetAllURL(payload, 'admin/providers', ['user', 'gallery.images'])
+      const url = actionHelper.prepareGetAllURL(payload, 'admin/providers', ['user', 'gallery.images', 'categories', 'specializations'])
       return Vue.axios.get(url)
         .then(res => resolve(
           {
@@ -46,20 +45,17 @@ export default {
     const params = actionHelper.urlSearchParamsFromProperties(payload, {
       publish: payload.published_at,
       language: payload.languages?.length ? Array.from(payload.languages.map(language => language.name)) : [],
-      sport: payload.sports?.length ? Array.from(payload.sports.map(sport => sport.id)) : [],
-      job: payload.jobs?.length ? Array.from(payload.jobs.map(job => job.id)) : [],
-      skill: payload.skills?.length ? Array.from(payload.skills.map(skill => skill.id)) : []
+      category_ids: payload.categories?.length ? Array.from(payload.categories.map(category => category.id)) : [],
+      specialization_ids: payload.specializations?.length ? Array.from(payload.specializations.map(specialization => specialization.id)) : []
     }, [
       'user',
       'gallery',
       'languages',
-      'sports',
-      'jobs',
-      'skills',
       'sliders',
-      'sportNames',
-      'jobNames',
-      'skillNames',
+      'categories',
+      'specializations',
+      'categoryNames',
+      'specializationNames',
       'languageNames',
       'published_at'
     ])
@@ -93,7 +89,7 @@ export default {
   },
   getAllLanguages (context, payload) {
     return new Promise((resolve, reject) => {
-      const url = actionHelper.prepareGetAllURL(payload, 'languages')
+      const url = actionHelper.prepareGetAllURL(payload, 'public/languages')
       return Vue.axios.get(url)
         .then(res => resolve(
           {

@@ -1,31 +1,33 @@
 import Taxonomy from '@/modules/taxonomy/models/taxonomy'
+import Specialization from '@/modules/taxonomy/models/specialization'
 
 export default class Category extends Taxonomy {
   constructor (
     object = null,
     id = null,
-    name = null,
     labelEn = null,
     labelDe = null,
-    taxonomyId = null
+    specializationIDs = null,
+    specializations = null
   ) {
-    super(object,
+    super(
+      object,
       id,
-      name,
       labelEn,
-      labelDe,
-      taxonomyId
+      labelDe
     )
+    this.specialization_ids = specializationIDs
+    this.specializations = specializations
   }
 
   static fromJson (json) {
     return new Category(
       json.object,
       json.id,
-      json.name,
       json.label_en,
       json.label_de,
-      json.taxonomy_id
+      json.specialization_ids,
+      json.specializations ? Specialization.fromJsonArray(json.specializations.data) : null
     )
   }
 

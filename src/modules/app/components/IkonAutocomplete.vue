@@ -1,11 +1,13 @@
 <template>
   <validation-provider v-slot="{ errors }" :name="name" :rules="rules">
-    <v-autocomplete :dense="dense" v-model="localSelectedItems" :disabled="disabled" :error-messages="errors"
-                    :filter="filterMethod"
-                    :items="items" :label="label ? label : name" :loading="loading" :multiple="multiple" :deletable-chips="deletableChips"
+    <v-autocomplete v-model="localSelectedItems" :deletable-chips="deletableChips" :dense="dense" :disabled="disabled"
+                    :error-messages="errors"
+                    :filter="filterMethod" :items="items" :label="label ? label : name" :loading="loading"
+                    :multiple="multiple"
                     :outlined="outlined" chips hide-selected item-value="id" persistent-hint return-object small-chips>
       <template v-slot:selection="data">
-        <v-chip v-bind="data.attrs" :close="deletableChips" :input-value="data.selected" label small @click="data.select"
+        <v-chip :close="deletableChips" :input-value="data.selected" label small v-bind="data.attrs"
+                @click="data.select"
                 @click:close="removeItemFromArray(data.item, selectedItems)">
           {{ displayMethod(data) }}
         </v-chip>
@@ -104,10 +106,10 @@ export default {
       }
     },
     displayMethod () {
-      return this.displayFunction ? this.displayFunction : this.defaultDisplayByName
+      return this.displayFunction ?? this.defaultDisplayByName
     },
     filterMethod () {
-      return this.filter ? this.filter : this.defaultFilterByName
+      return this.filter ?? this.defaultFilterByName
     }
   },
   methods: {

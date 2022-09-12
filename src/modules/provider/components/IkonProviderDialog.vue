@@ -37,38 +37,25 @@
       <v-col cols="12">
         <ikon-autocomplete
           :deletable-chips="true"
-          :display-function="taxonomyDisplayMethod"
-          :items="sports"
+          :display-function="categoryDisplayMethod"
+          :items="categories"
           rules=""
-          :loading="fetchingSports"
+          :loading="fetchingCategories"
           :multiple="true"
-          :name="$vuetify.lang.t('$vuetify.pages.providers.sports')"
-          :selected-items.sync="localItem.sports"
+          :name="$vuetify.lang.t('$vuetify.pages.providers.categories')"
+          :selected-items.sync="localItem.categories"
         />
       </v-col>
       <v-col cols="12">
         <ikon-autocomplete
           :deletable-chips="true"
-          :display-function="taxonomyDisplayMethod"
-          :items="jobs"
+          :display-function="specializationDisplayMethod"
+          :items="specializations"
           rules=""
-          :loading="fetchingJobs"
+          :loading="fetchingSpecializations"
           :multiple="true"
-          :name="$vuetify.lang.t('$vuetify.pages.providers.jobs')"
-          :selected-items.sync="localItem.jobs"
-        />
-      </v-col>
-      <v-col cols="12">
-        <ikon-autocomplete
-          :disabled="!hadSportsAndJobs || sportsAndJobsChanged"
-          :deletable-chips="true"
-          :display-function="skillDisplayMethod"
-          :items="skills"
-          rules=""
-          :loading="fetchingSkills"
-          :multiple="true"
-          :name="$vuetify.lang.t('$vuetify.pages.providers.skills')"
-          :selected-items.sync="localItem.skills"
+          :name="$vuetify.lang.t('$vuetify.pages.providers.specializations')"
+          :selected-items.sync="localItem.specializations"
         />
       </v-col>
     </v-row>
@@ -83,13 +70,11 @@ export default {
   },
   data () {
     return {
-      sports: [],
-      fetchingSports: false,
-      jobs: [],
-      fetchingJobs: false,
-      skills: [],
-      fetchingSkills: false,
-      hadSportsAndJobs: false,
+      categories: [],
+      fetchingCategories: false,
+      specializations: [],
+      fetchingSpecializations: false,
+      hadCategoriesAndSpecialization: false,
       initialItem: null,
       languages: [],
       fetchingLanguages: false
@@ -101,8 +86,9 @@ export default {
     }
   },
   watch: {
-    sportsAndJobsChanged () {
-      this.localItem.skills = []
+    categoriesChanged () {
+      this.getAllSpecializations()
+      this.localItem.specializations = []
     }
   },
   computed: {
@@ -114,44 +100,41 @@ export default {
         this.$emit('input', v)
       }
     },
-    sportsAndJobsChanged () {
+    categoriesChanged () {
       if (this.$lodash.isNull(this.initialItem)) {
         return false
       }
-      return !this.$lodash.isEqual(this.initialItem?.sports, this.localItem.sports) || !this.$lodash.isEqual(this.initialItem?.jobs, this.localItem.jobs)
+      this.getAllSpecializations()
+      return !this.$lodash.isEqual(this.initialItem?.categories, this.localItem.categories)
     },
     getPublishedAtError () {
       if (this.item.gallery.images.length === 0) {
         return 'gallery'
       } else if (this.item.languages.length === 0) {
         return 'language'
-      } else if (this.item.sports.length === 0) {
-        return 'sport'
-      } else if (this.item.jobs.length === 0) {
-        return 'job'
+      } else if (this.item.categories.length === 0) {
+        return 'category'
       } else {
         return ''
       }
     },
     isLoadingData () {
-      return this.fetchingSports || this.fetchingJobs || this.fetchingSkills || this.fetchingLanguages
+      return this.fetchingCategories || this.fetchingSpecializations || this.fetchingLanguages
     }
   },
   methods: {
     languageDisplayMethod (data) {
       return data.item.name
     },
-    taxonomyDisplayMethod (data) {
-      return data.item.name
+    categoryDisplayMethod (data) {
+      return data.item.label_en
     },
-    skillDisplayMethod (data) {
-      const sportName = data.item.sport ? data.item.sport.name : '_'
-      return `${data.item.name} (${sportName}, ${data.item.job.name})`
+    specializationDisplayMethod (data) {
+      return data.item.label_en
     },
-    prepareSkillFilter () {
+    prepareSpecializationsFilter () {
       const filters = []
-      filters.push(...this.localItem.sports.map(sport => `sports[]=${sport.name}`))
-      filters.push(...this.localItem.jobs.map(job => `jobs[]=${job.name}`))
+      filters.push(...this.localItem.categories.map(category => `category_ids[]=${category.id}`))
 
       return filters
     },
@@ -163,37 +146,28 @@ export default {
         this.fetchingLanguages = false
       })
     },
-    getAllSports () {
-      this.fetchingSports = true
-      this.$store.dispatch('getAllSports', { withIncludes: false }).then(res => {
-        this.sports = res.items
+    getAllCategories () {
+      this.fetchingCategories = true
+      this.$store.dispatch('getAllCategories', { withIncludes: false }).then(res => {
+        this.categories = res.items
       }).finally(() => {
-        this.fetchingSports = false
-        this.getAllJobs()
+        this.fetchingCategories = false
+        this.getAllSpecializations()
       })
     },
-    getAllJobs () {
-      this.fetchingJobs = true
-      this.$store.dispatch('getAllJobs', { withIncludes: false }).then(res => {
-        this.jobs = res.items
+    getAllSpecializations () {
+      this.fetchingSpecializations = true
+      this.$store.dispatch('getAllSpecializations', { withIncludes: false, additionalParams: this.prepareSpecializationsFilter() }).then(res => {
+        this.specializations = res.items
       }).finally(() => {
-        this.fetchingJobs = false
-        this.getAllSkills()
-      })
-    },
-    getAllSkills () {
-      this.fetchingSkills = true
-      this.$store.dispatch('getAllSkills', { withIncludes: false, additionalParams: this.prepareSkillFilter() }).then(res => {
-        this.skills = res.items
-      }).finally(() => {
-        this.fetchingSkills = false
+        this.fetchingSpecializations = false
       })
     }
   },
   created () {
     this.getAllLanguages()
-    this.getAllSports()
-    this.hadSportsAndJobs = !!this.localItem.sports.length && !!this.localItem.jobs.length
+    this.getAllCategories()
+    this.hadCategoriesAndSpecialization = !!this.localItem.categories.length && !!this.localItem.specializations.length
     this.initialItem = this.$lodash.cloneDeep(this.item)
   }
 }

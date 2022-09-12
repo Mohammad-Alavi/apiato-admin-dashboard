@@ -53,9 +53,8 @@ export default {
         faqGroups: 'FAQ Groups',
         sliders: 'Sliders',
         verificationRequests: 'Provider Requests',
-        sports: 'Sports',
-        jobs: 'Jobs',
-        skills: 'Skills',
+        categories: 'Categories',
+        specializations: 'Specializations',
         ratings: 'Ratings',
         contacts: 'Contacts'
       },
@@ -165,17 +164,15 @@ export default {
       unpublished: 'Unpublished',
       viewProviderGallery: 'View Provider Gallery',
       languages: 'Languages',
-      sports: 'Sports',
-      jobs: 'Jobs',
-      skills: 'Skills',
+      specializations: 'Specializations',
+      categories: 'Categories',
       dataTableHeaders: {
         name: 'Name',
         description: 'Description',
         hourlyRate: 'Hourly Rate',
         languages: 'Languages',
-        sports: 'Sports',
-        jobs: 'Jobs',
-        skills: 'Skills',
+        specializations: 'Specializations',
+        categories: 'Categories',
         publishedAt: 'Published At'
       }
     },
@@ -303,53 +300,35 @@ export default {
     },
     taxonomies: {
       pages: {
-        sports: {
-          addSport: 'Add Sport',
-          editSport: 'Edit Sport',
-          sportList: 'Sport List',
-          deleteSportText: 'Are you sure you want to delete this Sport?',
-          name: 'Name',
+        categories: {
+          addCategory: 'Add Category',
+          editCategory: 'Edit Category',
+          categoryList: 'Category List',
+          deleteCategoryText: 'Are you sure you want to delete this Category?',
           labelEn: 'Label (EN)',
           labelDe: 'Label (DE)',
           dataTableHeaders: {
-            name: 'Name',
-            labelEn: 'Label (EN)',
-            labelDe: 'Label (DE)'
-          }
-        },
-        jobs: {
-          addJob: 'Add Job',
-          editJob: 'Edit Job',
-          jobList: 'Job List',
-          deleteJobText: 'Are you sure you want to delete this Job?',
-          name: 'Name',
-          labelEn: 'Label (EN)',
-          labelDe: 'Label (DE)',
-          category: 'Category',
-          dataTableHeaders: {
-            name: 'Name',
             labelEn: 'Label (EN)',
             labelDe: 'Label (DE)',
-            category: 'Category'
+            specializations: 'Specializations'
           }
         },
-        skills: {
-          addSkill: 'Add Skill',
-          editSkill: 'Edit Skill',
-          skillList: 'Skill List',
-          deleteSkillText: 'Are you sure you want to delete this Skill?',
-          name: 'Name',
+        specializations: {
+          addSpecialization: 'Add Specialization',
+          editSpecialization: 'Edit Specialization',
+          specializationList: 'Specialization List',
+          deleteSpecializationText: 'Are you sure you want to delete this Specialization?',
           labelEn: 'Label (EN)',
           labelDe: 'Label (DE)',
-          sport: 'Sport',
-          job: 'Job',
+          categories: 'Categories',
           dataTableHeaders: {
-            name: 'Name',
             labelEn: 'Label (EN)',
             labelDe: 'Label (DE)',
-            sport: 'Sport',
-            category: 'Category',
-            job: 'Job'
+            categories: 'Categories'
+          },
+          filter: {
+            filterSpecializationsTitle: 'Filter Specializations by Category',
+            categories: 'Categories'
           }
         }
       }

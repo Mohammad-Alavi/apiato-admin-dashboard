@@ -3,10 +3,9 @@ import dayjs from 'dayjs'
 import lodash from 'lodash'
 import User from '@/modules/users/models/user'
 import Gallery from '@/modules/provider/models/gallery'
-import Sport from '@/modules/taxonomy/models/sport'
-import Job from '@/modules/taxonomy/models/job'
-import Skill from '@/modules/taxonomy/models/skill'
+import Specialization from '@/modules/taxonomy/models/specialization'
 import Language from '@/modules/provider/models/language'
+import Category from '@/modules/taxonomy/models/category'
 
 export default class Provider {
   constructor (
@@ -18,16 +17,14 @@ export default class Provider {
     order = null,
     sliders = [],
     languages = [],
-    sports = [],
-    jobs = [],
-    skills = [],
+    categories = [],
+    specializations = [],
     user = null,
     gallery = null,
     object = '',
     languageNames = '',
-    sportNames = '',
-    jobNames = '',
-    skillNames = ''
+    categoryNames = '',
+    specializationNames = ''
   ) {
     this.id = id
     this.name = name
@@ -37,16 +34,14 @@ export default class Provider {
     this.order = order
     this.languages = languages
     this.sliders = sliders
-    this.sports = sports
-    this.jobs = jobs
-    this.skills = skills
+    this.categories = categories
+    this.specializations = specializations
     this.user = user
     this.gallery = gallery
     this.object = object
     this.languageNames = languageNames
-    this.sportNames = sportNames
-    this.jobNames = jobNames
-    this.skillNames = skillNames
+    this.categoryNames = categoryNames
+    this.specializationNames = specializationNames
   }
 
   static fromJson (json) {
@@ -59,16 +54,14 @@ export default class Provider {
       json.order,
       json.sliders?.data.length > 0 ? Slider.fromJsonArray(json.sliders.data) : [],
       json.languages?.data.length > 0 ? Language.fromJsonArray(json.languages.data) : [],
-      json.sports?.data.length > 0 ? Sport.fromJsonArray(json.sports.data) : [],
-      json.jobs?.data.length > 0 ? Job.fromJsonArray(json.jobs.data) : [],
-      json.skills?.data.length > 0 ? Skill.fromJsonArray(json.skills.data) : [],
+      json.categories?.data.length > 0 ? Category.fromJsonArray(json.categories.data) : [],
+      json.specializations?.data.length > 0 ? Specialization.fromJsonArray(json.specializations.data) : [],
       json.user ? User.fromJson(json.user.data) : null,
       json.gallery ? Gallery.fromJson(json.gallery.data) : null,
       json.object,
       Provider.getLanguageNames(json.languages),
-      Provider.getTaxonomyNames(json.sports),
-      Provider.getTaxonomyNames(json.jobs),
-      Provider.getTaxonomyNames(json.skills)
+      Provider.getCategoryNames(json.categories),
+      Provider.getSpecializationNames(json.specializations)
     )
   }
 
@@ -96,14 +89,24 @@ export default class Provider {
     }
   }
 
-  static getTaxonomyNames (taxonomies) {
-    const taxonomyNames = []
-    if (taxonomies?.data.length > 0) {
-      taxonomies.data.forEach(taxonomy => {
-        taxonomyNames.push(taxonomy.name)
+  static getCategoryNames (categories) {
+    const categoryNames = []
+    if (categories?.data.length > 0) {
+      categories.data.forEach(category => {
+        categoryNames.push(category.label_en)
       })
     }
-    return taxonomyNames.join(', ')
+    return categoryNames.join(', ')
+  }
+
+  static getSpecializationNames (specializations) {
+    const specializationNames = []
+    if (specializations?.data.length > 0) {
+      specializations.data.forEach(specialization => {
+        specializationNames.push(specialization.label_en)
+      })
+    }
+    return specializationNames.join(', ')
   }
 
   static getLanguageNames (languages) {

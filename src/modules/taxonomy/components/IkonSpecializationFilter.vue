@@ -39,10 +39,10 @@
 import IkonFilter from '@/modules/app/components/IkonFilter'
 
 export default {
-  name: 'IkonSkillFilter',
+  name: 'IkonSpecializationFilter',
   extends: IkonFilter,
   components: {
-    IkonSkillFilterFilters: () => import('@/modules/taxonomy/components/IkonSkillFilterFilters')
+    IkonSkillFilterFilters: () => import('@/modules/taxonomy/components/IkonSpecializationFilterFilters')
   }
 }
 </script>

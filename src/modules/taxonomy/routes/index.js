@@ -1,24 +1,16 @@
 export default [
   {
-    path: '/taxonomies/sports',
-    name: 'sports',
-    component: () => import('../pages/IkonSportPage'),
+    path: '/taxonomies/categories',
+    name: 'categories',
+    component: () => import('../pages/IkonCategoryPage'),
     meta: {
       auth: true
     }
   },
   {
-    path: '/taxonomies/jobs',
-    name: 'jobs',
-    component: () => import('../pages/IkonJobPage'),
-    meta: {
-      auth: true
-    }
-  },
-  {
-    path: '/taxonomies/skills',
-    name: 'skills',
-    component: () => import('../pages/IkonSkillPage'),
+    path: '/taxonomies/specializations',
+    name: 'specializations',
+    component: () => import('../pages/IkonSpecializationPage'),
     meta: {
       auth: true
     }

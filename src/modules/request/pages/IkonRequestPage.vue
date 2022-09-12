@@ -60,7 +60,7 @@ export default {
     resetHeaders () {
       this.headers = [
         { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.createdAt'), value: 'created_at', align: 'start' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.sports'), value: 'sport', sortable: false },
+        { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.categories'), value: 'sport', sortable: false },
         { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.jobs'), value: 'job', sortable: false },
         { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.languages'), value: 'language', sortable: false },
         { text: this.$vuetify.lang.t('$vuetify.pages.requests.dataTableHeaders.message'), value: 'message', sortable: false },

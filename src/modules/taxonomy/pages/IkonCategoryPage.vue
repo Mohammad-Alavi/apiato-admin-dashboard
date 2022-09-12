@@ -7,42 +7,42 @@
                                   :show-toolbar-button="true"
                                   :show-delete-action="true"
                                   :show-update-action="true"
-                                  :toolbar-button-dialog-title="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.sports.addSport')"
-                                  :toolbar-button-text="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.sports.addSport')"
-                                  :update-dialog-title="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.sports.editSport')"
-                                  actions-suffix="Sport"
+                                  :toolbar-button-dialog-title="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.categories.addCategory')"
+                                  :toolbar-button-text="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.categories.addCategory')"
+                                  :update-dialog-title="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.categories.editCategory')"
+                                  actions-suffix="Category"
                                   show-select>
     <template v-slot:add-dialog="{item}">
-      <ikon-sport-dialog :item="item"/>
+      <ikon-category-dialog :item="item"/>
     </template>
     <template v-slot:edit-dialog="{item}">
-      <ikon-sport-dialog :item="item"/>
+      <ikon-category-dialog :item="item"/>
     </template>
   </ikon-data-table-page-template>
 </template>
 
 <script>
-import Sport from '@/modules/taxonomy/models/sport'
+import Category from '@/modules/taxonomy/models/category'
 
 export default {
-  name: 'IkonSportPage',
+  name: 'IkonCategoryPage',
   components: {
     IkonDataTablePageTemplate: () => import('@/modules/app/templates/IkonDataTablePageTemplate'),
-    IkonSportDialog: () => import('@/modules/taxonomy/components/IkonSportDialog')
+    IkonCategoryDialog: () => import('@/modules/taxonomy/components/IkonCategoryDialog')
   },
   data () {
     return {
       headers: [],
-      defaultItem: new Sport(),
+      defaultItem: new Category(),
       key: this.$dayjs().toISOString()
     }
   },
   computed: {
     getDataTableTitle () {
-      return this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.sports.sportList')
+      return this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.categories.categoryList')
     },
     getDeleteDialogTitle () {
-      return this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.sports.deleteSportText')
+      return this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.categories.deleteCategoryText')
     }
   },
   watch: {
@@ -54,9 +54,8 @@ export default {
   methods: {
     resetHeaders () {
       this.headers = [
-        { text: this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.sports.dataTableHeaders.name'), value: 'name', align: 'start' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.sports.dataTableHeaders.labelEn'), value: 'label_en' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.sports.dataTableHeaders.labelDe'), value: 'label_de' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.categories.dataTableHeaders.labelEn'), value: 'label_en', align: 'start' },
+        { text: this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.categories.dataTableHeaders.labelDe'), value: 'label_de' },
         { text: this.$vuetify.lang.t('$vuetify.general.actions'), value: 'actions', sortable: false }
       ]
     },

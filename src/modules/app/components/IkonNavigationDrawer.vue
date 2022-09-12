@@ -56,9 +56,8 @@ export default {
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.faqGroups'), 'mdi-group', { name: 'faq-groups' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.sliders'), 'mdi-view-carousel', { name: 'sliders' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.verificationRequests'), 'mdi-check-decagram', { name: 'requests' }, []),
-        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.sports'), 'mdi-run', { name: 'sports' }, []),
-        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.jobs'), 'mdi-briefcase', { name: 'jobs' }, []),
-        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.skills'), 'mdi-flash', { name: 'skills' }, []),
+        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.categories'), 'mdi-view-column', { name: 'categories' }, []),
+        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.specializations'), 'mdi-flash', { name: 'specializations' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.ratings'), 'mdi-scoreboard', { name: 'ratings' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.contacts'), 'mdi-contacts', { name: 'contacts' }, [])
       ]
