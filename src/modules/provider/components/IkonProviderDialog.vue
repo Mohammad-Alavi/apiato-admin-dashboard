@@ -2,24 +2,29 @@
   <v-container>
     <v-row>
       <v-col cols="12" sm="6">
-        <validation-provider v-slot="{ errors }" name="Hourly Rate" rules="numeric" vid="hourly_rate">
-          <v-text-field :disabled="isLoadingData" type="number" v-model="localItem.hourly_rate" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.providers.hourlyRate')"/>
+        <validation-provider v-slot="{ errors }" name="Hourly Rate" rules="double" vid="hourly_rate">
+          <v-text-field v-model="localItem.hourly_rate" :disabled="isLoadingData" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.providers.hourlyRate')"
+                        type="number"/>
         </validation-provider>
       </v-col>
       <v-col cols="12" sm="6">
         <v-row justify="start">
-          <validation-provider v-slot="{ errors }" name="Published At" :vid="getPublishedAtError">
-            <v-switch :error-messages="errors"
+          <validation-provider v-slot="{ errors }" :vid="getPublishedAtError" name="Published At">
+            <v-switch v-model="localItem.published"
                       :disabled="isLoadingData"
-              v-model="localItem.published_at"
-              :label="localItem.published_at ? $vuetify.lang.t('$vuetify.pages.providers.published'): $vuetify.lang.t('$vuetify.pages.providers.unpublished')"
+                      :error-messages="errors"
+                      :false-value="0"
+                      :label="localItem.published ? $vuetify.lang.t('$vuetify.pages.providers.published'): $vuetify.lang.t('$vuetify.pages.providers.unpublished')"
+                      :loading="isLoadingData"
+                      :true-value="1"
             />
           </validation-provider>
         </v-row>
       </v-col>
       <v-col cols="12" sm="12">
         <validation-provider v-slot="{ errors }" name="Description" rules="min:50|max:500" vid="description">
-          <v-textarea :disabled="isLoadingData" rows="3" v-model="localItem.description" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.providers.description')"/>
+          <v-textarea v-model="localItem.description" :disabled="isLoadingData" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.providers.description')"
+                      rows="3"/>
         </validation-provider>
       </v-col>
       <v-col cols="12">
@@ -27,11 +32,11 @@
           :deletable-chips="true"
           :display-function="languageDisplayMethod"
           :items="languages"
-          rules=""
           :loading="fetchingLanguages"
           :multiple="true"
           :name="$vuetify.lang.t('$vuetify.pages.providers.languages')"
           :selected-items.sync="localItem.languages"
+          rules=""
         />
       </v-col>
       <v-col cols="12">
@@ -39,11 +44,11 @@
           :deletable-chips="true"
           :display-function="categoryDisplayMethod"
           :items="categories"
-          rules=""
           :loading="fetchingCategories"
           :multiple="true"
           :name="$vuetify.lang.t('$vuetify.pages.providers.categories')"
           :selected-items.sync="localItem.categories"
+          rules=""
         />
       </v-col>
       <v-col cols="12">
@@ -51,11 +56,11 @@
           :deletable-chips="true"
           :display-function="specializationDisplayMethod"
           :items="specializations"
-          rules=""
           :loading="fetchingSpecializations"
           :multiple="true"
           :name="$vuetify.lang.t('$vuetify.pages.providers.specializations')"
           :selected-items.sync="localItem.specializations"
+          rules=""
         />
       </v-col>
     </v-row>
@@ -74,7 +79,6 @@ export default {
       fetchingCategories: false,
       specializations: [],
       fetchingSpecializations: false,
-      hadCategoriesAndSpecialization: false,
       initialItem: null,
       languages: [],
       fetchingLanguages: false
@@ -112,8 +116,6 @@ export default {
         return 'gallery'
       } else if (this.item.languages.length === 0) {
         return 'language'
-      } else if (this.item.categories.length === 0) {
-        return 'category'
       } else {
         return ''
       }
@@ -157,7 +159,10 @@ export default {
     },
     getAllSpecializations () {
       this.fetchingSpecializations = true
-      this.$store.dispatch('getAllSpecializations', { withIncludes: false, additionalParams: this.prepareSpecializationsFilter() }).then(res => {
+      this.$store.dispatch('getAllSpecializations', {
+        withIncludes: false,
+        additionalParams: this.prepareSpecializationsFilter()
+      }).then(res => {
         this.specializations = res.items
       }).finally(() => {
         this.fetchingSpecializations = false
@@ -167,8 +172,8 @@ export default {
   created () {
     this.getAllLanguages()
     this.getAllCategories()
-    this.hadCategoriesAndSpecialization = !!this.localItem.categories.length && !!this.localItem.specializations.length
     this.initialItem = this.$lodash.cloneDeep(this.item)
+    this.localItem.published = this.$lodash.isNil(this.initialItem.published_at) ? 0 : 1
   }
 }
 </script>

@@ -1,5 +1,5 @@
 // eslint-disable-next-line camelcase
-import { confirmed, email, max, min, numeric, required, required_if, is } from 'vee-validate/dist/rules'
+import { confirmed, email, max, min, numeric, double, required, required_if, is } from 'vee-validate/dist/rules'
 import { extend, setInteractionMode } from 'vee-validate'
 
 setInteractionMode('aggressive')
@@ -27,6 +27,11 @@ extend('email', {
 extend('numeric', {
   ...numeric,
   message: '{_field_} must only consist of numbers'
+})
+
+extend('double', {
+  ...double,
+  message: '{_field_} must only consist of positive real numbers'
 })
 
 extend('confirmed', {

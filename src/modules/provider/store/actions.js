@@ -43,10 +43,10 @@ export default {
   },
   updateProvider (store, payload) {
     const params = actionHelper.urlSearchParamsFromProperties(payload, {
-      publish: payload.published_at,
+      publish: payload.published,
       language: payload.languages?.length ? Array.from(payload.languages.map(language => language.name)) : [],
-      category_ids: payload.categories?.length ? Array.from(payload.categories.map(category => category.id)) : [],
-      specialization_ids: payload.specializations?.length ? Array.from(payload.specializations.map(specialization => specialization.id)) : []
+      category_ids: payload.categories?.length ? Array.from(payload.categories.map(category => category.id)) : undefined,
+      specialization_ids: payload.specializations?.length ? Array.from(payload.specializations.map(specialization => specialization.id)) : undefined
     }, [
       'user',
       'gallery',
