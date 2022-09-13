@@ -1,4 +1,4 @@
-export const IMAGE_PRESETS = {
+export const ImagePresets = {
   preload: 'preload', // (10)*
   small_square: 'small_square', // (75x75)
   large_square: 'large_square', // (150x150)

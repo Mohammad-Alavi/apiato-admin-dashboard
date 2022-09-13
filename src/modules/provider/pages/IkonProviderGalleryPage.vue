@@ -46,7 +46,7 @@
 
 <script>
 import { HandleDirective } from 'vue-slicksort'
-import { IMAGE_PRESETS } from '@/modules/app/constants/image-presets'
+import { ImagePresets } from '@/modules/app/constants/image-presets'
 
 export default {
   name: 'IkonProviderGalleryPage',
@@ -57,7 +57,7 @@ export default {
       images: [],
       image: null,
       galleryActiveIndex: null,
-      imagePresets: IMAGE_PRESETS
+      imagePresets: ImagePresets
     }
   },
   props: {
