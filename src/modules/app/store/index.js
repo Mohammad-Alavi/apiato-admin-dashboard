@@ -29,7 +29,8 @@ export default new Vuex.Store({
       isRatingReviewed: 0,
       isRatingAccepted: null,
       contactTopic: null,
-      isResolved: null
+      isResolved: null,
+      applicationStatus: null
     }
   },
   actions: actions,

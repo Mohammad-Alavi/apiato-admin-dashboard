@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { CRUD_MODE } from '@/modules/app/constants/crud-modes'
+import { CrudMode } from '@/modules/app/constants/crud-modes'
 
 export default {
   name: 'IkonSpecializationDialog',
@@ -46,7 +46,7 @@ export default {
     crudMode: {
       type: String,
       validator (value) {
-        return Object.values(CRUD_MODE).includes(value)
+        return Object.values(CrudMode).includes(value)
       }
     }
   },
@@ -55,7 +55,7 @@ export default {
       textAreaRows: 2,
       categories: [],
       fetchingCategories: false,
-      CRUD_MODE
+      CRUD_MODE: CrudMode
     }
   },
   computed: {

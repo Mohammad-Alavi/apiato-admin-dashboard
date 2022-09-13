@@ -51,7 +51,8 @@ export default {
       isRatingReviewed: 0,
       isRatingAccepted: null,
       contactTopic: null,
-      isResolved: 0
+      isResolved: 0,
+      applicationStatus: null
     }
   }
 }

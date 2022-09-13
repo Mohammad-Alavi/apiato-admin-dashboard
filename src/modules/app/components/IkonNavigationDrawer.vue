@@ -59,6 +59,7 @@ export default {
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.categories'), 'mdi-view-column', { name: 'categories' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.specializations'), 'mdi-flash', { name: 'specializations' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.ratings'), 'mdi-scoreboard', { name: 'ratings' }, []),
+        new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.applications'), 'mdi-note-text', { name: 'applications' }, []),
         new NavItem(this.$vuetify.lang.t('$vuetify.general.components.navigationDrawer.contacts'), 'mdi-contacts', { name: 'contacts' }, [])
       ]
     }

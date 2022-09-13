@@ -132,7 +132,7 @@
 <script>
 import { ValidationObserver } from 'vee-validate'
 import Sortable from 'sortablejs'
-import { CRUD_MODE } from '@/modules/app/constants/crud-modes'
+import { CrudMode } from '@/modules/app/constants/crud-modes'
 
 export default {
   name: 'IkonDataTablePageTemplate',
@@ -220,7 +220,7 @@ export default {
   },
   data () {
     return {
-      CRUD_MODE,
+      CRUD_MODE: CrudMode,
       selectedItemIndex: -1,
       selectedItem: null,
       loadingDataTable: true,
@@ -496,6 +496,9 @@ export default {
         }
         if (!this.$lodash.isNil(filters.isResolved)) {
           filter.push('is_resolved=' + filters.isResolved)
+        }
+        if (!this.$lodash.isNil(filters.applicationStatus)) {
+          filter.push('status=' + filters.applicationStatus)
         }
       }
 

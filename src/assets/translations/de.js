@@ -56,6 +56,7 @@ export default {
         categories: 'Categories',
         specializations: 'Specializations',
         ratings: 'Ratings',
+        applications: 'Applications',
         contacts: 'Contacts'
       },
       filter: {
@@ -379,6 +380,24 @@ export default {
         all: 'All',
         onlyResolved: 'Only Resolved',
         clearFilter: 'Clear Filter'
+      }
+    },
+    applications: {
+      addApplication: 'Add Application',
+      editApplication: 'Edit Application',
+      applicationList: 'Application List',
+      deleteApplicationText: 'Are you sure you want to delete this Application?',
+      dataTableHeaders: {
+        name: 'Name',
+        email: 'Email',
+        phone: 'phone',
+        description: 'Description',
+        links: 'Links',
+        status: 'Status'
+      },
+      filter: {
+        filterApplicationsTitle: 'Filter Applications by Status',
+        status: 'Status'
       }
     },
     auth: {
