@@ -3,13 +3,14 @@
     <v-row>
       <v-col cols="12" sm="6">
         <validation-provider v-slot="{ errors }" name="Hourly Rate" rules="double" vid="hourly_rate">
-          <v-text-field v-model="localItem.hourly_rate" :disabled="isLoadingData" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.providers.hourlyRate')"
+          <v-text-field v-model="localItem.hourly_rate" :disabled="isLoadingData" :error-messages="errors"
+                        :label="$vuetify.lang.t('$vuetify.pages.providers.hourlyRate')"
                         type="number"/>
         </validation-provider>
       </v-col>
       <v-col cols="12" sm="6">
         <v-row justify="start">
-          <validation-provider v-slot="{ errors }" :vid="getPublishedAtError" name="Published At">
+          <validation-provider v-slot="{ errors }" name="Published At" vid="gallery">
             <v-switch v-model="localItem.published"
                       :disabled="isLoadingData"
                       :error-messages="errors"
@@ -23,7 +24,8 @@
       </v-col>
       <v-col cols="12" sm="12">
         <validation-provider v-slot="{ errors }" name="Description" rules="min:50|max:500" vid="description">
-          <v-textarea v-model="localItem.description" :disabled="isLoadingData" :error-messages="errors" :label="$vuetify.lang.t('$vuetify.pages.providers.description')"
+          <v-textarea v-model="localItem.description" :disabled="isLoadingData" :error-messages="errors"
+                      :label="$vuetify.lang.t('$vuetify.pages.providers.description')"
                       rows="3"/>
         </validation-provider>
       </v-col>
@@ -37,6 +39,7 @@
           :name="$vuetify.lang.t('$vuetify.pages.providers.languages')"
           :selected-items.sync="localItem.languages"
           rules=""
+          vid="language"
         />
       </v-col>
       <v-col cols="12">
@@ -49,6 +52,7 @@
           :name="$vuetify.lang.t('$vuetify.pages.providers.categories')"
           :selected-items.sync="localItem.categories"
           rules=""
+          vid="category"
         />
       </v-col>
       <v-col cols="12">
@@ -61,6 +65,7 @@
           :name="$vuetify.lang.t('$vuetify.pages.providers.specializations')"
           :selected-items.sync="localItem.specializations"
           rules=""
+          vid="specialization"
         />
       </v-col>
     </v-row>
@@ -73,6 +78,7 @@ export default {
   components: {
     IkonAutocomplete: () => import('@/modules/app/components/IkonAutocomplete')
   },
+  inject: ['serverErrors'],
   data () {
     return {
       categories: [],
@@ -110,15 +116,6 @@ export default {
       }
       this.getAllSpecializations()
       return !this.$lodash.isEqual(this.initialItem?.categories, this.localItem.categories)
-    },
-    getPublishedAtError () {
-      if (this.item.gallery.images.length === 0) {
-        return 'gallery'
-      } else if (this.item.languages.length === 0) {
-        return 'language'
-      } else {
-        return ''
-      }
     },
     isLoadingData () {
       return this.fetchingCategories || this.fetchingSpecializations || this.fetchingLanguages

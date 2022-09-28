@@ -9,29 +9,37 @@
       </v-col>
     </v-row>
     <v-card flat min-width="100%">
-      <v-card-text>
-        <ikon-gallery-grid-wrapper v-model="images" :useDragHandle="true" axis="xy" @input="reorderGalleryImage"
-                            @sort-end="getDraggedImageIndex">
-          <ikon-gallery-grid-item v-for="(image, index) in images" :key="index" :index="index">
-            <v-img :lazy-src="`${imgDomainUrl}/${imagePresets.preload}/${image.file}`" :src="`${imgDomainUrl}/${imagePresets.large2048}/${image.file}`" aspect-ratio="1" max-width="300" max-height="300"
-                   class="grey lighten-2">
-              <template v-slot:placeholder>
-                <v-row align="center" class="fill-height ma-0" justify="center">
-                  <v-progress-circular color="grey lighten-5" indeterminate/>
-                </v-row>
-              </template>
-              <v-btn :loading="manipulatingImage" icon right absolute @click="removeGalleryImage(image.id, index)">
-                <v-icon>mdi-close</v-icon>
-              </v-btn>
+      <validation-observer ref="observer">
+        <validation-provider v-slot="{ invalid, errors }" vid="gallery">
+          <v-card-text>
+            <ikon-gallery-grid-wrapper v-model="images" :useDragHandle="true" axis="xy" @input="reorderGalleryImage"
+                                       @sort-end="getDraggedImageIndex">
+              <ikon-gallery-grid-item v-for="(image, index) in images" :key="index" :index="index">
+                <v-img :lazy-src="`${imgDomainUrl}/${imagePresets.preload}/${image.file}`"
+                       :src="`${imgDomainUrl}/${imagePresets.large2048}/${image.file}`" aspect-ratio="1"
+                       class="grey lighten-2"
+                       max-height="300"
+                       max-width="300">
+                  <template v-slot:placeholder>
+                    <v-row align="center" class="fill-height ma-0" justify="center">
+                      <v-progress-circular color="grey lighten-5" indeterminate/>
+                    </v-row>
+                  </template>
+                  <v-btn :loading="manipulatingImage" absolute icon right
+                         @click="removeGalleryImage(image.id, index)">
+                    <v-icon>mdi-close</v-icon>
+                  </v-btn>
 
-              <v-btn :loading="manipulatingImage" left icon absolute v-handle>
-                <v-icon>mdi-cursor-move</v-icon>
-              </v-btn>
-            </v-img>
-          </ikon-gallery-grid-item>
-        </ikon-gallery-grid-wrapper>
-      </v-card-text>
-
+                  <v-btn v-handle :loading="manipulatingImage" absolute icon left>
+                    <v-icon>mdi-cursor-move</v-icon>
+                  </v-btn>
+                </v-img>
+              </ikon-gallery-grid-item>
+            </ikon-gallery-grid-wrapper>
+          </v-card-text>
+          <v-card-subtitle class="error--text" v-for="(message, i) in errors" :key="i">{{ message }}</v-card-subtitle>
+        </validation-provider>
+      </validation-observer>
       <v-card-actions>
         <v-spacer/>
         <v-btn :loading="manipulatingImage" color="primary" @click="addFile">
@@ -39,7 +47,7 @@
         </v-btn>
       </v-card-actions>
 
-      <input ref="fileUploader" type="file" class="d-none" multiple accept="image/*" @change="imageAdded">
+      <input ref="fileUploader" accept="image/*" class="d-none" multiple type="file" @change="imageAdded">
     </v-card>
   </v-container>
 </template>
@@ -47,6 +55,7 @@
 <script>
 import { HandleDirective } from 'vue-slicksort'
 import { ImagePresets } from '@/modules/app/constants/image-presets'
+import { ValidationObserver } from 'vee-validate'
 
 export default {
   name: 'IkonProviderGalleryPage',
@@ -69,7 +78,8 @@ export default {
   components: {
     IkonGalleryGridWrapper: () => import('@/modules/provider/components/IkonGalleryGridWrapper'),
     IkonGalleryGridItem: () => import('@/modules/provider/components/IkonGalleryGridItem'),
-    IkonUserOptions: () => import('@/modules/app/components/IkonUserOptions')
+    IkonUserOptions: () => import('@/modules/app/components/IkonUserOptions'),
+    ValidationObserver
   },
   computed: {
     imgDomainUrl () {
@@ -77,6 +87,16 @@ export default {
     }
   },
   methods: {
+    setServerErrorsOnFormFields (res) {
+      if (res.response.data.errors) {
+        const errors = res.response.data.errors
+        const errorObject = {}
+        Object.entries(errors).forEach(([k, v]) => {
+          errorObject[k] = v
+        })
+        this.$refs.observer.setErrors(errorObject)
+      }
+    },
     addFile (e) {
       const uploader = this.$refs.fileUploader
       uploader.value = ''
@@ -104,6 +124,9 @@ export default {
           provider: this.provider
         }).then(res => {
           this.getAllGalleryImages()
+        }).catch(res => {
+          console.log('res', res)
+          this.setServerErrorsOnFormFields(res)
         }).finally(() => {
           this.manipulatingImage = false
         })

@@ -146,6 +146,11 @@ export default {
     EventListener: () => import('@/modules/app/components/EventListener'),
     ValidationObserver
   },
+  provide () {
+    return {
+      serverErrors: () => this.serverErrors
+    }
+  },
   props: {
     headers: {
       type: Array,
@@ -248,7 +253,8 @@ export default {
       searchQuery: '',
       isSearching: false,
       debounceTimeout: null,
-      dialogKey: new Date().getTime()
+      dialogKey: new Date().getTime(),
+      serverErrors: {}
     }
   },
   computed: {
@@ -362,6 +368,7 @@ export default {
           errorObject[k] = v
         })
         this.$refs.observer.setErrors(errorObject)
+        this.serverErrors = errorObject
       }
     },
     deleteItem (closeMethod) {

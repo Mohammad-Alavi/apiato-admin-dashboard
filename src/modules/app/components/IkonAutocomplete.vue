@@ -1,5 +1,5 @@
 <template>
-  <validation-provider v-slot="{ errors }" :name="name" :rules="rules">
+  <validation-provider v-slot="{ errors }" :vid="vid" :name="name" :rules="rules">
     <v-autocomplete v-model="localSelectedItems" :deletable-chips="deletableChips" :dense="dense" :disabled="disabled"
                     :error-messages="errors"
                     :filter="filterMethod" :items="items" :label="label ? label : name" :loading="loading"
@@ -89,6 +89,11 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    vid: {
+      type: String,
+      required: false,
+      default: ''
     }
   },
   data () {
