@@ -28,6 +28,10 @@ export default {
         .catch(err => reject(err))
     })
   },
+  reorderCategory (store, payload) {
+    const params = actionHelper.urlSearchParamsFromProperties(payload, { position: payload.order }, ['order', 'provider'])
+    return Vue.axios.patch('/categories/' + payload.id + '/reorder', params)
+  },
   createSpecialization (store, payload) {
     const params = actionHelper.urlSearchParamsFromProperties(payload, {
       category_ids: payload.categories?.length ? Array.from(payload.categories.map(category => category.id)) : []

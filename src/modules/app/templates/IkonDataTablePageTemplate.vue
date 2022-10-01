@@ -521,9 +521,10 @@ export default {
       const itemToBeReplaced = this.items[event.newIndex] ?? this.items[event.newIndex - 1]
 
       let order = null
-      const itemToBeReplacedOrder = itemToBeReplaced.object === 'Provider' ? itemToBeReplaced.orderInSlider(this.$route.params.slider_id) : itemToBeReplaced.order
+      const itemToBeReplacedOrder = itemToBeReplaced.object === 'Provider' ? itemToBeReplaced.orderInSlider(this.$route.params.slider_id)
+        : itemToBeReplaced.object === 'Category' || itemToBeReplaced.object === 'Specialization' ? itemToBeReplaced.sort_order : itemToBeReplaced.order
 
-      if ((itemToBeReplacedOrder > movedItem.order && (event.newIndex < this.items.length))) {
+      if ((itemToBeReplacedOrder > (movedItem.order ?? movedItem.sort_order) && (event.newIndex < this.items.length))) {
         if (itemToBeReplacedOrder === 0) {
           order = itemToBeReplacedOrder
         } else {

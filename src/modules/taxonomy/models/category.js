@@ -7,6 +7,7 @@ export default class Category extends Taxonomy {
     id = null,
     labelEn = null,
     labelDe = null,
+    sortOrder = null,
     specializationIDs = null,
     specializations = null
   ) {
@@ -14,7 +15,8 @@ export default class Category extends Taxonomy {
       object,
       id,
       labelEn,
-      labelDe
+      labelDe,
+      sortOrder
     )
     this.specialization_ids = specializationIDs
     this.specializations = specializations
@@ -26,6 +28,7 @@ export default class Category extends Taxonomy {
       json.id,
       json.label_en,
       json.label_de,
+      json.sort_order,
       json.specialization_ids,
       json.specializations ? Specialization.fromJsonArray(json.specializations.data) : null
     )

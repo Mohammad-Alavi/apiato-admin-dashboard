@@ -308,6 +308,7 @@ export default {
           labelEn: 'Label (EN)',
           labelDe: 'Label (DE)',
           dataTableHeaders: {
+            order: 'Order',
             labelEn: 'Label (EN)',
             labelDe: 'Label (DE)',
             specializations: 'Specializations'

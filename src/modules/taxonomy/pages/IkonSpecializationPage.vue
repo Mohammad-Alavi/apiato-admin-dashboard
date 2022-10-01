@@ -1,25 +1,25 @@
 <template>
   <ikon-data-table-page-template :key="key"
-                                  :data-table-title="getDataTableTitle"
-                                  :default-item="defaultItem"
-                                  :delete-dialog-title="getDeleteDialogTitle"
-                                  :headers="headers"
-                                  :show-toolbar-button="true"
-                                  :show-delete-action="true"
-                                  :show-update-action="true"
-                                  :toolbar-button-dialog-title="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.specializations.addSpecialization')"
-                                  :toolbar-button-text="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.specializations.addSpecialization')"
-                                  :update-dialog-title="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.specializations.editSpecialization')"
-                                  actions-suffix="Specialization"
-                                  show-select>
+                                 :data-table-title="getDataTableTitle"
+                                 :default-item="defaultItem"
+                                 :delete-dialog-title="getDeleteDialogTitle"
+                                 :headers="headers"
+                                 :show-delete-action="true"
+                                 :show-toolbar-button="true"
+                                 :show-update-action="true"
+                                 :toolbar-button-dialog-title="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.specializations.addSpecialization')"
+                                 :toolbar-button-text="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.specializations.addSpecialization')"
+                                 :update-dialog-title="$vuetify.lang.t('$vuetify.pages.taxonomies.pages.specializations.editSpecialization')"
+                                 actions-suffix="Specialization"
+                                 show-select>
     <template v-slot:filter>
       <ikon-specialization-filter/>
     </template>
     <template v-slot:add-dialog="{item, crudMode}">
-      <ikon-specialization-dialog :item="item" :crud-mode="crudMode"/>
+      <ikon-specialization-dialog :crud-mode="crudMode" :item="item"/>
     </template>
     <template v-slot:edit-dialog="{item, crudMode}">
-      <ikon-specialization-dialog :item="item" :crud-mode="crudMode"/>
+      <ikon-specialization-dialog :crud-mode="crudMode" :item="item"/>
     </template>
   </ikon-data-table-page-template>
 </template>
@@ -58,9 +58,20 @@ export default {
   methods: {
     resetHeaders () {
       this.headers = [
-        { text: this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.specializations.dataTableHeaders.labelEn'), value: 'label_en', align: 'start' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.specializations.dataTableHeaders.labelDe'), value: 'label_de' },
-        { text: this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.specializations.dataTableHeaders.categories'), value: 'category_names', sortable: false },
+        {
+          text: this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.specializations.dataTableHeaders.labelEn'),
+          value: 'label_en',
+          align: 'start'
+        },
+        {
+          text: this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.specializations.dataTableHeaders.labelDe'),
+          value: 'label_de'
+        },
+        {
+          text: this.$vuetify.lang.t('$vuetify.pages.taxonomies.pages.specializations.dataTableHeaders.categories'),
+          value: 'category_names',
+          sortable: false
+        },
         { text: this.$vuetify.lang.t('$vuetify.general.actions'), value: 'actions', sortable: false }
       ]
     },
