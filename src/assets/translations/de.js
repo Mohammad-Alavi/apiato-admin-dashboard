@@ -52,7 +52,6 @@ export default {
         faqs: 'FAQs',
         faqGroups: 'FAQ Groups',
         sliders: 'Sliders',
-        verificationRequests: 'Provider Requests',
         categories: 'Categories',
         specializations: 'Specializations',
         ratings: 'Ratings',
